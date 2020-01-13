@@ -26,4 +26,14 @@ class Jadwal extends Model
 
         return $this->belongsTo('App\Jam');
     }
+
+    public function kelas() {
+
+        return $this->belongsTo('App\Kelas');
+    }
+
+    public function ringtone() {
+
+        return $this->belongsTo('App\Ringtone');
+    }
 }
