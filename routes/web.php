@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login', 'AdminController@login_index');
+
+Route::get('/dashboard', 'AdminController@dashboard');
+
+Route::post('/login/proses', 'AdminController@login_proses');
