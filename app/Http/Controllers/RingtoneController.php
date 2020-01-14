@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Ringtone;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Yajra\DataTables\DataTables;
 
 class RingtoneController extends Controller
@@ -90,9 +91,15 @@ class RingtoneController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function hapusRingtone(Request $request)
     {
-        //
+        if(!Session::get('loginAdmin')){
+            return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+        }else{
+            $ringtone = Ringtone::findOrFail($request->id_ringtone);
+            $ringtone->delete();
+            return redirect('ringtone')->with('alert danger', 'Ringtone berhasil dihapus!');
+        }
     }
 
     public function apiRingtone() {

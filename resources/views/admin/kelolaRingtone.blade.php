@@ -138,14 +138,14 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        {{-- <h5>Apakah anda yakin?</h5>
-                                        <form action="/jadwal/jam/hapus" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <h5>Apakah anda yakin?</h5>
+                                        <form action="/ringtone/hapus" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group" hidden>
-                                                <label class="control-label col-md-3" for="id_jam">ID Jam<span class="required">*</span>
+                                                <label class="control-label col-md-3" for="id_ringtone">ID Ringtone<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="text" id="id_jam" name="id_jam" class="form-control" readonly required>
+                                                    <input type="text" id="id_ringtone" name="id_ringtone" class="form-control" readonly required>
                                                 </div>
                                             </div>
 
@@ -153,7 +153,7 @@
                                                 <button type="submit" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                                 <button type="submit" class="btn btn-danger">Hapus</button>
                                             </div>
-                                        </form> --}}
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -232,10 +232,10 @@
         $(document).ready(function(){
             $('#hapusRingtone').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
-            var id_jam = button.data('id_jam');
-                console.log(id_jam);
+            var id_ringtone = button.data('id_ringtone');
+                console.log(id_ringtone);
             var modal = $(this);
-            modal.find('.modal-body #id_jam').val(id_jam);
+            modal.find('.modal-body #id_ringtone').val(id_ringtone);
             });
         });
     </script>

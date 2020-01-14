@@ -26,6 +26,8 @@ Route::get('/ringtone', 'RingtoneController@index')->name('ringtone');
 
 Route::post('ringtone/tambah', 'RingtoneController@tambahRingtone');
 
+Route::post('ringtone/hapus', 'RingtoneController@hapusRingtone');
+
 Route::get('api.ringtone', 'RingtoneController@apiRingtone')->name('api.ringtone');
 
 Route::get('/jadwal', 'JadwalController@jadwal');
