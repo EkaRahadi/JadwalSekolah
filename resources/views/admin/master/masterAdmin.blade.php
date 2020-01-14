@@ -70,16 +70,30 @@
                 <ul class="nav side-menu">
                   <li><a href="/dashboard"><i class="fa fa-home"></i> Dashboard</a>
                   </li>
-                  <li><a href="#"><i class="fa fa-calendar"></i>Kelola Jadwal<span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-folder"></i>Kelola Data Sekolah<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
+                        <li><a href="/dataSekolah/siswa">Siswa</a></li>
+                        <li><a href="/dataSekolah/orangtua">Orangtua</a></li>
+                        <li><a href="/dataSekolah/kelas">Kelas</a></li>
+                      </ul>
+                  </li>
+                  <li><a><i class="fa fa-calendar"></i>Kelola Jadwal<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="/jadwal">Jadwal</a></li>
                         <li><a href="/jadwal/jam">Jam</a></li>
                         <li><a href="/jadwal/hari">Hari</a></li>
                         <li><a href="/jadwal/event">Event</a></li>
                       </ul>
                   </li>
+<<<<<<< HEAD
+                  <li><a><i class="fa fa-music"></i> Ringtone</a>
+=======
                   <li><a><i class="fa fa-bell"></i> Pemberitahuan</a>
                   </li>
                   <li><a href="{{route('ringtone')}}"><i class="fa fa-music"></i> Ringtone</a>
+>>>>>>> e5c54bd4fd278a18edb8926cbdc45a6f97003c03
+                  </li>
+                  <li><a><i class="fa fa-bell"></i> Pemberitahuan</a>
                   </li>
                 </ul>
               </div>
