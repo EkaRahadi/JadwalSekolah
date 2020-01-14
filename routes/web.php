@@ -22,6 +22,12 @@ Route::get('/dashboard', 'AdminController@dashboard');
 
 Route::post('/login/proses', 'AdminController@login_proses');
 
+Route::get('/ringtone', 'RingtoneController@index')->name('ringtone');
+
+Route::post('ringtone/tambah', 'RingtoneController@tambahRingtone');
+
+Route::get('api.ringtone', 'RingtoneController@apiRingtone')->name('api.ringtone');
+
 Route::get('/jadwal', 'JadwalController@jadwal');
 
 Route::post('/jadwal/tambah', 'JadwalController@tambah_jadwal');

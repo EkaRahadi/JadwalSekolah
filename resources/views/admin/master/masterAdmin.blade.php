@@ -34,6 +34,9 @@
     <link href="../vendors/starrr/dist/starrr.css" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    
+    <!-- Data Tables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css"/>
     <!-- bootstrap-datetimepicker -->
     <link href="../vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
     <!-- Ion.RangeSlider -->
@@ -82,7 +85,13 @@
                         <li><a href="/jadwal/event">Event</a></li>
                       </ul>
                   </li>
+<<<<<<< HEAD
                   <li><a><i class="fa fa-music"></i> Ringtone</a>
+=======
+                  <li><a><i class="fa fa-bell"></i> Pemberitahuan</a>
+                  </li>
+                  <li><a href="{{route('ringtone')}}"><i class="fa fa-music"></i> Ringtone</a>
+>>>>>>> e5c54bd4fd278a18edb8926cbdc45a6f97003c03
                   </li>
                   <li><a><i class="fa fa-bell"></i> Pemberitahuan</a>
                   </li>
