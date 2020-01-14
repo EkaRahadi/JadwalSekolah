@@ -10,10 +10,15 @@ class Students extends Model
 
     protected $primaryKey = 'id_student';
 
-    protected $fillable = ['nama', 'parent'];
+    protected $fillable = ['nama', 'parent','kelas'];
 
     public function parent() {
 
         return $this->belongsTo('App\Parent');
+    }
+
+    public function kelas() {
+
+        return $this->belongsTo('App\Kelas');
     }
 }

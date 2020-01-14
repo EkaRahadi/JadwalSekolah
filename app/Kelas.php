@@ -16,4 +16,9 @@ class Kelas extends Model
 
         return $this->hasMany('App\Jadwal');
     }
+
+    public function student() {
+
+        return $this->hasMany('App\Student');
+    }
 }

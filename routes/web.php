@@ -70,4 +70,20 @@ Route::post('/dataSekolah/kelas/ubah', 'DataSekolahController@ubah_kelas');
 
 Route::post('/dataSekolah/kelas/hapus', 'DataSekolahController@hapus_kelas');
 
+Route::get('/dataSekolah/siswa', 'SiswaController@index');
+
+Route::post('/dataSekolah/siswa/tambah', 'SiswaController@tambahSiswa');
+
+Route::post('/dataSekolah/siswa/ubah', 'SiswaController@ubahSiswa');
+
+Route::post('/dataSekolah/siswa/hapus', 'SiswaController@hapusSiswa');
+
+Route::get('/orangtua', 'OrangTuaController@index');
+
+Route::post('/orangtua/tambah', 'OrangTuaController@tambahOrangTua');
+
+Route::post('/orangtua/ubah', 'OrangTuaController@ubahOrangTua');
+
+Route::post('/orangtua/hapus', 'OrangTuaController@hapusOrangTua');
+
 
