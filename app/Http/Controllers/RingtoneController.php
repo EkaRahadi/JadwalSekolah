@@ -35,9 +35,19 @@ class RingtoneController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function tambahRingtone(Request $request)
     {
-        //
+        $input = $request->all();
+        $file = $request->file('ringtone');
+        $namefile = $request->file('ringtone')->getClientOriginalName();
+        // $input['path'] = null;
+
+        $input['path'] = '/upload/ringtones/'.$namefile.'.'.$request->ringtone->getClientOriginalExtension();
+        $request->ringtone->move(public_path('/upload/ringtone'), $input['ringtone']);
+
+        if(Ringtone::create($input)) {
+            return redirect('ringtone')->with('alert success', 'Ringtone berhasil ditambahkan!');
+        }
     }
 
     /**
