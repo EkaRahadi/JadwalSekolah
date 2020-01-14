@@ -63,3 +63,11 @@
 </div>
 <!-- /top tiles -->
 @endsection
+
+@include('admin/master/masterAdmin')
+@section('script')
+    @include('admin/master/scriptDashboard')
+    @push('dashboard_script')
+
+    @endpush
+@endsection

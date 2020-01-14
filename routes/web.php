@@ -11,8 +11,9 @@
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
 });
 
 Route::get('/login', 'AdminController@login_index');
@@ -20,3 +21,29 @@ Route::get('/login', 'AdminController@login_index');
 Route::get('/dashboard', 'AdminController@dashboard');
 
 Route::post('/login/proses', 'AdminController@login_proses');
+
+Route::get('/jadwal', 'JadwalController@jadwal');
+
+Route::get('/jadwal/event', 'JadwalController@event');
+
+Route::post('/jadwal/event/tambah', 'JadwalController@tambah_event');
+
+Route::post('/jadwal/event/ubah', 'JadwalController@ubah_event');
+
+Route::post('/jadwal/event/hapus', 'JadwalController@hapus_event');
+
+Route::get('/jadwal/jam', 'JadwalController@jam');
+
+Route::post('/jadwal/jam/tambah', 'JadwalController@tambah_jam');
+
+Route::post('/jadwal/jam/ubah', 'JadwalController@ubah_jam');
+
+Route::post('/jadwal/jam/hapus', 'JadwalController@hapus_jam');
+
+Route::get('/jadwal/hari', 'JadwalController@hari');
+
+Route::post('/jadwal/hari/tambah', 'JadwalController@tambah_hari');
+
+Route::post('/jadwal/hari/ubah', 'JadwalController@ubah_hari');
+
+Route::post('/jadwal/hari/hapus', 'JadwalController@hapus_hari');
