@@ -28,6 +28,9 @@
     <link href="../vendors/starrr/dist/starrr.css" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    
+    <!-- Data Tables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css"/>
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
@@ -62,7 +65,7 @@
                   </li>
                   <li><a><i class="fa fa-bell"></i> Pemberitahuan</a>
                   </li>
-                  <li><a><i class="fa fa-music"></i> Ringtone</a>
+                  <li><a href="{{route('ringtone')}}"><i class="fa fa-music"></i> Ringtone</a>
                   </li>
                 </ul>
               </div>

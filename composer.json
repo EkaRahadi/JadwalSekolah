@@ -12,7 +12,8 @@
         "fideloper/proxy": "^4.0",
         "gr8shivam/laravel-sms-api": "^3.0",
         "laravel/framework": "^6.2",
-        "laravel/tinker": "^2.0"
+        "laravel/tinker": "^2.0",
+        "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
