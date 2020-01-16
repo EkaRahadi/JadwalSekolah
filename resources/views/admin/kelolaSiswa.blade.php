@@ -39,7 +39,7 @@
                         </button>
                         <br>
 
-                        {{-- <!-- Modal Tambah Kelas -->
+                        <!-- Modal Tambah Kelas -->
 
                         <div class="modal fade" id="tambahSiswa" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
@@ -96,7 +96,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
 
                         {{-- <!-- Modal Ubah Jadwal -->
 
@@ -208,10 +208,9 @@
                             <tbody>
                             @foreach($siswa as $key => $std)
                               <tr>
-                              <td>{{$std}}</td>
-                                {{-- <td>{{++$key}}</td>
+                                <td>{{++$key}}</td>
                                 <td>{{$std->nama}}</td>
-                                <td>{{$std->orangtua->nama}}</td>
+                                <td>{{$std->orang_tua->nama}}</td>
                                 <td>{{$std->kelas_siswa->nama_kelas}}</td>
                                 <td>
                                     <button type="button" class="btn btn-success btn-sm"
@@ -219,7 +218,7 @@
                                         data-toggle="modal"
                                         data-id_student ="{{$std->id_student}}"
                                         data-id_nama_siswa="{{$std->nama}}"
-                                        data-id_parent="{{$std->orangtua->nama}}"
+                                        data-id_parent="{{$std->orang_tua->nama}}"
                                         data-id_nama_kelas="{{$std->kelas_siswa->nama_kelas}}">
                                         <i class="fa fa-edit"></i>&nbsp;
                                             Ubah
@@ -231,7 +230,7 @@
                                         <i class="fa fa-trash"></i>&nbsp;
                                             Hapus
                                     </button>
-                                </td> --}}
+                                </td>
                               </tr>
                             @endforeach
                             </tbody>

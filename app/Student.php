@@ -14,11 +14,14 @@ class Students extends Model
 
     public function kelas_siswa(){
         return $this->belongsTo('App\Kelas', 'id_student', 'id_kelas');
-        // return $this->belongsTo(Kelas::class);
     }
 
-    public function orang_tua(){
-        return $this->belongsTo('App\OrangTua','id_student','id_parents');
+    // public function orang_tua(){
+    //     return $this->belongsTo('App\OrangTua','id_student','id_parents');
  
-    }
+    // }
+        public function orang_tua()
+        {
+            return $this->belongsTo('App\OrangTua', 'id_student', 'id_parents');
+        }
 }

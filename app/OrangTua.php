@@ -10,11 +10,10 @@ class OrangTua extends Model
 
     protected $primaryKey = 'id_parents';
 
-    protected $fillable = ['nama', 'hp', 'email', 'alamat'];
-
-    public function student(){
-
-        return $this->hasMany('App\Student','id_parents','id_student');
-        // return $this->hasMany('App\Student','id_student','id_parents');
+    protected $fillable = ['nama', 'hp', 'email','alamat'];
+    
+    public function siswa()
+    {
+        $this->hasMany('App\Student', 'id_parents', 'id_student');
     }
 }
