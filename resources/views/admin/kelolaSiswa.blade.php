@@ -39,7 +39,7 @@
                         </button>
                         <br>
 
-                        <!-- Modal Tambah Kelas -->
+                        {{-- <!-- Modal Tambah Kelas -->
 
                         <div class="modal fade" id="tambahSiswa" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
@@ -67,7 +67,7 @@
                                                 <div class="col-12 col-md-9">
                                                     <select class="form-control" id="kelas" name="kelas" required>
                                                         <option>--- Pilih Kelas ---</option>
-                                                        @foreach ($kelas as $kls)
+                                                        @foreach ($class as $kls)
                                                         <option value="{{$kls->id_kelas}}">{{$kls->nama_kelas}}</option>
                                                         @endforeach
                                                     </select>
@@ -96,9 +96,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <!-- Modal Ubah Jadwal -->
+                        {{-- <!-- Modal Ubah Jadwal -->
 
                         <div class="modal fade" id="ubahSiswa" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
@@ -132,7 +132,7 @@
                                                 <div class="col-12 col-md-9">
                                                     <select class="form-control" id="kelas" name="kelas" required>
                                                         <option>--- Pilih Kelas ---</option>
-                                                        @foreach ($kelas as $kls)
+                                                        @foreach ($class as $kls)
                                                         <option value="{{$kls->id_kelas}}">{{$kls->nama_kelas}}</option>
                                                         @endforeach
                                                     </select>
@@ -158,7 +158,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <!-- Modal Hapus Kelas -->
 
@@ -208,18 +208,19 @@
                             <tbody>
                             @foreach($siswa as $key => $std)
                               <tr>
-                                <td>{{++$key}}</td>
+                              <td>{{$std}}</td>
+                                {{-- <td>{{++$key}}</td>
                                 <td>{{$std->nama}}</td>
-                                <td>{{$std->parent->nama}}</td>
-                                <td>{{$std->kelas->nama_kelas}}</td>
+                                <td>{{$std->orangtua->nama}}</td>
+                                <td>{{$std->kelas_siswa->nama_kelas}}</td>
                                 <td>
                                     <button type="button" class="btn btn-success btn-sm"
                                         data-target="#ubahKelas"
                                         data-toggle="modal"
                                         data-id_student ="{{$std->id_student}}"
                                         data-id_nama_siswa="{{$std->nama}}"
-                                        data-id_parent="{{$std->parent->nama}}"
-                                        data-id_nama_kelas="{{$std->kelas->nama_kelas}}">
+                                        data-id_parent="{{$std->orangtua->nama}}"
+                                        data-id_nama_kelas="{{$std->kelas_siswa->nama_kelas}}">
                                         <i class="fa fa-edit"></i>&nbsp;
                                             Ubah
                                     </button>
@@ -230,7 +231,7 @@
                                         <i class="fa fa-trash"></i>&nbsp;
                                             Hapus
                                     </button>
-                                </td>
+                                </td> --}}
                               </tr>
                             @endforeach
                             </tbody>

@@ -16,7 +16,7 @@ class CreateRingtoneTable extends Migration
         Schema::create('ringtone', function (Blueprint $table) {
             $table->bigIncrements('id_ringtone');
             $table->string('nama_ringtone');
-            $table->binary('ringtone');
+            $table->binary('nada_ringtone');
             $table->string('path',255);
             $table->timestamps();
         });

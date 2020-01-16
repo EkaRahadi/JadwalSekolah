@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Parents;
+use App\OrangTua;
 use Illuminate\Support\Facades\Session;
 
 class OrangTuaController extends Controller
 {
     public function index() {
         
-        $parent = Parents::all();
+        $parent = OrangTua::all();
         if(!Session::get('loginAdmin')){
             return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
@@ -29,7 +29,7 @@ class OrangTuaController extends Controller
             ]);
 
             if($validatedData){
-                Parents::create($request->all());
+                OrangTua::create($request->all());
                 return redirect('/orangtua')->with('alert success', 'Orang Tua berhasil ditambahkan!');
             }else{
                 return redirect('/orangtua')->with('alert danger', 'Orang Tua sudah ada / melebihi 255 karakter!');
@@ -48,7 +48,7 @@ class OrangTuaController extends Controller
             ]);
 
             if($validatedData){
-                $parents = Parents::findOrFail($request->id_parent);
+                $parents = OrangTua::findOrFail($request->id_parent);
                 $parents->nama= $request->nama;
                 $parents->hp = $request->hp;
                 $parents->email = $request->email;
@@ -66,7 +66,7 @@ class OrangTuaController extends Controller
         if(!Session::get('loginAdmin')){
             return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
-            $parent = Parents::findOrFail($request->id_parent);
+            $parent = OrangTua::findOrFail($request->id_parent);
             $parent->delete();
             return redirect('/orangtua')->with('alert danger', 'Orang Tua berhasil dihapus!');
         }

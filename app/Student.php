@@ -12,13 +12,13 @@ class Students extends Model
 
     protected $fillable = ['nama', 'parent','kelas'];
 
-    public function parent() {
-
-        return $this->belongsTo('App\Parent');
+    public function kelas_siswa(){
+        return $this->belongsTo('App\Kelas', 'id_student', 'id_kelas');
+        // return $this->belongsTo(Kelas::class);
     }
 
-    public function kelas() {
-
-        return $this->belongsTo('App\Kelas');
+    public function orang_tua(){
+        return $this->belongsTo('App\OrangTua','id_student','id_parents');
+ 
     }
 }

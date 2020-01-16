@@ -12,8 +12,8 @@ class Hari extends Model
 
     protected $fillable = ['nama_hari'];
 
-    public function hari() {
+    public function jadwal() {
 
-        return $this->hasMany('App\Jadwal');
+        return $this->hasMany('App\Jadwal', 'id_jadwal', 'id_hari');
     }
 }
