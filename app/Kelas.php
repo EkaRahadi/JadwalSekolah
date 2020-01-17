@@ -12,8 +12,11 @@ class Kelas extends Model
 
     protected $fillable = ['nama_kelas'];
 
-    public function kelas() {
+    public function jadwal(){
+        return $this->hasMany('App\Jadwal', 'id_jadwal', 'id_kelas');
+    }
 
-        return $this->hasMany('App\Jadwal');
+    public function student(){
+        return $this->hasMany('App\Student', 'id_student', 'id_kelas');
     }
 }

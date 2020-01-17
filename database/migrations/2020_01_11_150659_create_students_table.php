@@ -18,6 +18,8 @@ class CreateStudentsTable extends Migration
             $table->string('nama');
             $table->unsignedBigInteger('parent');
             $table->foreign('parent')->references('id_parents')->on('parents');
+            $table->unsignedBigInteger('kelas');
+            $table->foreign('kelas')->references('id_kelas')->on('kelas');
             $table->timestamps();
         });
     }

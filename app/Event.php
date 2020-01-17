@@ -12,8 +12,8 @@ class Event extends Model
 
     protected $fillable = ['event'];
 
-    public function event() {
+    public function jadwal() {
 
-        return $this->hasMany('App\Jadwal');
+        return $this->hasMany('App\Jadwal', 'id_jadwal','id_event');
     }
 }

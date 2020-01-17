@@ -10,10 +10,10 @@ class Ringtone extends Model
 
     protected $primaryKey = 'id_ringtone';
 
-    protected $fillable = ['nama_ringtone', 'path'];
+    protected $fillable = ['nama_ringtone', 'nada_ringtone', 'path'];
 
-    public function ringtone() {
+    public function jadwal() {
 
-        return $this->hasMany('App\jadwal');
+        return $this->hasMany('App\Jadwal', 'id_ringtone', 'id_jadwal');
     }
 }

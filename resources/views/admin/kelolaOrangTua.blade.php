@@ -1,10 +1,9 @@
 @extends('admin/master/masterAdmin')
 
-@section('title', 'Ringtone | SPTK')
-
-@section('active_menu_kelola_konten', 'active')
+@section('title', 'Kelas | SPTK')
 
 @section('content')
+
 <div class="content">
     <!-- Animated -->
     <div class="animated fadeIn">
@@ -32,44 +31,54 @@
                 @endif
                 <div class="card">
                     <div class="card-header">
-                        <strong class="card-title">Kelola Ringtone</strong>
+                        <strong class="card-title">Kelola Orang Tua</strong>
                     </div>
                     <div class="card-body">
-                        <button type="button" class="btn btn-info mb-1" data-toggle="modal" data-target="#tambahRingtone"><i class="fa fa-plus-square"></i>
-                            Tambah Ringtone
+                        <button type="button" class="btn btn-info mb-1" data-toggle="modal" data-target="#tambahOrangTua"><i class="fa fa-plus-square"></i>
+                            Tambah Orang Tua
                         </button>
                         <br>
 
-                        <!-- Modal Tambah Ringtone -->
+                        <!-- Modal Tambah Kelas -->
 
-                        <div class="modal fade" id="tambahRingtone" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="tambahOrangTua" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h3 class="modal-title" id="mediumModalLabel"><strong>Tambah Ringtone</strong></h3>
+                                        <h3 class="modal-title" id="mediumModalLabel"><strong>Tambah Orang Tua</strong></h3>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/ringtone/tambah" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/orangtua/tambah" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group">
-                                                <label class="control-label col-md-3" for="nama_ringtone">Nama Ringtone<span class="required">*</span>
+                                                <label class="control-label col-md-3" for="nama_parent">Nama Orang Tua<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <div class='input-group '>
-                                                        <input type='text' class="form-control" id="nama_ringtone" name="nama_ringtone" placeholder="Masukkan Nama Ringtone" required/>
-                                                    </div>
+                                                    <input type="text" id="nama_parent" name="nama" placeholder="Masukkan Nama Orang Tua" class="form-control" required>
                                                 </div>
                                             </div>
                                             <div class="row form-group">
-                                                <label class="control-label col-md-3" for="file_ringtone">Ringtone<span class="required">*</span>
+                                                <label class="control-label col-md-3" for="email_parent">Email<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <div class='input-group'>
-                                                        <input type="file" accept=".mp3" class="form-control" id="ringtone" name="ringtone" required/>
-                                                    </div>
+                                                    <input type="text" id="email_parent" name="email" placeholder="Masukkan Email" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <label class="control-label col-md-3" for="hp_parent">HP<span class="required">*</span>
+                                                </label>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" id="hp_parent" name="hp" placeholder="Masukkan Nama Handphone cth:081xxx" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <label class="control-label col-md-3" for="alamat_parent">Alamat<span class="required">*</span>
+                                                </label>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" id="alamat_parent" name="alamat" placeholder="Masukkan Nama Orang Tua" class="form-control" required>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -82,34 +91,53 @@
                             </div>
                         </div>
 
-                        <!-- Modal Ubah Ringtone -->
+                        <!-- Modal Ubah Kelas -->
 
-                        <div class="modal fade" id="ubahRingtone" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="ubahOrangTua" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h3 class="modal-title" id="mediumModalLabel"><strong>Ubah Ringtone</strong></h3>
+                                        <h3 class="modal-title" id="mediumModalLabel"><strong>Ubah Orang Tua</strong></h3>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/ringtone/ubah" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/orangtua/ubah" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group" hidden>
-                                                <label class="control-label col-md-3" for="id_ringtone">ID Ringtone<span class="required">*</span>
+                                                <label class="control-label col-md-3" for="id_kelas">ID Kelas<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="text" id="id_ringtone" name="id_ringtone" class="form-control" readonly required>
+                                                    <input type="text" id="id_parent" name="id_parent" class="form-control" readonly required>
                                                 </div>
                                             </div>
                                             <div class="row form-group">
-                                                <label class="control-label col-md-3" for="nama_ringtone">Nama Ringtone<span class="required">*</span>
+                                                <label class="control-label col-md-3" for="nama_parent">Nama Orang Tua<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <div class='input-group '>
-                                                        <input type='text' class="form-control" id="nama_ringtone" name="nama_ringtone" placeholder="Masukkan Nama Ringtone" required/>
-                                                    </div>
+                                                    <input type="text" id="nama_parent" name="nama" placeholder="Masukkan Nama Orang Tua" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <label class="control-label col-md-3" for="email_parent">Email<span class="required">*</span>
+                                                </label>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" id="email_parent" name="email" placeholder="Masukkan Email" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <label class="control-label col-md-3" for="hp_parent">HP<span class="required">*</span>
+                                                </label>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" id="hp_parent" name="hp" placeholder="Masukkan Nama Handphone cth:081xxx" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <label class="control-label col-md-3" for="alamat_parent">Alamat<span class="required">*</span>
+                                                </label>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" id="alamat_parent" name="alamat" placeholder="Masukkan Nama Orang Tua" class="form-control" required>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -122,26 +150,26 @@
                             </div>
                         </div>
 
-                        <!-- Modal Hapus Ringtone -->
+                        <!-- Modal Hapus Kelas -->
 
-                        <div class="modal fade" id="hapusRingtone" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="hapusOrangTua" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-md" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h3 class="modal-title" id="mediumModalLabel"><strong>Hapus Ringtone</strong></h3>
+                                        <h3 class="modal-title" id="mediumModalLabel"><strong>Hapus Orang Tua</strong></h3>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
                                         <h5>Apakah anda yakin?</h5>
-                                        <form action="/ringtone/hapus" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/orangtua/hapus" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group" hidden>
-                                                <label class="control-label col-md-3" for="id_ringtone">ID Ringtone<span class="required">*</span>
+                                                <label class="control-label col-md-3" for="id_parent">ID Orang Tua<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="text" id="id_ringtone" name="id_ringtone" class="form-control" readonly required>
+                                                    <input type="text" id="id_parent" name="id_parent" class="form-control" readonly required>
                                                 </div>
                                             </div>
 
@@ -161,34 +189,37 @@
                             <thead>
                               <tr>
                                 <th>No</th>
-                                <th>Ringtone</th>
-                                <th>Play</th>
+                                <th>Nama</th>
+                                <th>HP</th>
+                                <th>Email</th>
+                                <th>Alamat</th>
                                 <th>Aksi</th>
                               </tr>
                             </thead>
                             <tbody>
-                            @foreach($ringtones as $key => $item)
+                            @foreach($parent as $key => $prt)
                               <tr>
                                 <td>{{++$key}}</td>
-                                <td>{{$item->nama_ringtone}}</td>
-                                <td>
-                                    <audio controls="controls" preload="metadata" >
-                                        <source src="https://res.cloudinary.com/harsoft-development/video/upload/{{$item->ringtone}}.mp3"/>;
-                                    </audio>
-                                </td>
+                                <td>{{$prt->nama}}</td>
+                                <td>{{$prt->hp}}</td>
+                                <td>{{$prt->email}}</td>
+                                <td>{{$prt->alamat}}</td>
                                 <td>
                                     <button type="button" class="btn btn-success btn-sm"
-                                        data-target="#ubahRingtone"
+                                        data-target="#ubahOrangTua"
                                         data-toggle="modal"
-                                        data-id_ringtone ="{{$item->id_ringtone}}"
-                                        data-nama_ringtone="{{$item->nama_ringtone}}">
+                                        data-id_parent ="{{$prt->id_parents}}"
+                                        data-nama_parent="{{$prt->nama}}"
+                                        data-email_parent="{{$prt->email}}"
+                                        data-hp_parent="{{$prt->hp}}"
+                                        data-alamat_parent="{{$prt->alamat}}">
                                         <i class="fa fa-edit"></i>&nbsp;
                                             Ubah
                                     </button>
                                     <button type="button" class="btn btn-danger btn-sm"
-                                        data-target="#hapusRingtone"
+                                        data-target="#hapusOrangTua"
                                         data-toggle="modal"
-                                        data-id_ringtone ="{{$item->id_ringtone}}">
+                                        data-id_parent ="{{$prt->id_parents}}">
                                         <i class="fa fa-trash"></i>&nbsp;
                                             Hapus
                                     </button>
@@ -203,7 +234,7 @@
         </div>
     </div>
 </div>
-<!-- /top tiles -->
+  <!-- /page content -->
 @endsection
 
 @section('script')
@@ -213,28 +244,34 @@
   @endpush
     <script type="text/javascript">
         $(document).ready(function(){
-            $('#ubahRingtone').on('show.bs.modal', function (event) {
+            $('#ubahOrangTua').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
-            var id_ringtone = button.data('id_ringtone');
-            var nama_ringtone = button.data('nama_ringtone');
+            var id_parent = button.data('id_parent');
+            var nama_parent = button.data('nama_parent');
+            var email_parent = button.data('email_parent');
+            var hp_parent = button.data('hp_parent');
+            var alamat_parent = button.data('alamat_parent');
+
+                console.log(nama_parent);
             var modal = $(this);
-            modal.find('.modal-body #id_ringtone').val(id_ringtone);
-            modal.find('.modal-body #nama_ringtone').val(nama_ringtone);
+            modal.find('.modal-body #id_parent').val(id_parent);
+            modal.find('.modal-body #nama_parent').val(nama_parent);
+            modal.find('.modal-body #email_parent').val(email_parent);
+            modal.find('.modal-body #hp_parent').val(hp_parent);
+            modal.find('.modal-body #alamat_parent').val(alamat_parent);
             });
         });
     </script>
     <script type="text/javascript">
         $(document).ready(function(){
-            $('#hapusRingtone').on('show.bs.modal', function (event) {
+            $('#hapusOrangTua').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
-            var id_ringtone = button.data('id_ringtone');
-<<<<<<< HEAD
-=======
-                console.log(id_ringtone);
->>>>>>> b6429b5336d7f9859c07a780a9febe9d3d1ea6b1
+            var id_parent = button.data('id_parent');
+                console.log(id_parent);
             var modal = $(this);
-            modal.find('.modal-body #id_ringtone').val(id_ringtone);
+            modal.find('.modal-body #id_parent').val(id_parent);
             });
         });
     </script>
 @endsection
+

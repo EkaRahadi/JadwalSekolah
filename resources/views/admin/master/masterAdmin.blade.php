@@ -75,7 +75,7 @@
                   <li><a><i class="fa fa-folder"></i>Kelola Data Sekolah<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="/dataSekolah/siswa">Siswa</a></li>
-                        <li><a href="/dataSekolah/orangtua">Orangtua</a></li>
+                        <li><a href="/orangtua">Orangtua</a></li>
                         <li><a href="/dataSekolah/kelas">Kelas</a></li>
                       </ul>
                   </li>

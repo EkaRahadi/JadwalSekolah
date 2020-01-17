@@ -12,8 +12,8 @@ class Jam extends Model
 
     protected $fillable = ['pukul'];
 
-    public function jam() {
+    public function jadwal() {
 
-        return $this->hasMany('App\Jadwal');
+        return $this->hasMany('App\Jadwal', 'id_jadwal', 'id_jam');
     }
 }
