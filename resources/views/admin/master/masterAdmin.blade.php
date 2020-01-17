@@ -16,6 +16,8 @@
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Dropzone.js -->
+    <link href="../vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- Datatables -->
@@ -34,7 +36,7 @@
     <link href="../vendors/starrr/dist/starrr.css" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-    
+
     <!-- Data Tables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css"/>
     <!-- bootstrap-datetimepicker -->
@@ -85,13 +87,7 @@
                         <li><a href="/jadwal/event">Event</a></li>
                       </ul>
                   </li>
-<<<<<<< HEAD
-                  <li><a><i class="fa fa-music"></i> Ringtone</a>
-=======
-                  <li><a><i class="fa fa-bell"></i> Pemberitahuan</a>
-                  </li>
-                  <li><a href="{{route('ringtone')}}"><i class="fa fa-music"></i> Ringtone</a>
->>>>>>> e5c54bd4fd278a18edb8926cbdc45a6f97003c03
+                  <li><a href="/ringtone"><i class="fa fa-music"></i> Ringtone</a>
                   </li>
                   <li><a><i class="fa fa-bell"></i> Pemberitahuan</a>
                   </li>
@@ -134,7 +130,7 @@
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item"  href="javascript:;"> Kelola Admin</a>
                     <a class="dropdown-item"  href="#">Ganti Password</a>
-                    <a class="dropdown-item"  href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                    <a class="dropdown-item"  href="/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                   </div>
                 </li>
 
@@ -211,6 +207,31 @@
         <!-- page content -->
         <div class="right_col" role="main">
         @yield('content')
+        <div id="audio_field">
+
+        </div>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            // Enable pusher logging - don't include this in production
+            Pusher.logToConsole = true;
+
+            var pusher = new Pusher('151337ecabb1e61db5a3', {
+                cluster: 'ap1',
+                forceTLS: true
+            });
+
+            var channel = pusher.subscribe('ringtone-ringing');
+            channel.bind('bunyi-event', function(data) {
+                // var audio = new Audio(data.ringtone);
+                // audio.play();
+                // var data = data;
+                $('#audio_field').html('<audio src="'+data.ringtone+'" preload="auto" autoplay></audio>');
+                // alert(JSON.stringify(data));
+            });
+        </script>
+
         </div>
         <!-- /page content -->
 

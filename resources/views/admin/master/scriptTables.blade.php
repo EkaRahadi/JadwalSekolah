@@ -6,6 +6,8 @@
 <script src="../vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
 <script src="../vendors/nprogress/nprogress.js"></script>
+<!-- Dropzone.js -->
+<script src="../vendors/dropzone/dist/min/dropzone.min.js"></script>
 <!-- iCheck -->
 <script src="../vendors/iCheck/icheck.min.js"></script>
 <!-- Datatables -->

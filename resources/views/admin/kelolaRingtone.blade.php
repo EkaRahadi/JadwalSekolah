@@ -1,6 +1,6 @@
 @extends('admin/master/masterAdmin')
 
-@section('title', 'Dashboard | SPTK')
+@section('title', 'Ringtone | SPTK')
 
 @section('active_menu_kelola_konten', 'active')
 
@@ -52,7 +52,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="ringtone/tambah" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/ringtone/tambah" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group">
                                                 <label class="control-label col-md-3" for="nama_ringtone">Nama Ringtone<span class="required">*</span>
@@ -68,7 +68,7 @@
                                                 </label>
                                                 <div class="col-12 col-md-9">
                                                     <div class='input-group'>
-                                                        <input type='file' class="form-control" id="ringtone" name="ringtone" required/>
+                                                        <input type="file" accept=".mp3" class="form-control" id="ringtone" name="ringtone" required/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -94,33 +94,29 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        {{-- <form action="/jadwal/jam/ubah" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/ringtone/ubah" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group" hidden>
-                                                <label class="control-label col-md-3" for="id_jam">ID Jam<span class="required">*</span>
+                                                <label class="control-label col-md-3" for="id_ringtone">ID Ringtone<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="text" id="id_jam" name="id_jam" class="form-control" readonly required>
+                                                    <input type="text" id="id_ringtone" name="id_ringtone" class="form-control" readonly required>
                                                 </div>
                                             </div>
                                             <div class="row form-group">
-                                                <label class="control-label col-md-3" for="pukul">Pukul<span class="required">*</span>
+                                                <label class="control-label col-md-3" for="nama_ringtone">Nama Ringtone<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <div class='input-group date myDatepicker3' id='myDatepicker3'>
-                                                        <input type='text' class="form-control" id="pukul" name="pukul" placeholder="Masukkan jam" required />
-                                                        <span class="input-group-addon">
-                                                           <span class="fa fa-calendar"></span>
-                                                        </span>
+                                                    <div class='input-group '>
+                                                        <input type='text' class="form-control" id="nama_ringtone" name="nama_ringtone" placeholder="Masukkan Nama Ringtone" required/>
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div class="modal-footer">
                                                 <button type="submit" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                                 <button type="submit" class="btn btn-primary">Ubah</button>
                                             </div>
-                                        </form> --}}
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -138,14 +134,14 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        {{-- <h5>Apakah anda yakin?</h5>
-                                        <form action="/jadwal/jam/hapus" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <h5>Apakah anda yakin?</h5>
+                                        <form action="/ringtone/hapus" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group" hidden>
-                                                <label class="control-label col-md-3" for="id_jam">ID Jam<span class="required">*</span>
+                                                <label class="control-label col-md-3" for="id_ringtone">ID Ringtone<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="text" id="id_jam" name="id_jam" class="form-control" readonly required>
+                                                    <input type="text" id="id_ringtone" name="id_ringtone" class="form-control" readonly required>
                                                 </div>
                                             </div>
 
@@ -153,7 +149,7 @@
                                                 <button type="submit" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                                 <button type="submit" class="btn btn-danger">Hapus</button>
                                             </div>
-                                        </form> --}}
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -166,6 +162,7 @@
                               <tr>
                                 <th>No</th>
                                 <th>Ringtone</th>
+                                <th>Play</th>
                                 <th>Aksi</th>
                               </tr>
                             </thead>
@@ -174,6 +171,11 @@
                               <tr>
                                 <td>{{++$key}}</td>
                                 <td>{{$item->nama_ringtone}}</td>
+                                <td>
+                                    <audio controls="controls" preload="metadata" >
+                                        <source src="https://res.cloudinary.com/harsoft-development/video/upload/{{$item->ringtone}}.mp3"/>;
+                                    </audio>
+                                </td>
                                 <td>
                                     <button type="button" class="btn btn-success btn-sm"
                                         data-target="#ubahRingtone"
@@ -209,22 +211,15 @@
   @push('table_script')
 
   @endpush
-
-  <script type="text/javascript">
-    $('.myDatepicker3').datetimepicker({
-        format: 'HH:mm'
-    });
-</script>
     <script type="text/javascript">
         $(document).ready(function(){
             $('#ubahRingtone').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
-            var id_jam = button.data('id_jam');
-            var pukul = button.data('pukul');
-                console.log(pukul);
+            var id_ringtone = button.data('id_ringtone');
+            var nama_ringtone = button.data('nama_ringtone');
             var modal = $(this);
-            modal.find('.modal-body #id_jam').val(id_jam);
-            modal.find('.modal-body #pukul').val(pukul);
+            modal.find('.modal-body #id_ringtone').val(id_ringtone);
+            modal.find('.modal-body #nama_ringtone').val(nama_ringtone);
             });
         });
     </script>
@@ -232,10 +227,9 @@
         $(document).ready(function(){
             $('#hapusRingtone').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
-            var id_jam = button.data('id_jam');
-                console.log(id_jam);
+            var id_ringtone = button.data('id_ringtone');
             var modal = $(this);
-            modal.find('.modal-body #id_jam').val(id_jam);
+            modal.find('.modal-body #id_ringtone').val(id_ringtone);
             });
         });
     </script>

@@ -2,110 +2,89 @@
 
 namespace App\Http\Controllers;
 
+use App\Jadwal;
 use App\Ringtone;
+use Exception;
 use Illuminate\Http\Request;
-use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Session;
+use JD\Cloudder\Facades\Cloudder;
+
 
 class RingtoneController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function ringtone()
     {
-        $ringtones = Ringtone::all();
-        return view('admin.kelolaRingtone', compact('ringtones'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function tambahRingtone(Request $request)
-    {
-        $input = $request->all();
-        $file = $request->file('ringtone');
-        $namefile = $request->file('ringtone')->getClientOriginalName();
-        // $input['path'] = null;
-
-        $input['path'] = '/upload/ringtones/'.$namefile.'.'.$request->ringtone->getClientOriginalExtension();
-        $request->ringtone->move(public_path('/upload/ringtone'), $input['ringtone']);
-
-        if(Ringtone::create($input)) {
-            return redirect('ringtone')->with('alert success', 'Ringtone berhasil ditambahkan!');
+        if(!Session::get('loginAdmin')){
+            return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+        }else{
+            $ringtones = Ringtone::all();
+            return view('admin/kelolaRingtone', compact('ringtones'));
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function tambah_ringtone(Request $request)
     {
-        //
+        if(!Session::get('loginAdmin')){
+            return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+        }else{
+            $validatedData = $request->validate([
+                'nama_ringtone' => 'unique:ringtone|max:255',
+            ]);
+
+            if($validatedData){
+                $ringtone = new Ringtone();
+                $ringtone->nama_ringtone = $request->nama_ringtone;
+                try{
+                    //Upload music ke cloudinary
+                    $file = $request->file('ringtone');
+                    Cloudder::uploadVideo($file);
+                    $url_file = Cloudder::getPublicId();
+                }catch(Exception $e){
+                    return redirect('ringtone')->with('alert danger', 'Terjadi Kesalahan dalam mengupload mp3');
+                }
+                $ringtone->ringtone = $url_file;
+                $ringtone->save();
+                return redirect('ringtone')->with('alert success', 'Ringtone berhasil ditambahkan!');
+            }else{
+                return redirect('ringtone')->with('alert danger', 'Ringtone sudah ada / melebihi 255 karakter!');
+            }
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function ubah_ringtone(Request $request)
     {
-        //
+        if(!Session::get('loginAdmin')){
+            return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+        }else{
+            $validatedData = $request->validate([
+                'nama_ringtone' => '|max:255',
+            ]);
+
+            if($validatedData){
+                $ringtone = Ringtone::findOrFail($request->id_ringtone);
+                $ringtone->nama_ringtone = $request->nama_ringtone;
+                $ringtone->save();
+                return redirect('ringtone')->with('alert success', 'Ringtone berhasil diubah!');
+            }else{
+                return redirect('ringtone')->with('alert danger', 'Ringtone sudah ada / melebihi 255 karakter!');
+            }
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function hapus_ringtone(Request $request)
     {
-        //
+        if(!Session::get('loginAdmin')){
+            return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+        }else{
+            $ringtone = Ringtone::findOrFail($request->id_ringtone);
+            Cloudder::delete($ringtone->ringtone);
+            $ringtone->delete();
+            return redirect('ringtone')->with('alert danger', 'Ringtone berhasil dihapus!');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-    public function apiRingtone() {
-
-        $ringtones = Ringtone::all();
-
-        return DataTables::of($ringtones)
-        ->addColumn('action', function($ringtones) {
-            return '<a href="#" class="btn btn-info btn-xs"><i class="glyphicom glymphicom-eye-open"></i>Play</a>'.
-                '<a onclick="editRingtone('.$ringtones->id_ringtone.')" class="btn btn-primary btn-xs"><i
-                    class="glyphicom glyphicom-edit"></i>Edit</a>'.
-                '<a onclick="deleteRingtone('.$ringtones->id_ringtone.')" class="btn btn-danger btn-xs"><i
-                    class="glyphicom glyphicom-trash"></i>Delete</a>';            
-        })->make(true);
+    public function getJadwal(){
+        $jadwal = Jadwal::orderBy('jam', 'asc')->get();
+        return response()->json($jadwal);
     }
 }

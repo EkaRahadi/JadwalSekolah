@@ -18,15 +18,19 @@ Route::get('/', function () {
 
 Route::get('/login', 'AdminController@login_index');
 
+Route::get('/logout', 'AdminController@logout');
+
 Route::get('/dashboard', 'AdminController@dashboard');
 
 Route::post('/login/proses', 'AdminController@login_proses');
 
-Route::get('/ringtone', 'RingtoneController@index')->name('ringtone');
+Route::get('/ringtone', 'RingtoneController@ringtone');
 
-Route::post('ringtone/tambah', 'RingtoneController@tambahRingtone');
+Route::post('/ringtone/tambah', 'RingtoneController@tambah_ringtone');
 
-Route::get('api.ringtone', 'RingtoneController@apiRingtone')->name('api.ringtone');
+Route::post('/ringtone/ubah', 'RingtoneController@ubah_ringtone');
+
+Route::post('/ringtone/hapus', 'RingtoneController@hapus_ringtone');
 
 Route::get('/jadwal', 'JadwalController@jadwal');
 
@@ -67,5 +71,7 @@ Route::post('/dataSekolah/kelas/tambah', 'DataSekolahController@tambah_kelas');
 Route::post('/dataSekolah/kelas/ubah', 'DataSekolahController@ubah_kelas');
 
 Route::post('/dataSekolah/kelas/hapus', 'DataSekolahController@hapus_kelas');
+
+Route::get('/getJadwal', 'RingtoneController@getJadwal');
 
 

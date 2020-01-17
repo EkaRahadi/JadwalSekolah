@@ -105,7 +105,7 @@
                                                 <label class="control-label col-md-3" for="ringtone">Ringtone<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <select class="form-control" id="kelas" name="kelas" required>
+                                                    <select class="form-control" id="ringtone" name="ringtone" required>
                                                         <option>--- Pilih Ringtone ---</option>
                                                         @foreach ($ringtone as $ring)
                                                         <option value="{{$ring->id_ringtone}}">{{$ring->nama_ringtone}}</option>
@@ -196,7 +196,7 @@
                                                 <label class="control-label col-md-3" for="ringtone">Ringtone<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <select class="form-control" id="kelas" name="kelas" required>
+                                                    <select class="form-control" id="ringtone" name="ringtone" required>
                                                         <option>--- Pilih Ringtone ---</option>
                                                         @foreach ($ringtone as $ring)
                                                         <option value="{{$ring->id_ringtone}}">{{$ring->nama_ringtone}}</option>
@@ -266,11 +266,11 @@
                             @foreach($jadwal as $jdwl)
                               <tr>
                                 <td>{{$i+=1}}</td>
-                                <td>{{$jdwl->hari->nama_hari}}</td>
-                                <td>{{$jdwl->jam->nama_hari}}</td>
-                                <td>{{$jdwl->event->event}}</td>
-                                <td>{{$jdwl->kelas->nama_kelas}}</td>
-                                <td>{{$jdwl->ringtone->nama_ringtone}}</td>
+                                <td>{{App\Hari::where('id_hari', $jdwl->hari)->value('nama_hari')}}</td>
+                                <td>{{App\Jam::where('id_jam', $jdwl->jam)->value('pukul')}}</td>
+                                <td>{{App\Event::where('id_event', $jdwl->event)->value('event')}}</td>
+                                <td>{{App\Kelas::where('id_kelas', $jdwl->kelas)->value('nama_kelas')}}</td>
+                                <td>{{App\Ringtone::where('id_ringtone', $jdwl->ringtone)->value('nama_ringtone')}}</td>
                                 <td>
                                     <button type="button" class="btn btn-success btn-sm"
                                         data-target="#ubahJadwal"
@@ -338,7 +338,6 @@
             $('#hapusJadwal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var id_jadwal = button.data('id_jadwal');
-                console.log(id_hari);
             var modal = $(this);
             modal.find('.modal-body #id_jadwal').val(id_jadwal);
             });

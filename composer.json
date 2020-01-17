@@ -11,8 +11,11 @@
         "php": "^7.2",
         "fideloper/proxy": "^4.0",
         "gr8shivam/laravel-sms-api": "^3.0",
+        "jrm2k6/cloudder": "^0.6.0",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^2.0",
+        "predis/predis": "^1.1",
+        "pusher/pusher-php-server": "^4.1",
         "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRingtoneTable extends Migration
+class CreateNotificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateRingtoneTable extends Migration
      */
     public function up()
     {
-        Schema::create('ringtone', function (Blueprint $table) {
-            $table->bigIncrements('id_ringtone');
-            $table->string('nama_ringtone');
-            $table->binary('ringtone');
+        Schema::create('notifications', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('type');
+            $table->morphs('notifiable');
+            $table->text('data');
+            $table->timestamp('read_at')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateRingtoneTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ringtone');
+        Schema::dropIfExists('notifications');
     }
 }
