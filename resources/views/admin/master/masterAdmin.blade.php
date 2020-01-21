@@ -82,7 +82,6 @@
                   <li><a><i class="fa fa-calendar"></i>Kelola Jadwal<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="/jadwal">Jadwal</a></li>
-                        <li><a href="/jadwal/jam">Jam</a></li>
                         <li><a href="/jadwal/hari">Hari</a></li>
                         <li><a href="/jadwal/event">Event</a></li>
                       </ul>
@@ -98,8 +97,8 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Settings">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              <a data-target="#belPengumuman" data-toggle="modal" data-placement="top" title="Pengumuman">
+                <span class="fa fa-microphone" aria-hidden="true"></span>
               </a>
               <a data-toggle="tooltip" data-placement="top" title="FullScreen">
                 <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
@@ -107,7 +106,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a href="/logout" data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -133,71 +132,6 @@
                     <a class="dropdown-item"  href="/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                   </div>
                 </li>
-
-                <li role="presentation" class="nav-item dropdown open">
-                  <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
-                  </a>
-                  <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <div class="text-center">
-                        <a class="dropdown-item">
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                </li>
               </ul>
             </nav>
           </div>
@@ -206,13 +140,40 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
+            <div class="modal fade" id="belSekolah" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="mediumModalLabel">BEL SEKOLAH BERBUNYI</h5>ol
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="bunyiBel">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="belPengumuman" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="mediumModalLabel">PENGUMUMAN</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="bunyiPengumuman">
+                        </div>
+                    </div>
+                </div>
+            </div>
         @yield('content')
-        <div id="audio_field">
 
-        </div>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
         <script type="text/javascript">
             // Enable pusher logging - don't include this in production
             Pusher.logToConsole = true;
@@ -227,8 +188,39 @@
                 // var audio = new Audio(data.ringtone);
                 // audio.play();
                 // var data = data;
-                $('#audio_field').html('<audio src="'+data.ringtone+'" preload="auto" autoplay></audio>');
+                var myModal= $('#belSekolah').on('show.bs.modal', function () {
+                    $('#bunyiBel').html(`
+                                            <center><audio controls src="`+data.ringtone+`" preload="auto" autoplay></audio></center>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                                            </div>
+                                        `);
+
+                })
+
+                myModal.modal('show');
+                setTimeout(function(){
+                    $('#bunyiBel').empty();
+                    myModal.modal('hide')
+                }, 60000);
+
+
+                // $('#belSekolah').modal('show')
+                // $('#audio_field').html('<audio src="'+data.ringtone+'" preload="auto" autoplay></audio>');
                 // alert(JSON.stringify(data));
+            });
+        </script>
+
+        <script>
+            $(document).ready(function(){
+                $('#belPengumuman').on('show.bs.modal', function () {
+                    $('#bunyiPengumuman').html(`
+                        <center><audio controls src="/audio/bel_master.mp3" preload="auto" autoplay></audio></center>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                        </div>
+                    `);
+                });
             });
         </script>
 

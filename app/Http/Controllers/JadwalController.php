@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Session;
 use App\Event;
 use App\Hari;
 use App\Jadwal;
-use App\Jam;
 use App\Kelas;
 use App\Ringtone;
 
@@ -76,7 +75,7 @@ class JadwalController extends Controller
             return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
             $i=0;
-            $hari = Hari::orderBy('created_at', 'desc')->get();
+            $hari = Hari::orderBy('created_at', 'asc')->get();
             return view('admin/kelolaHari', compact('i', 'hari'));
         }
     }
@@ -129,64 +128,6 @@ class JadwalController extends Controller
         }
     }
 
-    public function jam(){
-        if(!Session::get('loginAdmin')){
-            return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
-        }else{
-            $i=0;
-            $pukul = Jam::orderBy('created_at', 'desc')->get();
-            return view('admin/kelolaJam', compact('i', 'pukul'));
-        }
-    }
-
-    public function tambah_jam(Request $request){
-        if(!Session::get('loginAdmin')){
-            return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
-        }else{
-            $validatedData = $request->validate([
-                'pukul' => 'unique:jam|date_format:H:i',
-            ]);
-
-            if($validatedData){
-                $jam = new Jam();
-                $jam->pukul = $request->pukul;
-                $jam->save();
-                return redirect('jadwal/jam')->with('alert success', 'Jam berhasil ditambahkan!');
-            }else{
-                return redirect('jadwal/jam')->with('alert danger', 'Jam sudah ada!');
-            }
-        }
-    }
-
-    public function ubah_jam(Request $request){
-        if(!Session::get('loginAdmin')){
-            return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
-        }else{
-            $validatedData = $request->validate([
-                'pukul' => '|date_format:H:i',
-            ]);
-
-            if($validatedData){
-                $jam = Jam::findOrFail($request->id_jam);
-                $jam->pukul = $request->pukul;
-                $jam->save();
-                return redirect('jadwal/jam')->with('alert success', 'Jam berhasil diubah!');
-            }else{
-                return redirect('jadwal/jam')->with('alert danger', 'Jam Hari sudah melebihi 255 karakter!');
-            }
-        }
-    }
-
-    public function hapus_jam(Request $request){
-        if(!Session::get('loginAdmin')){
-            return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
-        }else{
-            $jam = Jam::findOrFail($request->id_jam);
-            $jam->delete();
-            return redirect('jadwal/jam')->with('alert danger', 'Jam berhasil dihapus!');
-        }
-    }
-
     public function jadwal(){
         if(!Session::get('loginAdmin')){
             return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
@@ -194,11 +135,10 @@ class JadwalController extends Controller
             $i=0;
             $jadwal = Jadwal::orderBy('created_at', 'desc')->get();
             $hari = Hari::all();
-            $jam = Jam::all();
             $event = Event::all();
             $kelas = Kelas::all();
             $ringtone = Ringtone::all();
-            return view('admin/kelolaJadwal', compact('i', 'jadwal', 'hari', 'jam', 'event', 'kelas', 'ringtone'));
+            return view('admin/kelolaJadwal', compact('i', 'jadwal', 'hari', 'event', 'kelas', 'ringtone'));
         }
     }
 

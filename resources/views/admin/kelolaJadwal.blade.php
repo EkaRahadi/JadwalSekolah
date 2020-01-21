@@ -81,12 +81,12 @@
                                                 <label class="control-label col-md-3" for="jam">Jam<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <select class="form-control" id="jam" name="jam" required>
-                                                        <option>--- Pilih jam ---</option>
-                                                        @foreach ($jam as $pkl)
-                                                        <option value="{{$pkl->id_jam}}">{{$pkl->pukul}}</option>
-                                                        @endforeach
-                                                    </select>
+                                                    <div class='input-group date myDatepicker3' id='myDatepicker3'>
+                                                        <input type='text' class="form-control" id="jam" name="jam" placeholder="Masukkan jam" required/>
+                                                        <span class="input-group-addon">
+                                                           <span class="fa fa-calendar"></span>
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="row form-group">
@@ -172,12 +172,12 @@
                                                 <label class="control-label col-md-3" for="jam">Jam<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <select class="form-control" id="jam" name="jam" required>
-                                                        <option>--- Pilih jam ---</option>
-                                                        @foreach ($jam as $pkl)
-                                                        <option value="{{$pkl->id_jam}}">{{$pkl->pukul}}</option>
-                                                        @endforeach
-                                                    </select>
+                                                    <div class='input-group date myDatepicker3' id='myDatepicker3'>
+                                                        <input type='text' class="form-control" id="jam" name="jam" placeholder="Masukkan jam" required/>
+                                                        <span class="input-group-addon">
+                                                           <span class="fa fa-calendar"></span>
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="row form-group">
@@ -199,7 +199,7 @@
                                                     <select class="form-control" id="ringtone" name="ringtone" required>
                                                         <option>--- Pilih Ringtone ---</option>
                                                         @foreach ($ringtone as $ring)
-                                                        <option value="{{$ring->id_ringtone}}">{{$ring->nama_ringtone}}</option>
+                                                            <option value="{{$ring->id_ringtone}}">{{$ring->nama_ringtone}} <audio controls preload="auto" src="https://res.cloudinary.com/harsoft-development/video/upload/{{$ring->ringtone}}.mp3"></audio></option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -267,7 +267,7 @@
                               <tr>
                                 <td>{{$i+=1}}</td>
                                 <td>{{App\Hari::where('id_hari', $jdwl->hari)->value('nama_hari')}}</td>
-                                <td>{{App\Jam::where('id_jam', $jdwl->jam)->value('pukul')}}</td>
+                                <td>{{$jdwl->jam}}</td>
                                 <td>{{App\Event::where('id_event', $jdwl->event)->value('event')}}</td>
                                 <td>{{App\Kelas::where('id_kelas', $jdwl->kelas)->value('nama_kelas')}}</td>
                                 <td>{{App\Ringtone::where('id_ringtone', $jdwl->ringtone)->value('nama_ringtone')}}</td>
@@ -310,6 +310,11 @@
   @push('table_script')
 
   @endpush
+    <script type="text/javascript">
+        $('.myDatepicker3').datetimepicker({
+            format: 'HH:mm'
+        });
+    </script>
     <script type="text/javascript">
         $(document).ready(function(){
             $('#ubahJadwal').on('show.bs.modal', function (event) {

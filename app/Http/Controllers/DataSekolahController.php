@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jadwal;
 use App\Kelas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -61,8 +62,13 @@ class DataSekolahController extends Controller
             return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
             $kelas = Kelas::findOrFail($request->id_kelas);
-            $kelas->delete();
-            return redirect('dataSekolah/kelas')->with('alert danger', 'Kelas berhasil dihapus!');
+            $jadwal = Jadwal::where('kelas', $request->id_kelas)->get();
+            if($jadwal->count()>0){
+                return redirect('dataSekolah/kelas')->with('alert danger', ''.$kelas->nama_kelas.' sedang dipakai!');
+            }else{
+                $kelas->delete();
+                return redirect('dataSekolah/kelas')->with('alert danger', 'Kelas berhasil dihapus!');
+            }
         }
     }
 }

@@ -50,8 +50,7 @@ class BunyiBel extends Command
 
         $jadwal = Jadwal::all();
         foreach($jadwal as $jdwl){
-            $jam = Jam::where('id_jam', $jdwl->jam)->value('pukul');
-            $jam = Carbon::parse($jam)->format('H:i');
+            $jam = Carbon::parse($jdwl->jam)->format('H:i');
             if(Carbon::now()->format('H:i') == $jam){
                 Log::info("Info : Bel Berbunyi");
                 $ringtone = Ringtone::where('id_ringtone', $jdwl->ringtone)->value('ringtone');

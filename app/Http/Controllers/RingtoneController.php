@@ -77,14 +77,15 @@ class RingtoneController extends Controller
             return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
             $ringtone = Ringtone::findOrFail($request->id_ringtone);
-            Cloudder::delete($ringtone->ringtone);
-            $ringtone->delete();
-            return redirect('ringtone')->with('alert danger', 'Ringtone berhasil dihapus!');
-        }
-    }
+            $jadwal = Jadwal::where('ringtone', $request->id_ringtone)->get();
+            if($jadwal->count()>0){
+                return redirect('ringtone')->with('alert danger', 'Ringtone '.$ringtone->nama_ringtone.' sedang dipakai!');
+            }else{
+                Cloudder::delete($ringtone->ringtone);
+                $ringtone->delete();
+                return redirect('ringtone')->with('alert danger', 'Ringtone berhasil dihapus!');
+            }
 
-    public function getJadwal(){
-        $jadwal = Jadwal::orderBy('jam', 'asc')->get();
-        return response()->json($jadwal);
+        }
     }
 }

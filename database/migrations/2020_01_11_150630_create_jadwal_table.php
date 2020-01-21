@@ -19,8 +19,7 @@ class CreateJadwalTable extends Migration
             $table->foreign('hari')->references('id_hari')->on('hari');
             $table->unsignedBigInteger('event');
             $table->foreign('event')->references('id_event')->on('event');
-            $table->unsignedBigInteger('jam');
-            $table->foreign('jam')->references('id_jam')->on('jam');
+            $table->timeTz('jam');
             $table->unsignedBigInteger('kelas');
             $table->foreign('kelas')->references('id_kelas')->on('kelas');
             $table->unsignedBigInteger('ringtone');

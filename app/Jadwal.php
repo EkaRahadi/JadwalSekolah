@@ -22,20 +22,10 @@ class Jadwal extends Model
         return $this->belongsTo('App\Event', 'id_jadwal', 'id_event');
     }
 
-    public function jam_jadwal() {
-
-        return $this->belongsTo('App\Jam', 'id_jadwal', 'id_jam');
-    }
-
     public function kelas_jadwal() {
 
         return $this->belongsTo('App\Kelas', 'id_jadwal', 'id_kelas');
     }
-
-    // public function ringtone_jadwal() {
-
-    //     return $this->belongsTo('App\Ringtone','id_jadwal', 'id_ringtone');
-    // }
 
     public function ringtone_jadwal()
     {
