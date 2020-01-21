@@ -14,6 +14,6 @@ class Hari extends Model
 
     public function jadwal() {
 
-        return $this->hasMany('App\Jadwal', 'id_jadwal', 'id_hari');
+        return $this->hasMany('App\Jadwal', 'id_hari');
     }
 }

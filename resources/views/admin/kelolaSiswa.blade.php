@@ -39,7 +39,7 @@
                         </button>
                         <br>
 
-                        <!-- Modal Tambah Kelas -->
+                        <!-- Modal Tambah Siswa -->
 
                         <div class="modal fade" id="tambahSiswa" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
@@ -98,13 +98,13 @@
                             </div>
                         </div>
 
-                        {{-- <!-- Modal Ubah Jadwal -->
+                        <!-- Modal Ubah Siswa-->
 
                         <div class="modal fade" id="ubahSiswa" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h3 class="modal-title" id="mediumModalLabel"><strong>Ubah Jadwal</strong></h3>
+                                        <h3 class="modal-title" id="mediumModalLabel"><strong>Ubah Siswa</strong></h3>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -130,7 +130,7 @@
                                                 <label class="control-label col-md-3" for="kelas">Kelas<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <select class="form-control" id="kelas" name="kelas" required>
+                                                    <select class="form-control" id="kelas" name="id_kelas" required>
                                                         <option>--- Pilih Kelas ---</option>
                                                         @foreach ($class as $kls)
                                                         <option value="{{$kls->id_kelas}}">{{$kls->nama_kelas}}</option>
@@ -142,7 +142,7 @@
                                                 <label class="control-label col-md-3" for="orang_tua">Orang Tua<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <select class="form-control" id="orang_tua" name="parent" required>
+                                                    <select class="form-control" id="orang_tua" name="id_parents" required>
                                                         <option>--- Pilih Orang Tua ---</option>
                                                         @foreach ($parent as $prt)
                                                         <option value="{{$prt->id_parents}}">{{$prt->nama}}</option>
@@ -158,9 +158,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
 
-                        <!-- Modal Hapus Kelas -->
+                        <!-- Modal Hapus Siswa -->
 
                         <div class="modal fade" id="hapusSiswa" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-md" role="document">
@@ -214,19 +214,19 @@
                                 <td>{{$std->kelas_siswa->nama_kelas}}</td>
                                 <td>
                                     <button type="button" class="btn btn-success btn-sm"
-                                        data-target="#ubahKelas"
+                                        data-target="#ubahSiswa"
                                         data-toggle="modal"
                                         data-id_student ="{{$std->id_student}}"
-                                        data-id_nama_siswa="{{$std->nama}}"
-                                        data-id_parent="{{$std->orang_tua->nama}}"
-                                        data-id_nama_kelas="{{$std->kelas_siswa->nama_kelas}}">
+                                        data-nama_siswa="{{$std->nama}}"
+                                        data-id_parent="{{$std->orang_tua->id_parents}}"
+                                        data-id_kelas="{{$std->kelas_siswa->id_kelas}}">
                                         <i class="fa fa-edit"></i>&nbsp;
                                             Ubah
                                     </button>
                                     <button type="button" class="btn btn-danger btn-sm"
-                                        data-target="#hapusKelas"
+                                        data-target="#hapusSiswa"
                                         data-toggle="modal"
-                                        data-id_kelas ="{{$std->id_student}}">
+                                        data-id_student ="{{$std->id_student}}">
                                         <i class="fa fa-trash"></i>&nbsp;
                                             Hapus
                                     </button>
@@ -254,19 +254,17 @@
         $('#ubahSiswa').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
         var id_student = button.data('id_student');
-        var id_nama_siswa = button.data('id_nama_siswa');
+        var nama_siswa = button.data('nama_siswa');
         var id_kelas = button.data('id_kelas');
         var id_parent = button.data('id_parent');
 
-        console.log(id_jadwal);
+        console.log(id_student);
 
         var modal = $(this);
-        modal.find('.modal-body #id_jadwal').val(id_jadwal);
-        modal.find('.modal-body #hari').val(id_hari);
-        modal.find('.modal-body #jam').val(id_jam);
-        modal.find('.modal-body #event').val(id_event);
+        modal.find('.modal-body #id_student').val(id_student);
+        modal.find('.modal-body #nama_siswa').val(nama_siswa);
         modal.find('.modal-body #kelas').val(id_kelas);
-        modal.find('.modal-body #ringtone').val(id_ringtone);
+        modal.find('.modal-body #orang_tua').val(id_parent);
         });
     });
 </script>
@@ -277,7 +275,7 @@
         var id_student = button.data('id_student');
             console.log(id_student);
         var modal = $(this);
-        modal.find('.modal-body #id_jadwal').val(id_student);
+        modal.find('.modal-body #id_student').val(id_student);
         });
     });
 </script>

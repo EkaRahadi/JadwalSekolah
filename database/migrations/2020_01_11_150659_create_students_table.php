@@ -16,10 +16,10 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->bigIncrements('id_student');
             $table->string('nama');
-            $table->unsignedBigInteger('parent');
-            $table->foreign('parent')->references('id_parents')->on('parents');
-            $table->unsignedBigInteger('kelas');
-            $table->foreign('kelas')->references('id_kelas')->on('kelas');
+            $table->unsignedBigInteger('id_parents')->index();
+            $table->foreign('id_parents')->references('id_parents')->on('parents');
+            $table->unsignedBigInteger('id_kelas')->index();
+            $table->foreign('id_kelas')->references('id_kelas')->on('kelas');
             $table->timestamps();
         });
     }

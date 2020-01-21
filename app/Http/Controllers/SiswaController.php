@@ -34,8 +34,8 @@ class SiswaController extends Controller
             if($validatedData){
                 Students::create([
                     'nama' => $request->nama,
-                    'parent' => $request->parent,
-                    'kelas' => $request->kelas
+                    'id_parents' => $request->parent,
+                    'id_kelas' => $request->kelas
                 ]);
                 return redirect('/dataSekolah/siswa')->with('alert success', 'Siswa berhasil ditambahkan!');
             }else{
@@ -55,7 +55,10 @@ class SiswaController extends Controller
 
             if($validatedData){
                 $student = Students::findOrFail($request->id_student);
-                $student->save($request->all());
+                $student->nama = $request->nama;
+                $student->id_parents = $request->id_parents;
+                $student->id_kelas = $request->id_kelas;
+                $student->save();
                 return redirect('/dataSekolah/siswa')->with('alert success', 'Siswa berhasil diubah!');
             }else{
                 return redirect('/dataSekolah/siswa')->with('alert danger', 'Siswa sudah melebihi 255 karakter!');
@@ -72,13 +75,5 @@ class SiswaController extends Controller
             $student->delete();
             return redirect('/dataSekolah/siswa')->with('alert danger', 'Siswa berhasil dihapus!');
         }
-    }
-
-    public function testapi() {
-
-        // $siswa = Students::with('orang_tua', 'kelas_siswa')->get();
-        $jadwal = Jadwal::with('kelas_jadwal', 'hari_jadwal','event_jadwal','jam_jadwal','ringtone_jadwal')->get();
-
-        return response()->json(dd($jadwal));
     }
 }
