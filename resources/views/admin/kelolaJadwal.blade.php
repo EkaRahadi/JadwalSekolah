@@ -321,7 +321,7 @@
             var id_kelas = button.data('id_kelas');
             var id_ringtone = button.data('id_ringtone');
 
-            console.log(id_jadwal);
+            console.log(id_hari);
 
             var modal = $(this);
             modal.find('.modal-body #id_jadwal').val(id_jadwal);

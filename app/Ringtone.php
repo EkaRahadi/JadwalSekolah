@@ -14,6 +14,6 @@ class Ringtone extends Model
 
     public function jadwal() {
 
-        return $this->hasMany('App\Jadwal', 'id_ringtone', 'id_jadwal');
+        return $this->hasMany('App\Jadwal', 'id_ringtone');
     }
 }

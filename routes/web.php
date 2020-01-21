@@ -90,6 +90,4 @@ Route::post('/orangtua/ubah', 'OrangTuaController@ubahOrangTua');
 
 Route::post('/orangtua/hapus', 'OrangTuaController@hapusOrangTua');
 
-Route::get('/tesapi', 'SiswaController@testapi');
-
 

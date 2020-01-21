@@ -14,6 +14,6 @@ class Event extends Model
 
     public function jadwal() {
 
-        return $this->hasMany('App\Jadwal', 'id_jadwal','id_event');
+        return $this->hasMany('App\Jadwal','id_event');
     }
 }

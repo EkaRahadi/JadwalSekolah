@@ -14,6 +14,6 @@ class Jam extends Model
 
     public function jadwal() {
 
-        return $this->hasMany('App\Jadwal', 'id_jadwal', 'id_jam');
+        return $this->hasMany('App\Jadwal', 'id_jam');
     }
 }

@@ -14,6 +14,7 @@ class OrangTua extends Model
     
     public function siswa()
     {
-        $this->hasMany('App\Student', 'id_parents', 'id_student');
+        // $this->hasMany('App\Student', 'id_parents', 'id_student');
+        $this->hasMany('App\Student', 'id_parents');
     }
 }

@@ -15,16 +15,16 @@ class CreateJadwalTable extends Migration
     {
         Schema::create('jadwal', function (Blueprint $table) {
             $table->bigIncrements('id_jadwal');
-            $table->unsignedBigInteger('hari')->index();
-            $table->foreign('hari')->references('id_hari')->on('hari');
-            $table->unsignedBigInteger('event');
-            $table->foreign('event')->references('id_event')->on('event');
-            $table->unsignedBigInteger('jam');
-            $table->foreign('jam')->references('id_jam')->on('jam');
-            $table->unsignedBigInteger('kelas');
-            $table->foreign('kelas')->references('id_kelas')->on('kelas');
-            $table->unsignedBigInteger('ringtone');
-            $table->foreign('ringtone')->references('id_ringtone')->on('ringtone');
+            $table->unsignedBigInteger('id_hari')->index();
+            $table->foreign('id_hari')->references('id_hari')->on('hari');
+            $table->unsignedBigInteger('id_event');
+            $table->foreign('id_event')->references('id_event')->on('event');
+            $table->unsignedBigInteger('id_jam');
+            $table->foreign('id_jam')->references('id_jam')->on('jam');
+            $table->unsignedBigInteger('id_kelas');
+            $table->foreign('id_kelas')->references('id_kelas')->on('kelas');
+            $table->unsignedBigInteger('id_ringtone');
+            $table->foreign('id_ringtone')->references('id_ringtone')->on('ringtone');
             $table->timestamps();
         });
     }

@@ -10,35 +10,30 @@ class Jadwal extends Model
 
     protected $primaryKey = 'id_jadwal';
 
-    protected $fillable = ['hari', 'event', 'jam','kelas', 'ringtone'];
+    protected $fillable = ['id_hari', 'id_event', 'id_jam','id_kelas', 'id_ringtone'];
 
-    public function hari_jadwal() {
+    public function hari() {
 
-        return $this->belongsTo('App\Hari', 'id_jadwal','id_hari');
+        return $this->belongsTo('App\Hari','id_hari');
     }
 
-    public function event_jadwal() {
+    public function event() {
 
-        return $this->belongsTo('App\Event', 'id_jadwal', 'id_event');
+        return $this->belongsTo('App\Event', 'id_event');
     }
 
-    public function jam_jadwal() {
+    public function jam() {
 
-        return $this->belongsTo('App\Jam', 'id_jadwal', 'id_jam');
+        return $this->belongsTo('App\Jam', 'id_jam');
     }
 
-    public function kelas_jadwal() {
+    public function kelas() {
 
-        return $this->belongsTo('App\Kelas', 'id_jadwal', 'id_kelas');
+        return $this->belongsTo('App\Kelas', 'id_kelas');
     }
 
-    // public function ringtone_jadwal() {
-
-    //     return $this->belongsTo('App\Ringtone','id_jadwal', 'id_ringtone');
-    // }
-
-    public function ringtone_jadwal()
+    public function ringtone()
     {
-        return $this->belongsTo('App\Ringtone', 'id_jadwal', 'id_ringtone');
+        return $this->belongsTo('App\Ringtone', 'id_ringtone');
     }
 }
