@@ -228,10 +228,6 @@
             $('#hapusRingtone').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var id_ringtone = button.data('id_ringtone');
-<<<<<<< HEAD
-=======
-                console.log(id_ringtone);
->>>>>>> b6429b5336d7f9859c07a780a9febe9d3d1ea6b1
             var modal = $(this);
             modal.find('.modal-body #id_ringtone').val(id_ringtone);
             });

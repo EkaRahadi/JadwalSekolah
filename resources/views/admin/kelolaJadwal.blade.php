@@ -108,7 +108,7 @@
                                                     <select class="form-control" id="ringtone" name="ringtone" required>
                                                         <option>--- Pilih Ringtone ---</option>
                                                         @foreach ($ringtone as $ring)
-                                                        <option value="{{$ring->id_ringtone}}">{{$ring->nama_ringtone}}</option>
+                                                        <option value="{{$ring->id_ringtone}}">{{$ring->nama_ringtone}} <audio controls preload="auto" src="https://res.cloudinary.com/harsoft-development/video/upload/{{$ring->ringtone}}.mp3"></audio></option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -266,21 +266,25 @@
                             @foreach($jadwal as $jdwl)
                               <tr>
                                 <td>{{$i+=1}}</td>
-                                <td>{{App\Hari::where('id_hari', $jdwl->hari)->value('nama_hari')}}</td>
+                                <td>{{$jdwl->hari->nama_hari}}</td>
                                 <td>{{$jdwl->jam}}</td>
-                                <td>{{App\Event::where('id_event', $jdwl->event)->value('event')}}</td>
-                                <td>{{App\Kelas::where('id_kelas', $jdwl->kelas)->value('nama_kelas')}}</td>
-                                <td>{{App\Ringtone::where('id_ringtone', $jdwl->ringtone)->value('nama_ringtone')}}</td>
+                                <td>{{$jdwl->event->event}}</td>
+                                <td>{{$jdwl->kelas->nama_kelas}}</td>
+                                <td>
+                                    <audio controls="controls" preload="metadata" >
+                                        <source src="https://res.cloudinary.com/harsoft-development/video/upload/{{$jdwl->ringtone->ringtone}}.mp3"/>;
+                                    </audio>
+                                </td>
                                 <td>
                                     <button type="button" class="btn btn-success btn-sm"
                                         data-target="#ubahJadwal"
                                         data-toggle="modal"
                                         data-id_jadwal ="{{$jdwl->id_jadwal}}"
-                                        data-id_hari ="{{$jdwl->hari}}"
+                                        data-id_hari ="{{$jdwl->id_hari}}"
                                         data-id_jam="{{$jdwl->jam}}"
-                                        data-id_event="{{$jdwl->event}}"
-                                        data-id_kelas="{{$jdwl->kelas}}"
-                                        data-id_ringtone="{{$jdwl->ringtone}}">
+                                        data-id_event="{{$jdwl->id_event}}"
+                                        data-id_kelas="{{$jdwl->id_kelas}}"
+                                        data-id_ringtone="{{$jdwl->id_ringtone}}">
                                         <i class="fa fa-edit"></i>&nbsp;
                                             Ubah
                                     </button>

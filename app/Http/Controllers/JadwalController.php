@@ -65,8 +65,13 @@ class JadwalController extends Controller
             return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
             $event = Event::findOrFail($request->id_event);
-            $event->delete();
-            return redirect('jadwal/event')->with('alert danger', 'Event berhasil dihapus!');
+            $jadwal = Jadwal::where('id_event', $request->id_event)->get();
+            if($jadwal->count()>0){
+                return redirect('jadwal/event')->with('alert danger', 'Event'.$event->event.' tidak bisa dihapus, sedang digunakan!');
+            }else{
+                $event->delete();
+                return redirect('jadwal/event')->with('alert danger', 'Event berhasil dihapus!');
+            }
         }
     }
 
@@ -147,11 +152,11 @@ class JadwalController extends Controller
             return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
             $jadwal = new Jadwal();
-            $jadwal->hari = $request->hari;
-            $jadwal->event = $request->event;
+            $jadwal->id_hari = $request->hari;
+            $jadwal->id_event = $request->event;
             $jadwal->jam = $request->jam;
-            $jadwal->kelas = $request->kelas;
-            $jadwal->ringtone = $request->ringtone;
+            $jadwal->id_kelas = $request->kelas;
+            $jadwal->id_ringtone = $request->ringtone;
             $jadwal->save();
             return redirect('jadwal')->with('alert success', 'Jadwal berhasil ditambahkan!');
         }
@@ -162,11 +167,11 @@ class JadwalController extends Controller
             return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
             $jadwal = Jadwal::findOrFail($request->id_jadwal);
-            $jadwal->hari = $request->hari;
-            $jadwal->event = $request->event;
+            $jadwal->id_hari = $request->hari;
+            $jadwal->id_event = $request->event;
             $jadwal->jam = $request->jam;
-            $jadwal->kelas = $request->kelas;
-            $jadwal->ringtone = $request->ringtone;
+            $jadwal->id_kelas = $request->kelas;
+            $jadwal->id_ringtone = $request->ringtone;
             $jadwal->save();
             return redirect('jadwal')->with('alert success', 'Jadwal berhasil diubah!');
         }

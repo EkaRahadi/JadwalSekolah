@@ -74,9 +74,13 @@
                   </li>
                   <li><a><i class="fa fa-folder"></i>Kelola Data Sekolah<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
+                        <li><a href="/dataSekolah/kelas">Kelas</a></li>
+                      </ul>
+                  </li>
+                  <li><a><i class="fa fa-folder"></i>Kelola Data Siswa<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
                         <li><a href="/dataSekolah/siswa">Siswa</a></li>
                         <li><a href="/orangtua">Orangtua</a></li>
-                        <li><a href="/dataSekolah/kelas">Kelas</a></li>
                       </ul>
                   </li>
                   <li><a><i class="fa fa-calendar"></i>Kelola Jadwal<span class="fa fa-chevron-down"></span></a>
@@ -215,7 +219,11 @@
             $(document).ready(function(){
                 $('#belPengumuman').on('show.bs.modal', function () {
                     $('#bunyiPengumuman').html(`
-                        <center><audio controls src="/audio/bel_master.mp3" preload="auto" autoplay></audio></center>
+                        <center>
+                        <audio id="player" controls preload="auto" autoplay>
+                            <source src="/audio/bel_master.mp3" type="audio/mpeg">
+                        </audio>
+                        </center>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-danger" data-dismiss="modal">Tutup</button>
                         </div>
@@ -223,6 +231,14 @@
                 });
             });
         </script>
+
+        {{-- <script>
+            var audio = document.getElementById("player");
+            audio.addEventListener("ended", function() {
+                audio.src = "/audio/bel_master.mp3";
+                audio.play();
+            });
+        </script> --}}
 
         </div>
         <!-- /page content -->

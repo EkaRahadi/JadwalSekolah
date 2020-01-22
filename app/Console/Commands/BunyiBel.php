@@ -53,7 +53,7 @@ class BunyiBel extends Command
             $jam = Carbon::parse($jdwl->jam)->format('H:i');
             if(Carbon::now()->format('H:i') == $jam){
                 Log::info("Info : Bel Berbunyi");
-                $ringtone = Ringtone::where('id_ringtone', $jdwl->ringtone)->value('ringtone');
+                $ringtone = Ringtone::where('id_ringtone', $jdwl->id_ringtone)->value('ringtone');
                 $url_ringtone = "https://res.cloudinary.com/harsoft-development/video/upload/".$ringtone.".mp3";
                 event(new \App\Events\BunyikanBel($url_ringtone));
             }else{
