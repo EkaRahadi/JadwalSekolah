@@ -84,7 +84,7 @@
                                                     <div class='input-group date myDatepicker3' id='myDatepicker3'>
                                                         <input type='text' class="form-control" id="jam" name="jam" placeholder="Masukkan jam" required/>
                                                         <span class="input-group-addon">
-                                                           <span class="fa fa-calendar"></span>
+                                                           <span class="fa fa-clock-o"></span>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -175,7 +175,7 @@
                                                     <div class='input-group date myDatepicker3' id='myDatepicker3'>
                                                         <input type='text' class="form-control" id="jam" name="jam" placeholder="Masukkan jam" required/>
                                                         <span class="input-group-addon">
-                                                           <span class="fa fa-calendar"></span>
+                                                           <span class="fa fa-clock-o"></span>
                                                         </span>
                                                     </div>
                                                 </div>

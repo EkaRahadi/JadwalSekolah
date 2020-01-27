@@ -31,7 +31,7 @@
 <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- bootstrap-datetimepicker -->
 <script src="../vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-
+<script src="https://webaudiodemos.appspot.com/AudioRecorder/js/recorderjs/recorderWorker.js"></script>
 @stack('table_script')
 <!-- Custom Theme Scripts -->
 <script src="../build/js/custom.min.js"></script>
