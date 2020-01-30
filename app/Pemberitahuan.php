@@ -10,5 +10,5 @@ class Pemberitahuan extends Model
 
     protected $primaryKey = 'id_pemberitahuan';
 
-    protected $fillable = ['judul_pemberitahuan', 'isi_pemberitahuan'];
+    protected $fillable = ['judul_pemberitahuan', 'isi_pemberitahuan', 'pengirim'];
 }

@@ -41,7 +41,7 @@
 
                         <!-- Modal Tambah Siswa -->
 
-                        <div class="modal fade" id="tambahSiswa" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="tambahSiswa" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -78,7 +78,7 @@
                                                 <label class="control-label col-md-3" for="orang_tua">Orang Tua<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <select class="form-control" id="orang_tua" name="parent" required>
+                                                    <select class="form-control js-example-basic-single" id="orang_tua" name="id_parents" style="width:100%" required>
                                                         <option>--- Pilih Orang Tua ---</option>
                                                         @foreach ($parent as $prt)
                                                         <option value="{{$prt->id_parents}}">{{$prt->nama}}</option>
@@ -100,7 +100,7 @@
 
                         <!-- Modal Ubah Siswa-->
 
-                        <div class="modal fade" id="ubahSiswa" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="ubahSiswa" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -142,7 +142,7 @@
                                                 <label class="control-label col-md-3" for="orang_tua">Orang Tua<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <select class="form-control" id="orang_tua" name="id_parents" required>
+                                                    <select class="form-control js-example-basic-single" id="orang_tua" name="id_parents" style="width:100%" required>
                                                         <option>--- Pilih Orang Tua ---</option>
                                                         @foreach ($parent as $prt)
                                                         <option value="{{$prt->id_parents}}">{{$prt->nama}}</option>
@@ -249,6 +249,12 @@
   @push('table_script')
 
   @endpush
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+    <script>
+        $('.js-example-basic-single').select2({
+            theme: "classic",
+        });
+    </script>
   <script type="text/javascript">
     $(document).ready(function(){
         $('#ubahSiswa').on('show.bs.modal', function (event) {

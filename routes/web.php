@@ -80,4 +80,8 @@ Route::post('/orangtua/ubah', 'OrangTuaController@ubahOrangTua');
 
 Route::post('/orangtua/hapus', 'OrangTuaController@hapusOrangTua');
 
+Route::get('/pemberitahuan', 'PemberitahuanController@pemberitahuan');
+
+Route::post('/pemberitahuan/kirim/email/{i}', 'PemberitahuanController@kirim_email');
+
 

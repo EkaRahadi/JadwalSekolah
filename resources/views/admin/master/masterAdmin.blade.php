@@ -50,6 +50,7 @@
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
   </head>
 
   <body class="nav-md">
@@ -92,7 +93,7 @@
                   </li>
                   <li><a href="/ringtone"><i class="fa fa-music"></i> Ringtone</a>
                   </li>
-                  <li><a><i class="fa fa-bell"></i> Pemberitahuan</a>
+                  <li><a href="/pemberitahuan"><i class="fa fa-bell"></i> Pemberitahuan</a>
                   </li>
                 </ul>
               </div>
@@ -104,11 +105,11 @@
               <a data-target="#belPengumuman" data-toggle="modal" data-placement="top" title="Pengumuman">
                 <span class="fa fa-microphone" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen" onclick="toggleFullScreen()">
                 <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Lock">
-                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              <a data-toggle="tooltip" data-placement="top" title="Help">
+                <span class="fa fa-question" aria-hidden="true"></span>
               </a>
               <a href="/logout" data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
@@ -239,6 +240,29 @@
                 audio.play();
             });
         </script> --}}
+
+        <script>
+            function toggleFullScreen() {
+                if ((document.fullScreenElement && document.fullScreenElement !== null) ||
+                (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+                    if (document.documentElement.requestFullScreen) {
+                    document.documentElement.requestFullScreen();
+                    } else if (document.documentElement.mozRequestFullScreen) {
+                    document.documentElement.mozRequestFullScreen();
+                    } else if (document.documentElement.webkitRequestFullScreen) {
+                    document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+                    }
+                } else {
+                    if (document.cancelFullScreen) {
+                    document.cancelFullScreen();
+                    } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                    } else if (document.webkitCancelFullScreen) {
+                    document.webkitCancelFullScreen();
+                    }
+                }
+            }
+        </script>
 
         </div>
         <!-- /page content -->
