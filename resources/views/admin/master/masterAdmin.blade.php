@@ -207,7 +207,7 @@
                 setTimeout(function(){
                     $('#bunyiBel').empty();
                     myModal.modal('hide')
-                }, 60000);
+                }, 63000);
 
 
                 // $('#belSekolah').modal('show')
@@ -229,8 +229,29 @@
                             <button type="submit" class="btn btn-danger" data-dismiss="modal">Tutup</button>
                         </div>
                     `);
+
+                    navigator.getUserMedia = ( navigator.getUserMedia    || navigator.webkitGetUserMedia ||
+                    navigator.mozGetUserMedia ||navigator.msGetUserMedia);
+                    var aCtx;
+                    var analyser;
+                    var microphone;
+                    if (navigator.getUserMedia) {
+                        navigator.getUserMedia({audio: true}, function(stream) {
+                            aCtx = new webkitAudioContext();
+                            analyser = aCtx.createAnalyser();
+                            microphone = aCtx.createMediaStreamSource(stream);
+                            microphone.connect(analyser);
+                            analyser.connect(aCtx.destination);
+                        }, function (){console.warn("Error getting audio stream from getUserMedia")});
+                    };
+                });
+
+                $('#belPengumuman').on('hidden.bs.modal', function(){
+
                 });
             });
+
+
         </script>
 
         {{-- <script>

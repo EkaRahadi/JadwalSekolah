@@ -38,7 +38,7 @@
                             <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Kirim Pemberitahuan Lewat Email</a>
-                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Kirim Pemberitahuan Lewat WA</a>
+                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Kirim Pemberitahuan Lewat SMS</a>
                                 </div>
                             </nav>
                             <div class="tab-content pl-3 pt-2" id="nav-tabContent">
@@ -79,7 +79,7 @@
                                     </form>
                                 </div>
                                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                    <form class="form-horizontal" role="form" method="post" action="/pemberitahuan/kirimEmail">
+                                    <form class="form-horizontal" role="form" method="post" action="/pemberitahuan/kirim/sms">
                                         {{ csrf_field() }}
                                         {{ method_field('post') }}
                                         <div class="form-group">
@@ -87,18 +87,19 @@
                                             <input class="form-control" name="judul_pemberitahuan" id="judul_pemberitahuan" placeholder="Masukkan judul" required></textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label for="isi_pemberitahuan" class="control-label">Isi</label>
-                                            <textarea class="form-control" name="isi_pemberitahuan" id="isi_pemberitahuan" placeholder="Masukkan isi" required></textarea>
+                                            <label for="pesan" class="control-label">Pesan</label>
+                                            <textarea class="form-control" name="pesan" id="pesan" placeholder="Masukkan pesan" required></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="pengirim" class="control-label">Pengirim</label>
-                                            <input class="form-control" name="pengirim" id="pengirim" placeholder="Masukkan pengirim" required></textarea>
+                                            <input class="form-control" name="pengirim" id="pengirim" value="TK Flamboyan" required readonly></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="ortu" class="control-label">Tujuan</label>
                                             <select name="ortu[]" id="ortu2" multiple="multiple" style="width: 100%;">
+                                                <option value="semua" selected>Semua</option>
                                                 @foreach ($orangtua as $ortu)
-                                                    <option value="{{$ortu->email}}">{{$ortu->nama}}</option>
+                                                    <option value="{{$ortu->hp}}">{{$ortu->nama}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -258,10 +259,12 @@
             var isi = button.data('isi');
             var pengirim = button.data('pengirim');
 
+            console.log(judul);
+
             var modal = $(this);
-            modal.find('.modal-body #judul_pemberitahuan').val(judul);
-            modal.find('.modal-body #isi_pemberitahuan').val(isi);
-            modal.find('.modal-body #pengirim').val(pengirim);
+            modal.find('.modal-body #judul_pemberitahuan').html(judul);
+            modal.find('.modal-body #isi_pemberitahuan').html(isi);
+            modal.find('.modal-body #pengirim').html(pengirim);
             });
         });
     </script>

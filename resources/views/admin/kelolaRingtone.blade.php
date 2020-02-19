@@ -267,8 +267,7 @@
     			function stopRecording() {
     				recorder.stop();
     				recorder.exportWAV(function(s) {
-
-                                 	audio.src = window.URL.createObjectURL(s);
+                        audio.src = window.URL.createObjectURL(s);
     				});
     			}
     </script>
