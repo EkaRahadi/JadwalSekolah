@@ -84,4 +84,7 @@ Route::get('/pemberitahuan', 'PemberitahuanController@pemberitahuan');
 
 Route::post('/pemberitahuan/kirim/email/{i}', 'PemberitahuanController@kirim_email');
 
+Route::post('/pemberitahuan/kirim/sms', 'PemberitahuanController@kirim_sms');
+
+
 
