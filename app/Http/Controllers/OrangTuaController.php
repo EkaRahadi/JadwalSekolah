@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Session;
 class OrangTuaController extends Controller
 {
     public function index() {
-        
+
         $parent = OrangTua::all();
         if(!Session::get('loginAdmin')){
-            return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
             return view('admin.kelolaOrangTua', compact('parent'));
         }
@@ -20,7 +20,7 @@ class OrangTuaController extends Controller
 
     public function tambahOrangTua(Request $request) {
         if(!Session::get('loginAdmin')){
-            return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
             $validatedData = $request->validate([
                 'nama' => 'max:255',
@@ -30,17 +30,17 @@ class OrangTuaController extends Controller
 
             if($validatedData){
                 OrangTua::create($request->all());
-                return redirect('/orangtua')->with('alert success', 'Orang Tua berhasil ditambahkan!');
+                return redirect('admin/dataPihakLuar/orangtua')->with('alert success', 'Orang Tua berhasil ditambahkan!');
             }else{
-                return redirect('/orangtua')->with('alert danger', 'Orang Tua sudah ada / melebihi 255 karakter!');
+                return redirect('admin/dataPihakLuar/orangtua')->with('alert danger', 'Orang Tua sudah ada / melebihi 255 karakter!');
             }
         }
     }
 
     public function ubahOrangTua(Request $request) {
-        
+
         if(!Session::get('loginAdmin')){
-            return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
             $validatedData = $request->validate([
                 'nama' => '|max:255',
@@ -54,21 +54,21 @@ class OrangTuaController extends Controller
                 $parents->email = $request->email;
                 $parents->alamat = $request->alamat;
                 $parents->save();
-                return redirect('/orangtua')->with('alert success', 'Orang Tua berhasil diubah!');
+                return redirect('admin/dataPihakLuar/orangtua')->with('alert success', 'Orang Tua berhasil diubah!');
             }else{
-                return redirect('/orangtua')->with('alert danger', 'Orang Tua sudah melebihi 255 karakter!');
+                return redirect('admin/dataPihakLuar/orangtua')->with('alert danger', 'Orang Tua sudah melebihi 255 karakter!');
             }
         }
     }
 
     public function hapusOrangTua(Request $request) {
-        
+
         if(!Session::get('loginAdmin')){
-            return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
             $parent = OrangTua::findOrFail($request->id_parent);
             $parent->delete();
-            return redirect('/orangtua')->with('alert danger', 'Orang Tua berhasil dihapus!');
+            return redirect('admin/dataPihakLuar/orangtua')->with('alert danger', 'Orang Tua berhasil dihapus!');
         }
     }
 }

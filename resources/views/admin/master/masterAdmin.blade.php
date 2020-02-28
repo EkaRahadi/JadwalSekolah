@@ -71,32 +71,32 @@
               <div class="menu_section">
                 <h3>Menu</h3>
                 <ul class="nav side-menu">
-                  <li><a href="/dashboard"><i class="fa fa-home"></i>Dashboard</a>
+                  <li><a href="/admin/dashboard"><i class="fa fa-home"></i>Dashboard</a>
                   </li>
                   <li><a><i class="fa fa-folder"></i>Kelola Data Sekolah<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="/dataSekolah/kelas">Kelas</a></li>
-                        <li><a href="/dataSekolah/siswa">Siswa</a></li>
-                        <li><a href="/dataSekolah/civitas">Civitas</a></li>
+                        <li><a href="/admin/dataSekolah/kelas">Kelas</a></li>
+                        <li><a href="/admin/dataSekolah/siswa">Siswa</a></li>
+                        <li><a href="/admin/dataSekolah/civitas">Civitas</a></li>
                       </ul>
                   </li>
-                  <li><a href="/yayasan"><i class="fa fa-folder"></i>Kelola Data Yayasan</a>
+                  <li><a href="admin/yayasan"><i class="fa fa-folder"></i>Kelola Data Yayasan</a>
                   </li>
                   <li><a><i class="fa fa-folder"></i>Kelola Data Pihak Luar<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="/orangtua">Orangtua</a></li>
+                        <li><a href="/admin/dataPihakLuar/orangtua">Orangtua</a></li>
                       </ul>
                   </li>
                   <li><a><i class="fa fa-calendar"></i>Kelola Jadwal<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="/jadwal/event">Event</a></li>
-                        <li><a href="/jadwal">Jadwal Reguler</a></li>
-                        <li><a href="/jadwal/ujian">Jadwal Ujian</a></li>
+                        <li><a href="/admin/jadwal/event">Event</a></li>
+                        <li><a href="/admin/jadwal">Jadwal Reguler</a></li>
+                        <li><a href="/admin/jadwal/ujian">Jadwal Ujian</a></li>
                       </ul>
                   </li>
-                  <li><a href="/ringtone"><i class="fa fa-music"></i> Ringtone</a>
+                  <li><a href="/admin/ringtone"><i class="fa fa-music"></i> Ringtone</a>
                   </li>
-                  <li><a href="/pemberitahuan"><i class="fa fa-bell"></i> Pemberitahuan</a>
+                  <li><a href="/admin/pemberitahuan"><i class="fa fa-bell"></i> Pemberitahuan</a>
                   </li>
                 </ul>
               </div>
@@ -111,10 +111,10 @@
               <a data-toggle="tooltip" data-placement="top" title="FullScreen" onclick="toggleFullScreen()">
                 <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Help">
+              <a href="#" data-toggle="tooltip" data-placement="top" title="Help">
                 <span class="fa fa-question" aria-hidden="true"></span>
               </a>
-              <a href="/logout" data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a href="/admin/logout" data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -137,7 +137,7 @@
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item"  href="javascript:;"> Kelola Admin</a>
                     <a class="dropdown-item"  href="#">Ganti Password</a>
-                    <a class="dropdown-item"  href="/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                    <a class="dropdown-item"  href="/admin/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                   </div>
                 </li>
               </ul>

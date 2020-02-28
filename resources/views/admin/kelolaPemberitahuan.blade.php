@@ -1,6 +1,6 @@
 @extends('admin/master/masterAdmin')
 
-@section('title', 'Pemberitahuan | SPTK')
+@section('title', 'Pemberitahuan | ABSS')
 
 @section('content')
 
@@ -43,7 +43,7 @@
                             </nav>
                             <div class="tab-content pl-3 pt-2" id="nav-tabContent">
                                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                    <form class="form-horizontal" role="form" method="post" action="/pemberitahuan/kirim/email/0">
+                                    <form class="form-horizontal" role="form" method="post" action="/admin/pemberitahuan/kirim/email/0">
                                         {{ csrf_field() }}
                                         {{ method_field('post') }}
                                         <div class="form-group">
@@ -79,7 +79,7 @@
                                     </form>
                                 </div>
                                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                    <form class="form-horizontal" role="form" method="post" action="/pemberitahuan/kirim/sms">
+                                    <form class="form-horizontal" role="form" method="post" action="/admin/pemberitahuan/kirim/sms">
                                         {{ csrf_field() }}
                                         {{ method_field('post') }}
                                         <div class="form-group">
@@ -165,7 +165,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <h5>Apakah anda yakin?</h5>
-                                        <form action="/pemberitahuan/hapus" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/admin/pemberitahuan/hapus" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group" hidden>
                                                 <label class="control-label col-md-3" for="id_pemberitahuan">ID Pemberitahuan<span class="required">*</span>

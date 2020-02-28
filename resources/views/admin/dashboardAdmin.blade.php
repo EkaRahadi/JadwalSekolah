@@ -1,6 +1,6 @@
 @extends('admin/master/masterAdmin')
 
-@section('title', 'Dashboard | SPTK')
+@section('title', 'Dashboard | ABSS')
 
 @section('active_menu_kelola_konten', 'active')
 

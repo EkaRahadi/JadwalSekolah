@@ -1,6 +1,6 @@
 @extends('admin/master/masterAdmin')
 
-@section('title', 'Event | SPTK')
+@section('title', 'Event | ABSS')
 
 @section('content')
 
@@ -54,7 +54,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/jadwal/event/tambah" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/admin/jadwal/event/tambah" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group">
                                                 <label class="control-label col-md-3" for="event">Event<span class="required">*</span>
@@ -85,7 +85,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/jadwal/event/ubah" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/admin/jadwal/event/ubah" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group" hidden>
                                                 <label class="control-label col-md-3" for="event">ID Event<span class="required">*</span>
@@ -125,7 +125,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <h5>Apakah anda yakin?</h5>
-                                        <form action="/jadwal/event/hapus" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/admin/jadwal/event/hapus" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group" hidden>
                                                 <label class="control-label col-md-3" for="event">ID Event<span class="required">*</span>

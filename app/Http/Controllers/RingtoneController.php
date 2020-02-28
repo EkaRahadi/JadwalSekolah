@@ -15,7 +15,7 @@ class RingtoneController extends Controller
     public function ringtone()
     {
         if(!Session::get('loginAdmin')){
-            return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
             $ringtones = Ringtone::all();
             return view('admin/kelolaRingtone', compact('ringtones'));
@@ -25,7 +25,7 @@ class RingtoneController extends Controller
     public function tambah_ringtone(Request $request)
     {
         if(!Session::get('loginAdmin')){
-            return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
             $validatedData = $request->validate([
                 'nama_ringtone' => 'unique:ringtone|max:255',
@@ -40,13 +40,13 @@ class RingtoneController extends Controller
                     Cloudder::uploadVideo($file);
                     $url_file = Cloudder::getPublicId();
                 }catch(Exception $e){
-                    return redirect('ringtone')->with('alert danger', 'Terjadi Kesalahan dalam mengupload mp3');
+                    return redirect('admin/ringtone')->with('alert danger', 'Terjadi Kesalahan dalam mengupload mp3');
                 }
                 $ringtone->ringtone = $url_file;
                 $ringtone->save();
-                return redirect('ringtone')->with('alert success', 'Ringtone berhasil ditambahkan!');
+                return redirect('admin/ringtone')->with('alert success', 'Ringtone berhasil ditambahkan!');
             }else{
-                return redirect('ringtone')->with('alert danger', 'Ringtone sudah ada / melebihi 255 karakter!');
+                return redirect('admin/ringtone')->with('alert danger', 'Ringtone sudah ada / melebihi 255 karakter!');
             }
         }
     }
@@ -54,7 +54,7 @@ class RingtoneController extends Controller
     public function ubah_ringtone(Request $request)
     {
         if(!Session::get('loginAdmin')){
-            return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
             $validatedData = $request->validate([
                 'nama_ringtone' => '|max:255',
@@ -64,9 +64,9 @@ class RingtoneController extends Controller
                 $ringtone = Ringtone::findOrFail($request->id_ringtone);
                 $ringtone->nama_ringtone = $request->nama_ringtone;
                 $ringtone->save();
-                return redirect('ringtone')->with('alert success', 'Ringtone berhasil diubah!');
+                return redirect('admin/ringtone')->with('alert success', 'Ringtone berhasil diubah!');
             }else{
-                return redirect('ringtone')->with('alert danger', 'Ringtone sudah ada / melebihi 255 karakter!');
+                return redirect('admin/ringtone')->with('alert danger', 'Ringtone sudah ada / melebihi 255 karakter!');
             }
         }
     }
@@ -74,16 +74,16 @@ class RingtoneController extends Controller
     public function hapus_ringtone(Request $request)
     {
         if(!Session::get('loginAdmin')){
-            return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
             $ringtone = Ringtone::findOrFail($request->id_ringtone);
             $jadwal = Jadwal::where('ringtone', $request->id_ringtone)->get();
             if($jadwal->count()>0){
-                return redirect('ringtone')->with('alert danger', 'Ringtone '.$ringtone->nama_ringtone.' sedang dipakai!');
+                return redirect('admin/ringtone')->with('alert danger', 'Ringtone '.$ringtone->nama_ringtone.' sedang dipakai!');
             }else{
                 Cloudder::delete($ringtone->ringtone);
                 $ringtone->delete();
-                return redirect('ringtone')->with('alert danger', 'Ringtone berhasil dihapus!');
+                return redirect('admin/ringtone')->with('alert danger', 'Ringtone berhasil dihapus!');
             }
 
         }
