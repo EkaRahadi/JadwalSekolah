@@ -59,7 +59,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-bell-o"></i> <span> SPTK </span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-bell"></i> <span> ABSS </span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -71,24 +71,27 @@
               <div class="menu_section">
                 <h3>Menu</h3>
                 <ul class="nav side-menu">
-                  <li><a href="/dashboard"><i class="fa fa-home"></i> Dashboard</a>
+                  <li><a href="/dashboard"><i class="fa fa-home"></i>Dashboard</a>
                   </li>
                   <li><a><i class="fa fa-folder"></i>Kelola Data Sekolah<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="/dataSekolah/kelas">Kelas</a></li>
+                        <li><a href="/dataSekolah/siswa">Siswa</a></li>
+                        <li><a href="/dataSekolah/civitas">Civitas</a></li>
                       </ul>
                   </li>
-                  <li><a><i class="fa fa-folder"></i>Kelola Data Siswa<span class="fa fa-chevron-down"></span></a>
+                  <li><a href="/yayasan"><i class="fa fa-folder"></i>Kelola Data Yayasan</a>
+                  </li>
+                  <li><a><i class="fa fa-folder"></i>Kelola Data Pihak Luar<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="/dataSekolah/siswa">Siswa</a></li>
                         <li><a href="/orangtua">Orangtua</a></li>
                       </ul>
                   </li>
                   <li><a><i class="fa fa-calendar"></i>Kelola Jadwal<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="/jadwal">Jadwal</a></li>
-                        <li><a href="/jadwal/hari">Hari</a></li>
                         <li><a href="/jadwal/event">Event</a></li>
+                        <li><a href="/jadwal">Jadwal Reguler</a></li>
+                        <li><a href="/jadwal/ujian">Jadwal Ujian</a></li>
                       </ul>
                   </li>
                   <li><a href="/ringtone"><i class="fa fa-music"></i> Ringtone</a>
