@@ -1,10 +1,11 @@
 @extends('admin/master/masterAdmin')
 
+@section('feature', 'Pemberitahuan')
+
 @section('title', 'Pemberitahuan | ABSS')
 
 @section('content')
 
-<div class="content">
     <!-- Animated -->
     <div class="animated fadeIn">
         <!-- Widgets  -->
@@ -30,9 +31,7 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-header">
-                        <strong class="card-title">Kirim Pemberitahuan</strong>
-                    </div>
+
                     <div class="card-body">
                         <div class="default-tab">
                             <nav>
@@ -119,7 +118,11 @@
                     </div>
                 </div>
             </div>
+
             <br>
+            <div class="clearfix"></div>
+            <br>
+
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -231,7 +234,6 @@
             </div>
         </div>
     </div>
-</div>
   <!-- /page content -->
 @endsection
 

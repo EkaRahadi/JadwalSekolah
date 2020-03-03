@@ -1,10 +1,11 @@
 @extends('admin/master/masterAdmin')
 
+@section('feature', 'Orang Tua')
+
 @section('title', 'Kelas | ABSS')
 
 @section('content')
 
-<div class="content">
     <!-- Animated -->
     <div class="animated fadeIn">
         <!-- Widgets  -->
@@ -30,9 +31,7 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-header">
-                        <strong class="card-title">Kelola Orang Tua</strong>
-                    </div>
+
                     <div class="card-body">
                         <button type="button" class="btn btn-info mb-1" data-toggle="modal" data-target="#tambahOrangTua"><i class="fa fa-plus-square"></i>
                             Tambah Orang Tua
@@ -233,7 +232,6 @@
             </div>
         </div>
     </div>
-</div>
   <!-- /page content -->
 @endsection
 

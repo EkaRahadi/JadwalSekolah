@@ -2,6 +2,8 @@
 
 @section('title', 'Dashboard | ABSS')
 
+@section('feature', 'Dashboard')
+
 @section('active_menu_kelola_konten', 'active')
 
 @section('content')

@@ -2,10 +2,10 @@
 
 @section('title', 'Jadwal | ABSS')
 
+@section('feature', 'Jadwal Reguler')
+
 @section('content')
 
-<div class="content">
-    <!-- Animated -->
     <div class="animated fadeIn">
         <!-- Widgets  -->
         <div class="row">
@@ -30,9 +30,7 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-header">
-                        <strong class="card-title">Kelola Jadwal</strong>
-                    </div>
+                
                     <div class="card-body">
                         <button type="button" class="btn btn-info mb-1" data-toggle="modal" data-target="#tambahJadwal"><i class="fa fa-plus-square"></i>
                             Tambah Jadwal
@@ -305,7 +303,6 @@
             </div>
         </div>
     </div>
-</div>
   <!-- /page content -->
 @endsection
 

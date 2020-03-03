@@ -2,10 +2,10 @@
 
 @section('title', 'Event | ABSS')
 
+@section('feature', 'Event')
+
 @section('content')
 
-<div class="content">
-    <!-- Animated -->
     <div class="animated fadeIn">
         <!-- Widgets  -->
         <div class="row">
@@ -30,9 +30,6 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-header">
-                        <strong class="card-title">Kelola Event</strong>
-                    </div>
 
                     <div class="card-body">
 
@@ -186,7 +183,6 @@
             </div>
         </div>
     </div>
-</div>
   <!-- /page content -->
 @endsection
 

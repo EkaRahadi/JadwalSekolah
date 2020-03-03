@@ -72,7 +72,7 @@
 
                 <div>
                   <h1><i class="fa fa-bell"></i> ABSS </h1>
-                  <p>©2016 All Rights Reserved</p>
+                  <p>© {{ date("Y") }} All Rights Reserved</p>
                 </div>
               </div>
             </form>

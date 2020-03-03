@@ -2,14 +2,15 @@
 
 @section('title', 'Hari | ABSS')
 
+@section('feature', 'Hari')
+
 @section('content')
 
-<div class="content">
     <!-- Animated -->
     <div class="animated fadeIn">
         <!-- Widgets  -->
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 col-sm-12">
                 @if ($errors->any())
                     <div class="alert alert-danger" role="alert">
                         <ul>
@@ -30,9 +31,7 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-header">
-                        <strong class="card-title">Kelola Hari</strong>
-                    </div>
+                    
                     <div class="card-body">
                         <button type="button" class="btn btn-info mb-1" data-toggle="modal" data-target="#tambahHari"><i class="fa fa-plus-square"></i>
                             Tambah Hari
@@ -183,7 +182,7 @@
             </div>
         </div>
     </div>
-</div>
+
   <!-- /page content -->
 @endsection
 
