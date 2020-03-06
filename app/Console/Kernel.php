@@ -5,6 +5,7 @@ namespace App\Console;
 use App\Jadwal;
 use App\Jam;
 use App\Ringtone;
+use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -27,7 +28,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('bunyiBel:log')->everyMinute();
+        $jadwal = Jadwal::all();
+        foreach($jadwal as $jdwl){
+            $jam = Carbon::parse($jdwl->jam)->format('H:i');
+            $hari = $jdwl->id_hari;
+            $schedule->command('bunyiBel:log')->weeklyOn($hari, $jam);
+        }
+        // $schedule->command('bunyiBel:log')->everyMinute();
         // $jadwal = Jadwal::all();
         // for ($i=0; $i<$jadwal->count(); $i++) {
         //     $jam = Jam::where('id_jam', $jadwal[$i]->jam)->value('pukul');

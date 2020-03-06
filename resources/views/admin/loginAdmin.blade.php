@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Login | Sistem Penjadwalan Taman Kanak-Kanak</title>
+    <title>Login | ABSS</title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +30,7 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form action="/login/proses" method="POST">
+            <form action="/admin/login/proses" method="POST">
                 {{ csrf_field() }}
               <h1>Login Form</h1>
                     @if ($errors->any())
@@ -71,8 +71,8 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-bell-o"></i> SPTK </h1>
-                  <p>©2016 All Rights Reserved</p>
+                  <h1><i class="fa fa-bell"></i> ABSS </h1>
+                  <p>© {{ date("Y") }} All Rights Reserved</p>
                 </div>
               </div>
             </form>

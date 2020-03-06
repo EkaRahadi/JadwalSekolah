@@ -6,50 +6,50 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="images/favicon.ico" type="image/ico" />
+	<link rel="icon" href="/images/favicon.ico" type="image/ico" />
 
     <title>@yield('title')</title>
 
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- Dropzone.js -->
-    <link href="../vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
+    <link href="/vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- Datatables -->
-    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <link href="/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
     <!-- bootstrap-wysiwyg -->
-    <link href="../vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <link href="/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
     <!-- Select2 -->
-    <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+    <link href="/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
     <!-- Switchery -->
-    <link href="../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+    <link href="/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
     <!-- starrr -->
-    <link href="../vendors/starrr/dist/starrr.css" rel="stylesheet">
+    <link href="/vendors/starrr/dist/starrr.css" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Data Tables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css"/>
     <!-- bootstrap-datetimepicker -->
-    <link href="../vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
     <!-- Ion.RangeSlider -->
-    <link href="../vendors/normalize-css/normalize.css" rel="stylesheet">
-    <link href="../vendors/ion.rangeSlider/css/ion.rangeSlider.css" rel="stylesheet">
-    <link href="../vendors/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css" rel="stylesheet">
+    <link href="/vendors/normalize-css/normalize.css" rel="stylesheet">
+    <link href="/vendors/ion.rangeSlider/css/ion.rangeSlider.css" rel="stylesheet">
+    <link href="/vendors/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css" rel="stylesheet">
     <!-- Bootstrap Colorpicker -->
-    <link href="../vendors/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+    <link href="/vendors/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="/build/css/custom.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
   </head>
 
@@ -59,7 +59,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-bell-o"></i> <span> SPTK </span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-bell"></i> <span> ABSS </span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -71,29 +71,32 @@
               <div class="menu_section">
                 <h3>Menu</h3>
                 <ul class="nav side-menu">
-                  <li><a href="/dashboard"><i class="fa fa-home"></i> Dashboard</a>
+                  <li><a href="/admin/dashboard"><i class="fa fa-home"></i>Dashboard</a>
                   </li>
                   <li><a><i class="fa fa-folder"></i>Kelola Data Sekolah<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="/dataSekolah/kelas">Kelas</a></li>
+                        <li><a href="/admin/dataSekolah/kelas">Kelas</a></li>
+                        <li><a href="/admin/dataSekolah/siswa">Siswa</a></li>
+                        <li><a href="/admin/dataSekolah/civitas">Civitas</a></li>
                       </ul>
                   </li>
-                  <li><a><i class="fa fa-folder"></i>Kelola Data Siswa<span class="fa fa-chevron-down"></span></a>
+                  <li><a href="admin/yayasan"><i class="fa fa-folder"></i>Kelola Data Yayasan</a>
+                  </li>
+                  <li><a><i class="fa fa-folder"></i>Kelola Data Pihak Luar<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="/dataSekolah/siswa">Siswa</a></li>
-                        <li><a href="/orangtua">Orangtua</a></li>
+                        <li><a href="/admin/dataPihakLuar/orangtua">Orangtua</a></li>
                       </ul>
                   </li>
                   <li><a><i class="fa fa-calendar"></i>Kelola Jadwal<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="/jadwal">Jadwal</a></li>
-                        <li><a href="/jadwal/hari">Hari</a></li>
-                        <li><a href="/jadwal/event">Event</a></li>
+                        <li><a href="/admin/jadwal/event">Event</a></li>
+                        <li><a href="/admin/jadwal">Jadwal Reguler</a></li>
+                        <li><a href="/admin/jadwal/ujian">Jadwal Ujian</a></li>
                       </ul>
                   </li>
-                  <li><a href="/ringtone"><i class="fa fa-music"></i> Ringtone</a>
+                  <li><a href="/admin/ringtone"><i class="fa fa-music"></i> Ringtone</a>
                   </li>
-                  <li><a href="/pemberitahuan"><i class="fa fa-bell"></i> Pemberitahuan</a>
+                  <li><a href="/admin/pemberitahuan"><i class="fa fa-bell"></i> Pemberitahuan</a>
                   </li>
                 </ul>
               </div>
@@ -108,10 +111,10 @@
               <a data-toggle="tooltip" data-placement="top" title="FullScreen" onclick="toggleFullScreen()">
                 <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Help">
+              <a href="#" data-toggle="tooltip" data-placement="top" title="Help">
                 <span class="fa fa-question" aria-hidden="true"></span>
               </a>
-              <a href="/logout" data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a href="/admin/logout" data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -134,7 +137,7 @@
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item"  href="javascript:;"> Kelola Admin</a>
                     <a class="dropdown-item"  href="#">Ganti Password</a>
-                    <a class="dropdown-item"  href="/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                    <a class="dropdown-item"  href="/admin/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                   </div>
                 </li>
               </ul>
@@ -145,11 +148,30 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>@yield('feature')</h3>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5  form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+
             <div class="modal fade" id="belSekolah" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-md" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="mediumModalLabel">BEL SEKOLAH BERBUNYI</h5>ol
+                            <h5 class="modal-title" id="mediumModalLabel">BEL SEKOLAH BERBUNYI</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -159,6 +181,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="modal fade" id="belPengumuman" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-md" role="document">
                     <div class="modal-content">
@@ -168,12 +191,13 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body" id="bunyiPengumuman">
-                        </div>
+                        <div class="modal-body" id="bunyiPengumuman"></div>
                     </div>
                 </div>
             </div>
-        @yield('content')
+            @yield('content')
+        </div>
+
 
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
@@ -195,11 +219,15 @@
                 // var data = data;
                 var myModal= $('#belSekolah').on('show.bs.modal', function () {
                     $('#bunyiBel').html(`
-                                            <center><audio controls src="`+data.ringtone+`" preload="auto" autoplay></audio></center>
-                                            <div class="modal-footer">
-                                                <button type="submit" class="btn btn-danger" data-dismiss="modal">Tutup</button>
-                                            </div>
-                                        `);
+                            <center>
+                                <audio id="player" controls preload="auto" autoplay>
+                                    <source src="`+data.ringtone+`" type="audio/mpeg">
+                                </audio>
+                            </center>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" id="close" data-dismiss="modal">Tutup</button>
+                            </div>
+                    `);
 
                 })
 
@@ -207,13 +235,17 @@
                 setTimeout(function(){
                     $('#bunyiBel').empty();
                     myModal.modal('hide')
-                }, 63000);
+                }, 120000);
 
+                $('#close').on('click', function(){
+                    $('#bunyiBel').empty();
+                    myModal.modal('hide')
+                })
 
-                // $('#belSekolah').modal('show')
-                // $('#audio_field').html('<audio src="'+data.ringtone+'" preload="auto" autoplay></audio>');
-                // alert(JSON.stringify(data));
             });
+
+
+
         </script>
 
         <script>
@@ -246,9 +278,11 @@
                     };
                 });
 
-                $('#belPengumuman').on('hidden.bs.modal', function(){
-
-                });
+                // $('#belPengumuman').on('hidden.bs.modal', function(){
+                //   if (navigator.getUserMedia) {
+                //         navigator.getUserMedia({audio: false});
+                //   }
+                // });
             });
 
 
@@ -289,9 +323,10 @@
         <!-- /page content -->
 
         <!-- footer content -->
+
         <footer>
           <div class="pull-right">
-            ©2016 All Rights Reserved
+            © {{ date("Y") }} All Rights Reserved
           </div>
           <div class="clearfix"></div>
         </footer>

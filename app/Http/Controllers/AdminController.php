@@ -13,7 +13,7 @@ class AdminController extends Controller
         if(!Session::get('loginAdmin')){
             return view('admin/loginAdmin');
         }else{
-            return redirect('/dashboard');
+            return redirect('admin/dashboard');
         }
     }
 
@@ -24,18 +24,18 @@ class AdminController extends Controller
             if(Hash::check($request->password, $admin->password)){
                 Session::put('loginAdmin', true);
                 Session::put('username', $admin->username);
-                return redirect('/dashboard')->with('alert success', 'Anda berhasil login');
+                return redirect('admin/dashboard')->with('alert success', 'Anda berhasil login');
             }else{
-                return redirect('/login')->with('alert danger', 'Password salah!');
+                return redirect('admin/login')->with('alert danger', 'Password salah!');
             }
         }else{
-            return redirect('/login')->with('alert danger', 'Username salah!');
+            return redirect('admin/login')->with('alert danger', 'Username salah!');
         }
     }
 
     public function dashboard(){
         if(!Session::get('loginAdmin')){
-            return redirect('/login')->with('alert danger', 'Anda harus login terlebih dahulu');
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu');
         }else{
             return view('admin/dashboardAdmin');
         }
@@ -43,10 +43,10 @@ class AdminController extends Controller
 
     public function logout(){
         if(!Session::get('loginAdmin')){
-            return redirect('/login')->with('alert danger', 'Anda harus login terlebih dahulu');
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu');
         }else{
             Session()->forget('loginAdmin');
-            return redirect('/login')->with('alert danger','Anda sudah logout');
+            return redirect('admin/login')->with('alert danger','Anda sudah logout');
         }
     }
 }

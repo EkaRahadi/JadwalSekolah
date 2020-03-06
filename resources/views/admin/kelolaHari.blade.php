@@ -1,15 +1,16 @@
 @extends('admin/master/masterAdmin')
 
-@section('title', 'Hari | SPTK')
+@section('title', 'Hari | ABSS')
+
+@section('feature', 'Hari')
 
 @section('content')
 
-<div class="content">
     <!-- Animated -->
     <div class="animated fadeIn">
         <!-- Widgets  -->
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 col-sm-12">
                 @if ($errors->any())
                     <div class="alert alert-danger" role="alert">
                         <ul>
@@ -30,9 +31,7 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-header">
-                        <strong class="card-title">Kelola Hari</strong>
-                    </div>
+                    
                     <div class="card-body">
                         <button type="button" class="btn btn-info mb-1" data-toggle="modal" data-target="#tambahHari"><i class="fa fa-plus-square"></i>
                             Tambah Hari
@@ -51,7 +50,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/jadwal/hari/tambah" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/admin/jadwal/hari/tambah" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group">
                                                 <label class="control-label col-md-3" for="nama_hari">Nama Hari<span class="required">*</span>
@@ -82,7 +81,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/jadwal/hari/ubah" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/admin/jadwal/hari/ubah" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group" hidden>
                                                 <label class="control-label col-md-3" for="id_hari">ID Hari<span class="required">*</span>
@@ -122,7 +121,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <h5>Apakah anda yakin?</h5>
-                                        <form action="/jadwal/hari/hapus" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/admin/jadwal/hari/hapus" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group" hidden>
                                                 <label class="control-label col-md-3" for="id_hari">ID Hari<span class="required">*</span>
@@ -183,7 +182,7 @@
             </div>
         </div>
     </div>
-</div>
+
   <!-- /page content -->
 @endsection
 

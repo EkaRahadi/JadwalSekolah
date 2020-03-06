@@ -7,7 +7,6 @@ use App\Outbox;
 use App\Pemberitahuan;
 use App\Students;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
@@ -15,7 +14,7 @@ class PemberitahuanController extends Controller
 {
     public function pemberitahuan(){
         if(!Session::get('loginAdmin')){
-            return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
             $orangtua = OrangTua::orderBy('nama', 'asc')->get();
             $pemberitahuan = Pemberitahuan::orderBy('created_at', 'desc')->get();
@@ -25,7 +24,7 @@ class PemberitahuanController extends Controller
 
     public function kirim_email(Request $request, $i){
         if(!Session::get('loginAdmin')){
-            return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
             if($request->ortu!=null){
                 if($request->ortu[0] == "semua"){
@@ -49,7 +48,7 @@ class PemberitahuanController extends Controller
                     $pemberitahuan->isi_pemberitahuan = $request->isi_pemberitahuan;
                     $pemberitahuan->pengirim = $request->pengirim;
                     $pemberitahuan->save();
-                    return redirect('/pemberitahuan')->with('alert success', 'Email berhasil dikirim!');
+                    return redirect('admin/pemberitahuan')->with('alert success', 'Email berhasil dikirim!');
                 }else{
                     $pemberitahuan = new Pemberitahuan();
                     for($i=0; $i<count($request->ortu); $i++){
@@ -69,17 +68,17 @@ class PemberitahuanController extends Controller
                         $pemberitahuan->isi_pemberitahuan = $request->isi_pemberitahuan;
                         $pemberitahuan->pengirim = $request->pengirim;
                     }
-                    return redirect('/pemberitahuan')->with('alert success', 'Email berhasil dikirim!');
+                    return redirect('admin/pemberitahuan')->with('alert success', 'Email berhasil dikirim!');
                 }
             }else{
-                return redirect('/pemberitahuan')->with('alert danger', 'Tujuan harus diisi terlebih dahulu!');
+                return redirect('admin/pemberitahuan')->with('alert danger', 'Tujuan harus diisi terlebih dahulu!');
             }
         }
     }
 
     public function kirim_sms(Request $request){
         if(!Session::get('loginAdmin')){
-            return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
             if($request->ortu!=null){
                 if($request->ortu[0] == "semua"){
@@ -115,7 +114,7 @@ class PemberitahuanController extends Controller
                         $pemberitahuan->isi_pemberitahuan = $request->pesan;
                         $pemberitahuan->pengirim = $request->pengirim;
                         $pemberitahuan->save();
-                        return redirect('/pemberitahuan')->with('alert success', 'SMS berhasil dikirim!');
+                        return redirect('admin/pemberitahuan')->with('alert success', 'SMS berhasil dikirim!');
                     }
                 }else{
                     $pemberitahuan = new Pemberitahuan();
@@ -149,11 +148,11 @@ class PemberitahuanController extends Controller
                         $pemberitahuan->isi_pemberitahuan = $request->pesan;
                         $pemberitahuan->pengirim = $request->pengirim;
                         $pemberitahuan->save();
-                        return redirect('/pemberitahuan')->with('alert success', 'SMS berhasil dikirim!');
+                        return redirect('admin/pemberitahuan')->with('alert success', 'SMS berhasil dikirim!');
                     }
                 }
             }else{
-                return redirect('/pemberitahuan')->with('alert danger', 'Tujuan harus diisi terlebih dahulu!');
+                return redirect('admin/pemberitahuan')->with('alert danger', 'Tujuan harus diisi terlebih dahulu!');
             }
         }
     }

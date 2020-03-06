@@ -1,10 +1,11 @@
 @extends('admin/master/masterAdmin')
 
-@section('title', 'Kelas | SPTK')
+@section('title', 'Kelas | ABSS')
+
+@section('feature', 'Kelas')
 
 @section('content')
 
-<div class="content">
     <!-- Animated -->
     <div class="animated fadeIn">
         <!-- Widgets  -->
@@ -30,9 +31,7 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-header">
-                        <strong class="card-title">Kelola Hari</strong>
-                    </div>
+
                     <div class="card-body">
                         <button type="button" class="btn btn-info mb-1" data-toggle="modal" data-target="#tambahKelas"><i class="fa fa-plus-square"></i>
                             Tambah Kelas
@@ -51,7 +50,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/dataSekolah/kelas/tambah" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/admin/dataSekolah/kelas/tambah" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group">
                                                 <label class="control-label col-md-3" for="nama_kelas">Nama Kelas<span class="required">*</span>
@@ -82,7 +81,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/dataSekolah/kelas/ubah" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/admin/dataSekolah/kelas/ubah" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group" hidden>
                                                 <label class="control-label col-md-3" for="id_kelas">ID Kelas<span class="required">*</span>
@@ -122,7 +121,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <h5>Apakah anda yakin?</h5>
-                                        <form action="/dataSekolah/kelas/hapus" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/admin/dataSekolah/kelas/hapus" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group" hidden>
                                                 <label class="control-label col-md-3" for="id_kelas">ID Kelas<span class="required">*</span>
@@ -183,7 +182,6 @@
             </div>
         </div>
     </div>
-</div>
   <!-- /page content -->
 @endsection
 

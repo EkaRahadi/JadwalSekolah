@@ -1,10 +1,11 @@
 @extends('admin/master/masterAdmin')
 
-@section('title', 'Kelas | SPTK')
+@section('feature', 'Orang Tua')
+
+@section('title', 'Kelas | ABSS')
 
 @section('content')
 
-<div class="content">
     <!-- Animated -->
     <div class="animated fadeIn">
         <!-- Widgets  -->
@@ -30,9 +31,7 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-header">
-                        <strong class="card-title">Kelola Orang Tua</strong>
-                    </div>
+
                     <div class="card-body">
                         <button type="button" class="btn btn-info mb-1" data-toggle="modal" data-target="#tambahOrangTua"><i class="fa fa-plus-square"></i>
                             Tambah Orang Tua
@@ -51,7 +50,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/orangtua/tambah" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/admin/dataPihakLuar/orangtua/tambah" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group">
                                                 <label class="control-label col-md-3" for="nama_parent">Nama Orang Tua<span class="required">*</span>
@@ -103,7 +102,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/orangtua/ubah" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/admin/dataPihakLuar/orangtua/ubah" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group" hidden>
                                                 <label class="control-label col-md-3" for="id_kelas">ID Kelas<span class="required">*</span>
@@ -163,8 +162,8 @@
                                     </div>
                                     <div class="modal-body">
                                         <h5>Apakah anda yakin?</h5>
-                                        <form action="/orangtua/hapus" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                            {{ csrf_field()}}
+                                        <form action="/admin/dataPihakLuar/orangtua/hapus" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                            {{csrf_field()}}
                                             <div class="row form-group" hidden>
                                                 <label class="control-label col-md-3" for="id_parent">ID Orang Tua<span class="required">*</span>
                                                 </label>
@@ -233,7 +232,6 @@
             </div>
         </div>
     </div>
-</div>
   <!-- /page content -->
 @endsection
 

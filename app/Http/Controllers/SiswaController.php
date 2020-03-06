@@ -25,7 +25,7 @@ class SiswaController extends Controller
 
     public function tambahSiswa(Request $request) {
         if(!Session::get('loginAdmin')){
-            return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
             $validatedData = $request->validate([
                 'nama' => 'max:255',
@@ -37,15 +37,15 @@ class SiswaController extends Controller
                     'id_parents' => $request->parent,
                     'id_kelas' => $request->kelas
                 ]);
-                return redirect('/dataSekolah/siswa')->with('alert success', 'Siswa berhasil ditambahkan!');
+                return redirect('admin/dataSekolah/siswa')->with('alert success', 'Siswa berhasil ditambahkan!');
             }else{
-                return redirect('/dataSekolah/siswa')->with('alert danger', 'Siswa sudah ada / melebihi 255 karakter!');
+                return redirect('admin/dataSekolah/siswa')->with('alert danger', 'Siswa sudah ada / melebihi 255 karakter!');
             }
         }
     }
 
     public function ubahSiswa(Request $request) {
-        
+
         if(!Session::get('loginAdmin')){
             return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
@@ -59,21 +59,21 @@ class SiswaController extends Controller
                 $student->id_parents = $request->id_parents;
                 $student->id_kelas = $request->id_kelas;
                 $student->save();
-                return redirect('/dataSekolah/siswa')->with('alert success', 'Siswa berhasil diubah!');
+                return redirect('admin/dataSekolah/siswa')->with('alert success', 'Siswa berhasil diubah!');
             }else{
-                return redirect('/dataSekolah/siswa')->with('alert danger', 'Siswa sudah melebihi 255 karakter!');
+                return redirect('admin/dataSekolah/siswa')->with('alert danger', 'Siswa sudah melebihi 255 karakter!');
             }
         }
     }
 
     public function hapusSiswa(Request $request) {
-        
+
         if(!Session::get('loginAdmin')){
-            return redirect('login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
             $student = Students::findOrFail($request->id_student);
             $student->delete();
-            return redirect('/dataSekolah/siswa')->with('alert danger', 'Siswa berhasil dihapus!');
+            return redirect('admin/dataSekolah/siswa')->with('alert danger', 'Siswa berhasil dihapus!');
         }
     }
 }
