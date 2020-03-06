@@ -20,4 +20,8 @@ class Kelas extends Model
     public function student(){
         return $this->hasMany('App\Student', 'id_kelas');
     }
+
+    public function jadwalPelajaran() {
+        return $this->hasMany('App\JadwalPelajaran', 'id_kelas');
+    }
 }

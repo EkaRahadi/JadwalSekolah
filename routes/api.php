@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use App\JadwalPelajaran;
+use App\JadwalExam;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,10 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/tes', function () {
+    $jadwal_exam = JadwalExam::with('hari', 'event', 'ringtone')->get();
+
+    return $jadwal_exam;
 });
