@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Civitas;
 use App\Jadwal;
 use App\Kelas;
 use Illuminate\Http\Request;
@@ -69,6 +70,73 @@ class DataSekolahController extends Controller
                 $kelas->delete();
                 return redirect('admin/dataSekolah/kelas')->with('alert danger', 'Kelas berhasil dihapus!');
             }
+        }
+    }
+
+    public function civitas(){
+        if(!Session::get('loginAdmin')){
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+        }else{
+            $civitas = Civitas::orderBy('tipe_civitas', 'asc')->get();
+            return view('admin/kelolaCivitas', compact('civitas'));
+        }
+    }
+
+    public function tambah_civitas(Request $request){
+        if(!Session::get('loginAdmin')){
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+        }else{
+            $validatedData = $request->validate([
+                'nama' => 'unique:civitas|max:255',
+                'email' => 'unique:civitas|email|max:255',
+                'hp' => '|max:20',
+            ]);
+
+            if($validatedData){
+                $civitas = new Civitas();
+                $civitas->nama = $request->nama;
+                $civitas->email = $request->email;
+                $civitas->hp = $request->hp;
+                $civitas->tipe_civitas = $request->tipe_civitas;
+                $civitas->save();
+                return redirect('admin/dataSekolah/civitas')->with('alert success', 'Civitas berhasil ditambahkan!');
+            }else{
+                return redirect('admin/dataSekolah/civitas')->with('alert danger', $validatedData);
+            }
+        }
+    }
+
+    public function ubah_civitas(Request $request){
+        if(!Session::get('loginAdmin')){
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+        }else{
+            $validatedData = $request->validate([
+                'nama' => '|max:255',
+                'email' => '|email|max:255',
+                'hp' => '|max:20',
+            ]);
+
+            if($validatedData){
+                $civitas = Civitas::findOrFail($request->id_civitas);
+                $civitas->nama = $request->nama;
+                $civitas->email = $request->email;
+                $civitas->hp = $request->hp;
+                $civitas->tipe_civitas = $request->tipe_civitas;
+                $civitas->save();
+                return redirect('admin/dataSekolah/civitas')->with('alert success', 'Civitas berhasil diubah!');
+            }else{
+                return redirect('admin/dataSekolah/civitas')->with('alert danger', $validatedData);
+            }
+        }
+    }
+
+    public function hapus_civitas(Request $request){
+        if(!Session::get('loginAdmin')){
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+        }else{
+            $civitas = Civitas::findOrFail($request->id_civitas);
+            $civitas->delete($civitas);
+            return redirect('admin/dataSekolah/civitas')->with('alert danger', 'Civitas berhasil dihapus!');
         }
     }
 }

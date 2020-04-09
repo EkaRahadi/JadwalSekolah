@@ -33,6 +33,8 @@ Route::post('/admin/ringtone/ubah', 'RingtoneController@ubah_ringtone');
 
 Route::post('/admin/ringtone/hapus', 'RingtoneController@hapus_ringtone');
 
+Route::post('/admin/ringtone/konversi', 'RingtoneController@konversi_sound');
+
 Route::get('/admin/jadwal', 'JadwalController@jadwal');
 
 Route::post('/admin/jadwal/tambah', 'JadwalController@tambah_jadwal');
@@ -40,6 +42,14 @@ Route::post('/admin/jadwal/tambah', 'JadwalController@tambah_jadwal');
 Route::post('/admin/jadwal/ubah', 'JadwalController@ubah_jadwal');
 
 Route::post('/admin/jadwal/hapus', 'JadwalController@hapus_jadwal');
+
+Route::get('/admin/jadwal/ujian', 'JadwalController@jadwal_exam');
+
+Route::post('/admin/jadwal/ujian/tambah', 'JadwalController@tambah_jadwal_exam');
+
+Route::post('/admin/jadwal/ujian/ubah', 'JadwalController@ubah_jadwal_exam');
+
+Route::post('/admin/jadwal/ujian/hapus', 'JadwalController@hapus_jadwal_exam');
 
 Route::get('/admin/jadwal/event', 'JadwalController@event');
 
@@ -64,6 +74,14 @@ Route::post('/admin/dataSekolah/kelas/tambah', 'DataSekolahController@tambah_kel
 Route::post('/admin/dataSekolah/kelas/ubah', 'DataSekolahController@ubah_kelas');
 
 Route::post('/admin/dataSekolah/kelas/hapus', 'DataSekolahController@hapus_kelas');
+
+Route::get('/admin/dataSekolah/civitas', 'DataSekolahController@civitas');
+
+Route::post('/admin/dataSekolah/civitas/tambah', 'DataSekolahController@tambah_civitas');
+
+Route::post('/admin/dataSekolah/civitas/ubah', 'DataSekolahController@ubah_civitas');
+
+Route::post('/admin/dataSekolah/civitas/hapus', 'DataSekolahController@hapus_civitas');
 
 Route::get('/admin/dataSekolah/siswa', 'SiswaController@index');
 

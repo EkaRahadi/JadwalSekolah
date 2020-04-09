@@ -30,7 +30,7 @@
                     </div>
                 @endif
                 <div class="card">
-                
+
                     <div class="card-body">
                         <button type="button" class="btn btn-info mb-1" data-toggle="modal" data-target="#tambahJadwal"><i class="fa fa-plus-square"></i>
                             Tambah Jadwal

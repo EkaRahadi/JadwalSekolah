@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Postingan extends Model
 {
-    protected $table = 'tb_postingan';
+    protected $table = 'postingan';
 
     protected $primaryKey = 'id_postingan';
 

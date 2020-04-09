@@ -36,7 +36,6 @@
     <link href="/vendors/starrr/dist/starrr.css" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
     <link href="/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
     <!-- Data Tables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css"/>
     <!-- bootstrap-datetimepicker -->
@@ -94,9 +93,19 @@
                         <li><a href="/admin/jadwal/ujian">Jadwal Ujian</a></li>
                       </ul>
                   </li>
+                  <li><a><i class="fa fa-calendar"></i>Kelola Jadwal Pelajaran<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="/admin/jadwal/pelajaran">Jadwal Pelajaran</a></li>
+                        <li><a href="/admin/jadwal/pelajaran/detail">Detail Jadwal Pelajaran</a></li>
+                      </ul>
+                  </li>
+                  <li><a href="#"><i class="fa fa-file"></i> Postingan</a>
+                  </li>
                   <li><a href="/admin/ringtone"><i class="fa fa-music"></i> Ringtone</a>
                   </li>
                   <li><a href="/admin/pemberitahuan"><i class="fa fa-bell"></i> Pemberitahuan</a>
+                  </li>
+                  <li><a href="#"><i class="fa fa-university"></i> Profil Sekolah</a>
                   </li>
                 </ul>
               </div>
@@ -135,7 +144,6 @@
                     {{App\Admin::where('username', Session::get('username'))->value('nama')}}
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item"  href="javascript:;"> Kelola Admin</a>
                     <a class="dropdown-item"  href="#">Ganti Password</a>
                     <a class="dropdown-item"  href="/admin/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                   </div>
@@ -153,7 +161,7 @@
                 <h3>@yield('feature')</h3>
               </div>
 
-              <div class="title_right">
+              {{-- <div class="title_right">
                 <div class="col-md-5 col-sm-5  form-group pull-right top_search">
                   <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for...">
@@ -162,7 +170,7 @@
                     </span>
                   </div>
                 </div>
-              </div>
+              </div> --}}
             </div>
 
             <div class="clearfix"></div>
@@ -228,7 +236,6 @@
                                 <button type="button" class="btn btn-danger" id="close" data-dismiss="modal">Tutup</button>
                             </div>
                     `);
-
                 })
 
                 myModal.modal('show');

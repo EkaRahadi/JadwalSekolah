@@ -32,13 +32,13 @@
                     </div>
                 @endif
                 <div class="card">
-                    
+
                     <div class="card-body">
                     <div class="default-tab">
                             <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Upload Ringtone</a>
-                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Rekam Ringtone</a>
+                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Konversi Ke MP3</a>
                                 </div>
                             </nav>
                             <div class="tab-content pl-3 pt-2" id="nav-tabContent">
@@ -207,7 +207,30 @@
                                     </table>
                                 </div>
                                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                    
+                                    <form class="form-horizontal" role="form" method="post" action="/admin/ringtone/konversi" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
+                                        {{ method_field('post') }}
+                                        <div class="form-group">
+                                            <label for="file_sound" class="control-label">Upload Sound</label>
+                                            <input class="form-control" type="file" name="file_sound" id="file_sound" placeholder="Masukkan sound yang akan dikonversi" required></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ortu" class="control-label">Format</label>
+                                            <select name="format" id="format">
+                                                <option value="wav" selected>WAV</option>
+                                                <option value="mp3" selected>MP3</option>
+                                            </select>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <div class="form-group">
+                                            <div class="col-md-8 col-md-offset-4">
+                                                <button type="submit" class="btn btn-primary">
+                                                    Konversi Media
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use JD\Cloudder\Facades\Cloudder;
 
-
 class RingtoneController extends Controller
 {
     public function ringtone()
@@ -86,6 +85,23 @@ class RingtoneController extends Controller
                 return redirect('admin/ringtone')->with('alert danger', 'Ringtone berhasil dihapus!');
             }
 
+        }
+    }
+
+    public function konversi_sound(Request $request){
+        $sound = $request->file_sound;
+        $format = $request->format;
+        $random = random_int(0,100);
+        exec('sox '.$sound.' outfile-'.$random.'.'.$format.'');
+        try{
+            $convert = exec('sox '.$sound.' outfile-'.$random.'.'.$format.'');
+            if($convert){
+                return redirect('admin/ringtone')->with('alert success', 'Sound berhasil diubah menjadi '.$format.'');
+            }else{
+                return redirect('admin/ringtone')->with('alert danger', 'Sound gagal dikonversi!');
+            }
+        }catch(Exception $e){
+            return redirect('admin/ringtone')->with('alert danger', 'Sound gagal dikonversi!, Error: '.$e.'');
         }
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Session;
 use App\Event;
 use App\Hari;
 use App\Jadwal;
+use App\JadwalExam;
 use App\Kelas;
 use App\Ringtone;
 use Carbon\Carbon;
@@ -185,6 +186,59 @@ class JadwalController extends Controller
             $jadwal = Jadwal::findOrFail($request->id_jadwal);
             $jadwal->delete();
             return redirect('admin/jadwal')->with('alert danger', 'Jadwal berhasil dihapus!');
+        }
+    }
+
+    public function jadwal_exam(){
+        if(!Session::get('loginAdmin')){
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+        }else{
+            $i=0;
+            $jadwal = JadwalExam::orderBy('created_at', 'desc')->get();
+            $hari = Hari::all();
+            $event = Event::all();
+            $ringtone = Ringtone::all();
+            return view('admin/kelolaJadwalExam', compact('i', 'jadwal', 'hari', 'event', 'ringtone'));
+        }
+    }
+
+    public function tambah_jadwal_exam(Request $request){
+        if(!Session::get('loginAdmin')){
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+        }else{
+            $jadwal = new JadwalExam();
+            $jadwal->id_hari = $request->hari;
+            $jadwal->id_event = $request->event;
+            $jadwal->jam = $request->jam;
+            $jadwal->gelombang = $request->gelombang;
+            $jadwal->id_ringtone = $request->ringtone;
+            $jadwal->save();
+            return redirect('admin/jadwal/ujian')->with('alert success', 'Jadwal berhasil ditambahkan!');
+        }
+    }
+
+    public function ubah_jadwal_exam(Request $request){
+        if(!Session::get('loginAdmin')){
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+        }else{
+            $jadwal = JadwalExam::findOrFail($request->id_jadwal_exam);
+            $jadwal->id_hari = $request->hari;
+            $jadwal->id_event = $request->event;
+            $jadwal->jam = $request->jam;
+            $jadwal->gelombang = $request->gelombang;
+            $jadwal->id_ringtone = $request->ringtone;
+            $jadwal->save();
+            return redirect('admin/jadwal/ujian')->with('alert success', 'Jadwal berhasil diubah!');
+        }
+    }
+
+    public function hapus_jadwal_exam(Request $request){
+        if(!Session::get('loginAdmin')){
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+        }else{
+            $jadwal = JadwalExam::findOrFail($request->id_jadwal_exam);
+            $jadwal->delete();
+            return redirect('admin/jadwal/ujian')->with('alert danger', 'Jadwal berhasil dihapus!');
         }
     }
 }
