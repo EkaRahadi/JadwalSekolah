@@ -18,6 +18,7 @@ class CreateParentsTable extends Migration
             $table->string('nama',255);
             $table->string('hp',255);
             $table->string('email',255)->unique();
+            $table->string('password', 255);
             $table->longText('alamat');
             $table->timestamps();
         });

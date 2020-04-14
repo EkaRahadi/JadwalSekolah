@@ -4,18 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\OrangTua;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class OrangTuaController extends Controller
 {
     public function index() {
-
-        $parent = OrangTua::all();
         if(!Session::get('loginAdmin')){
             return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
         }else{
-            return view('admin.kelolaOrangTua', compact('parent'));
+            $parent = OrangTua::all();
+            $password = $this->quickRandom(6);
+            return view('admin.kelolaOrangTua', compact('parent', 'password'));
         }
+    }
+
+    public static function quickRandom($length)
+    {
+        $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        return substr(str_shuffle(str_repeat($pool, 5)), 0, $length);
     }
 
     public function tambahOrangTua(Request $request) {
@@ -30,6 +38,12 @@ class OrangTuaController extends Controller
 
             if($validatedData){
                 OrangTua::create($request->all());
+                Mail::send('admin/emailPemberitahuanAkun', ['nama_ortu' => $request->nama, 'email'=>$request->email, 'password'=>$request->password], function ($message) use ($request)
+                {
+                    $message->subject('Informasi Akun ABSS');
+                    $message->from('harsoftdev@gmail.com', 'Admin Yayasan Taman Kanak-Kanak');
+                    $message->to($request->email);
+                });
                 return redirect('admin/dataPihakLuar/orangtua')->with('alert success', 'Orang Tua berhasil ditambahkan!');
             }else{
                 return redirect('admin/dataPihakLuar/orangtua')->with('alert danger', 'Orang Tua sudah ada / melebihi 255 karakter!');

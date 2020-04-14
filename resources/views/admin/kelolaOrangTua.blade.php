@@ -2,7 +2,7 @@
 
 @section('feature', 'Orang Tua')
 
-@section('title', 'Kelas | ABSS')
+@section('title', 'Orang Tua | ABSS')
 
 @section('content')
 
@@ -38,7 +38,7 @@
                         </button>
                         <br>
 
-                        <!-- Modal Tambah Kelas -->
+                        <!-- Modal Tambah Parent -->
 
                         <div class="modal fade" id="tambahOrangTua" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
@@ -67,6 +67,13 @@
                                                 </div>
                                             </div>
                                             <div class="row form-group">
+                                                <label class="control-label col-md-3" for="password_parent">Password<span class="required">*</span>
+                                                </label>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="password" id="password_parent" name="password" placeholder="Masukkan Password" class="form-control" value="{{$password}}" readonly required>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
                                                 <label class="control-label col-md-3" for="hp_parent">HP<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
@@ -77,7 +84,7 @@
                                                 <label class="control-label col-md-3" for="alamat_parent">Alamat<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="text" id="alamat_parent" name="alamat" placeholder="Masukkan Nama Orang Tua" class="form-control" required>
+                                                    <input type="text" id="alamat_parent" name="alamat" placeholder="Masukkan Alamat" class="form-control" required>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -90,7 +97,7 @@
                             </div>
                         </div>
 
-                        <!-- Modal Ubah Kelas -->
+                        <!-- Modal Ubah Parent -->
 
                         <div class="modal fade" id="ubahOrangTua" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
@@ -149,7 +156,7 @@
                             </div>
                         </div>
 
-                        <!-- Modal Hapus Kelas -->
+                        <!-- Modal Hapus Parent -->
 
                         <div class="modal fade" id="hapusOrangTua" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-md" role="document">

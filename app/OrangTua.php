@@ -10,8 +10,13 @@ class OrangTua extends Model
 
     protected $primaryKey = 'id_parents';
 
-    protected $fillable = ['nama', 'hp', 'email','alamat'];
-    
+    protected $fillable = ['nama', 'hp', 'email', 'password', 'alamat'];
+
+    public function setPasswordAttribute($value)
+    {
+      $this->attributes['password'] = bcrypt($value);
+    }
+
     public function siswa()
     {
         // $this->hasMany('App\Student', 'id_parents', 'id_student');

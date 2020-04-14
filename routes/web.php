@@ -67,6 +67,14 @@ Route::post('/admin/jadwal/hari/ubah', 'JadwalController@ubah_hari');
 
 Route::post('/admin/jadwal/hari/hapus', 'JadwalController@hapus_hari');
 
+Route::get('/admin/jadwalPelajaran/detail', 'JadwalPelajaranController@detail');
+
+Route::post('/admin/jadwalPelajaran/detail/tambah', 'JadwalPelajaranController@tambah_detail');
+
+Route::post('/admin/jadwalPelajaran/detail/ubah', 'JadwalPelajaranController@ubah_detail');
+
+Route::post('/admin/jadwalPelajaran/detail/hapus', 'JadwalPelajaranController@hapus_detail');
+
 Route::get('/admin/dataSekolah/kelas', 'DataSekolahController@kelas');
 
 Route::post('/admin/dataSekolah/kelas/tambah', 'DataSekolahController@tambah_kelas');

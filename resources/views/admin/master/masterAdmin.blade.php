@@ -96,7 +96,7 @@
                   <li><a><i class="fa fa-calendar"></i>Kelola Jadwal Pelajaran<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="/admin/jadwal/pelajaran">Jadwal Pelajaran</a></li>
-                        <li><a href="/admin/jadwal/pelajaran/detail">Detail Jadwal Pelajaran</a></li>
+                        <li><a href="/admin/jadwalPelajaran/detail">Perlengkapan</a></li>
                       </ul>
                   </li>
                   <li><a href="#"><i class="fa fa-file"></i> Postingan</a>
