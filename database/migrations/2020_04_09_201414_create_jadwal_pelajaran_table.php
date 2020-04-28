@@ -21,8 +21,6 @@ class CreateJadwalPelajaranTable extends Migration
             $table->foreign('id_kelas')->references('id_kelas')->on('kelas');
             $table->unsignedBigInteger('id_pelajaran')->index();
             $table->foreign('id_pelajaran')->references('id_pelajaran')->on('pelajaran');
-            $table->unsignedBigInteger('id_detail_pelajaran')->index();
-            $table->foreign('id_detail_pelajaran')->references('id_detail_pelajaran')->on('detail_pelajaran');
             $table->timeTz('jam');
             $table->timestamps();
         });

@@ -243,10 +243,8 @@
 @endsection
 
 @section('script')
-  @include('admin/master/scriptTables')
-  @push('table_script')
+    @include('admin/master/scriptTables')
 
-  @endpush
     <script type="text/javascript">
         $(document).ready(function(){
             $('#ubahRingtone').on('show.bs.modal', function (event) {
@@ -259,6 +257,7 @@
             });
         });
     </script>
+
     <script type="text/javascript">
         $(document).ready(function(){
             $('#hapusRingtone').on('show.bs.modal', function (event) {

@@ -307,15 +307,14 @@
 @endsection
 
 @section('script')
-  @include('admin/master/scriptTables')
-  @push('table_script')
+    @include('admin/master/scriptTables')
 
-  @endpush
     <script type="text/javascript">
         $('.myDatepicker3').datetimepicker({
             format: 'HH:mm'
         });
     </script>
+
     <script type="text/javascript">
         $(document).ready(function(){
             $('#ubahJadwal').on('show.bs.modal', function (event) {
@@ -326,9 +325,6 @@
             var id_event = button.data('id_event');
             var id_kelas = button.data('id_kelas');
             var id_ringtone = button.data('id_ringtone');
-
-            console.log(id_hari);
-
             var modal = $(this);
             modal.find('.modal-body #id_jadwal').val(id_jadwal);
             modal.find('.modal-body #hari').val(id_hari);
@@ -339,6 +335,7 @@
             });
         });
     </script>
+
     <script type="text/javascript">
         $(document).ready(function(){
             $('#hapusJadwal').on('show.bs.modal', function (event) {

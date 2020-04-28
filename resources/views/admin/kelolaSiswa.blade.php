@@ -243,45 +243,42 @@
 @endsection
 
 @section('script')
-  @include('admin/master/scriptTables')
-  @push('table_script')
+    @include('admin/master/scriptTables')
 
-  @endpush
-  <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+
     <script>
         $('.js-example-basic-single').select2({
             theme: "classic",
         });
     </script>
-  <script type="text/javascript">
-    $(document).ready(function(){
-        $('#ubahSiswa').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget);
-        var id_student = button.data('id_student');
-        var nama_siswa = button.data('nama_siswa');
-        var id_kelas = button.data('id_kelas');
-        var id_parent = button.data('id_parent');
 
-        console.log(id_student);
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#ubahSiswa').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var id_student = button.data('id_student');
+            var nama_siswa = button.data('nama_siswa');
+            var id_kelas = button.data('id_kelas');
+            var id_parent = button.data('id_parent');
+            var modal = $(this);
+            modal.find('.modal-body #id_student').val(id_student);
+            modal.find('.modal-body #nama_siswa').val(nama_siswa);
+            modal.find('.modal-body #kelas').val(id_kelas);
+            modal.find('.modal-body #orang_tua').val(id_parent);
+            });
+        });
+    </script>
 
-        var modal = $(this);
-        modal.find('.modal-body #id_student').val(id_student);
-        modal.find('.modal-body #nama_siswa').val(nama_siswa);
-        modal.find('.modal-body #kelas').val(id_kelas);
-        modal.find('.modal-body #orang_tua').val(id_parent);
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#hapusSiswa').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var id_student = button.data('id_student');
+            var modal = $(this);
+            modal.find('.modal-body #id_student').val(id_student);
+            });
         });
-    });
-</script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#hapusSiswa').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget);
-        var id_student = button.data('id_student');
-            console.log(id_student);
-        var modal = $(this);
-        modal.find('.modal-body #id_student').val(id_student);
-        });
-    });
-</script>
+    </script>
 @endsection
 

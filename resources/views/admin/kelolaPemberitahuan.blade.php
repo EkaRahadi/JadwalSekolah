@@ -238,21 +238,22 @@
 @endsection
 
 @section('script')
-  @include('admin/master/scriptTables')
-  @push('table_script')
+    @include('admin/master/scriptTables')
 
-  @endpush
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+
     <script>
         $('#ortu').select2({
             theme: "classic",
         });
     </script>
+
     <script>
         $('#ortu2').select2({
             theme: "classic",
         });
     </script>
+
     <script type="text/javascript">
         $(document).ready(function(){
             $('#infoPesan').on('show.bs.modal', function (event) {
@@ -260,9 +261,6 @@
             var judul = button.data('judul');
             var isi = button.data('isi');
             var pengirim = button.data('pengirim');
-
-            console.log(judul);
-
             var modal = $(this);
             modal.find('.modal-body #judul_pemberitahuan').html(judul);
             modal.find('.modal-body #isi_pemberitahuan').html(isi);
@@ -270,6 +268,7 @@
             });
         });
     </script>
+
     <script type="text/javascript">
         $(document).ready(function(){
             $('#hapusPemberitahuan').on('show.bs.modal', function (event) {

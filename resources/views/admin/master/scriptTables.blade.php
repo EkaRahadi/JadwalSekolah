@@ -34,9 +34,11 @@
 <script src="https://webaudiodemos.appspot.com/AudioRecorder/js/recorderjs/recorderWorker.js"></script>
 <!-- Ion.RangeSlider -->
 <script src="/vendors/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
-@stack('table_script')
 <!-- Custom Theme Scripts -->
 <script src="/build/js/custom.min.js"></script>
+<!-- Switchery -->
+<script src="../vendors/switchery/dist/switchery.min.js"></script>
+
 
 
 

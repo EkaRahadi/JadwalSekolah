@@ -186,29 +186,26 @@
 @endsection
 
 @section('script')
-  @include('admin/master/scriptTables')
-  @push('table_script')
+    @include('admin/master/scriptTables')
 
-  @endpush
     <script type="text/javascript">
         $(document).ready(function(){
             $('#ubahKelas').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var id_kelas = button.data('id_kelas');
             var nama_kelas = button.data('nama_kelas');
-                console.log(nama_kelas);
             var modal = $(this);
             modal.find('.modal-body #id_kelas').val(id_kelas);
             modal.find('.modal-body #nama_kelas').val(nama_kelas);
             });
         });
     </script>
+
     <script type="text/javascript">
         $(document).ready(function(){
             $('#hapusKelas').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var id_kelas = button.data('id_kelas');
-                console.log(id_kelas);
             var modal = $(this);
             modal.find('.modal-body #id_kelas').val(id_kelas);
             });

@@ -31,7 +31,7 @@
                     </div>
                 @endif
                 <div class="card">
-                    
+
                     <div class="card-body">
                         <button type="button" class="btn btn-info mb-1" data-toggle="modal" data-target="#tambahHari"><i class="fa fa-plus-square"></i>
                             Tambah Hari
@@ -187,29 +187,26 @@
 @endsection
 
 @section('script')
-  @include('admin/master/scriptTables')
-  @push('table_script')
+     @include('admin/master/scriptTables')
 
-  @endpush
     <script type="text/javascript">
         $(document).ready(function(){
             $('#ubahHari').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var id_hari = button.data('id_hari');
             var nama_hari = button.data('nama_hari');
-                console.log(nama_hari);
             var modal = $(this);
             modal.find('.modal-body #id_hari').val(id_hari);
             modal.find('.modal-body #nama_hari').val(nama_hari);
             });
         });
     </script>
+
     <script type="text/javascript">
         $(document).ready(function(){
             $('#hapusHari').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var id_hari= button.data('id_hari');
-                console.log(id_hari);
             var modal = $(this);
             modal.find('.modal-body #id_hari').val(id_hari);
             });

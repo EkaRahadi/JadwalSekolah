@@ -1,8 +1,8 @@
 @extends('admin/master/masterAdmin')
 
-@section('title', 'Jadwal Ujian | ABSS')
+@section('title', 'Jadwal Pelajaran | ABSS')
 
-@section('feature', 'Jadwal Ujian')
+@section('feature', 'Jadwal Pelajaran')
 
 @section('content')
 
@@ -33,7 +33,7 @@
 
                     <div class="card-body">
                         <button type="button" class="btn btn-info mb-1" data-toggle="modal" data-target="#tambahJadwal"><i class="fa fa-plus-square"></i>
-                            Tambah Jadwal
+                            Tambah Jadwal Pelajaran
                         </button>
                         <br>
 
@@ -43,13 +43,13 @@
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h3 class="modal-title" id="mediumModalLabel"><strong>Tambah Jadwal</strong></h3>
+                                        <h3 class="modal-title" id="mediumModalLabel"><strong>Tambah Jadwal Pelajaran</strong></h3>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/admin/jadwal/ujian/tambah" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/admin/jadwalPelajaran/tambah" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group">
                                                 <label class="control-label col-md-3" for="hari">Hari<span class="required">*</span>
@@ -64,13 +64,37 @@
                                                 </div>
                                             </div>
                                             <div class="row form-group">
-                                                <label class="control-label col-md-3" for="event">Event<span class="required">*</span>
+                                                <label class="control-label col-md-3" for="kelas">Kelas<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <select class="form-control" id="event" name="event" required>
-                                                        <option>--- Pilih Event ---</option>
-                                                        @foreach ($event as $ev)
-                                                        <option value="{{$ev->id_event}}">{{$ev->event}}</option>
+                                                    <select class="form-control" id="kelas" name="kelas" required>
+                                                        <option>--- Pilih Kelas ---</option>
+                                                        @foreach ($kelas as $kls)
+                                                        <option value="{{$kls->id_kelas}}">{{$kls->nama_kelas}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <label class="control-label col-md-3" for="pelajaran">Pelajaran<span class="required">*</span>
+                                                </label>
+                                                <div class="col-12 col-md-9">
+                                                    <select class="form-control" id="pelajaran" name="pelajaran" required>
+                                                        <option>--- Pilih Pelajaran ---</option>
+                                                        @foreach ($pelajaran as $pljr)
+                                                        <option value="{{$pljr->id_pelajaran}}">{{$pljr->pelajaran}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <label class="control-label col-md-3" for="perlengkapan">Perlengkapan<span class="required">*</span>
+                                                </label>
+                                                <div class="col-12 col-md-9">
+                                                    <select class="form-control" id="perlengkapan" name="perlengkapan[]" multiple="multiple" style="width:100%" required>
+                                                        <option value="">--- Pilih Perlengkapan ---</option>
+                                                        @foreach ($perlengkapan as $prl)
+                                                        <option value="{{$prl->id_perlengkapan}}">{{$prl->perlengkapan}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -85,31 +109,6 @@
                                                            <span class="fa fa-clock-o"></span>
                                                         </span>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <label class="control-label col-md-3" for="ringtone">Ringtone<span class="required">*</span>
-                                                </label>
-                                                <div class="col-12 col-md-9">
-                                                    <select class="form-control" id="ringtone" name="ringtone" required>
-                                                        <option>--- Pilih Ringtone ---</option>
-                                                        @foreach ($ringtone as $ring)
-                                                        <option value="{{$ring->id_ringtone}}">{{$ring->nama_ringtone}} <audio controls preload="auto" src="https://res.cloudinary.com/harsoft-development/video/upload/{{$ring->ringtone}}.mp3"></audio></option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <label class="control-label col-md-3" for="gelombang">Gelombang<span class="required">*</span>
-                                                </label>
-                                                <div class="col-12 col-md-9">
-                                                    <select class="form-control" id="gelombang" name="gelombang" required>
-                                                        <option>--- Pilih Gelombang ---</option>
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -128,19 +127,19 @@
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h3 class="modal-title" id="mediumModalLabel"><strong>Ubah Jadwal</strong></h3>
+                                        <h3 class="modal-title" id="mediumModalLabel"><strong>Ubah Jadwal Pelajaran</strong></h3>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/admin/jadwal/ujian/ubah" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/admin/jadwalPelajaran/ubah" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group" hidden>
-                                                <label class="control-label col-md-3" for="id_jadwal_exam">ID Jadwal<span class="required">*</span>
+                                                <label class="control-label col-md-3" for="id_jadwal_pelajaran">ID Jadwal<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="text" id="id_jadwal_exam" name="id_jadwal_exam" class="form-control" readonly required>
+                                                    <input type="text" id="id_jadwal_pelajaran" name="id_jadwal_pelajaran" class="form-control" readonly required>
                                                 </div>
                                             </div>
                                             <div class="row form-group">
@@ -156,13 +155,40 @@
                                                 </div>
                                             </div>
                                             <div class="row form-group">
-                                                <label class="control-label col-md-3" for="event">Event<span class="required">*</span>
+                                                <label class="control-label col-md-3" for="kelas">Kelas<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <select class="form-control" id="event" name="event" required>
-                                                        <option>--- Pilih Event ---</option>
-                                                        @foreach ($event as $ev)
-                                                        <option value="{{$ev->id_event}}">{{$ev->event}}</option>
+                                                    <select class="form-control" id="kelas" name="kelas" required>
+                                                        <option>--- Pilih Kelas ---</option>
+                                                        @foreach ($kelas as $kls)
+                                                        <option value="{{$kls->id_kelas}}">{{$kls->nama_kelas}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <label class="control-label col-md-3" for="pelajaran">Pelajaran<span class="required">*</span>
+                                                </label>
+                                                <div class="col-12 col-md-9">
+                                                    <select class="form-control" id="pelajaran" name="pelajaran" required>
+                                                        <option>--- Pilih Pelajaran ---</option>
+                                                        @foreach ($pelajaran as $pljr)
+                                                        <option value="{{$pljr->id_pelajaran}}">{{$pljr->pelajaran}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <label class="control-label col-md-3" for="perlengkapan">Perlengkapan<span class="required">*</span>
+                                                </label>
+                                                <div class="col-12 col-md-9">
+                                                    <div class="col-6" id="prl">
+
+                                                    </div>
+                                                    <select class="form-control" id="perlengkapan2" name="perlengkapan[]" multiple="multiple" placeholder="Ubah perlengkapan" style="width:100%" required>
+                                                        <option>--- Pilih Perlengkapan ---</option>
+                                                        @foreach ($perlengkapan as $prl)
+                                                        <option value="{{$prl->id_perlengkapan}}">{{$prl->perlengkapan}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -179,33 +205,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row form-group">
-                                                <label class="control-label col-md-3" for="ringtone">Ringtone<span class="required">*</span>
-                                                </label>
-                                                <div class="col-12 col-md-9">
-                                                    <select class="form-control" id="ringtone" name="ringtone" required>
-                                                        <option>--- Pilih Ringtone ---</option>
-                                                        @foreach ($ringtone as $ring)
-                                                            <option value="{{$ring->id_ringtone}}">{{$ring->nama_ringtone}} <audio controls preload="auto" src="https://res.cloudinary.com/harsoft-development/video/upload/{{$ring->ringtone}}.mp3"></audio></option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="row form-group">
-                                                <label class="control-label col-md-3" for="gelombang">Gelombang<span class="required">*</span>
-                                                </label>
-                                                <div class="col-12 col-md-9">
-                                                    <select class="form-control" id="gelombang" name="gelombang" required>
-                                                        <option>--- Pilih Gelombang ---</option>
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
                                             <div class="modal-footer">
                                                 <button type="submit" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                                 <button type="submit" class="btn btn-primary">Ubah</button>
@@ -222,20 +221,20 @@
                             <div class="modal-dialog modal-md" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h3 class="modal-title" id="mediumModalLabel"><strong>Hapus Jadwal</strong></h3>
+                                        <h3 class="modal-title" id="mediumModalLabel"><strong>Hapus Jadwal Pelajaran</strong></h3>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
                                         <h5>Apakah anda yakin?</h5>
-                                        <form action="/admin/jadwal/ujian/hapus" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/admin/jadwalPelajaran/hapus" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group" hidden>
-                                                <label class="control-label col-md-3" for="id_jadwal_exam">ID Jadwal<span class="required">*</span>
+                                                <label class="control-label col-md-3" for="id_jadwal_pelajaran">ID Jadwal<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="text" id="id_jadwal_exam" name="id_jadwal_exam" class="form-control" readonly required>
+                                                    <input type="text" id="id_jadwal_pelajaran" name="id_jadwal_pelajaran" class="form-control" readonly required>
                                                 </div>
                                             </div>
 
@@ -257,9 +256,9 @@
                                 <th>No</th>
                                 <th>Hari</th>
                                 <th>Jam</th>
-                                <th>Event</th>
-                                <th>Gelombang</th>
-                                <th>Ringtone</th>
+                                <th>Kelas</th>
+                                <th>Pelajaran</th>
+                                <th>Perlengkapan</th>
                                 <th>Aksi</th>
                               </tr>
                             </thead>
@@ -269,30 +268,33 @@
                                 <td>{{$i+=1}}</td>
                                 <td>{{$jdwl->hari->nama_hari}}</td>
                                 <td>{{$jdwl->jam}}</td>
-                                <td>{{$jdwl->event->event}}</td>
-                                <td>{{$jdwl->gelombang}}</td>
+                                <td>{{$jdwl->kelas->nama_kelas}}</td>
+                                <td>{{$jdwl->pelajaran->pelajaran}}</td>
                                 <td>
-                                    <audio controls="controls" preload="metadata" >
-                                        <source src="https://res.cloudinary.com/harsoft-development/video/upload/{{$jdwl->ringtone->ringtone}}.mp3"/>;
-                                    </audio>
+                                    <ul>
+                                        @foreach ($detail as $det)
+                                            @if($det->id_jadwal_pelajaran == $jdwl->id_jadwal_pelajaran)
+                                                <li>{{$det->perlengkapan->perlengkapan}}</li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-success btn-sm"
                                         data-target="#ubahJadwal"
                                         data-toggle="modal"
-                                        data-id_jadwal ="{{$jdwl->id_jadwal_exam}}"
+                                        data-id_jadwal ="{{$jdwl->id_jadwal_pelajaran}}"
                                         data-id_hari ="{{$jdwl->id_hari}}"
-                                        data-id_jam="{{$jdwl->jam}}"
-                                        data-id_event="{{$jdwl->id_event}}"
-                                        data-gelombang="{{$jdwl->gelombang}}"
-                                        data-id_ringtone="{{$jdwl->id_ringtone}}">
+                                        data-id_kelas ="{{$jdwl->id_kelas}}"
+                                        data-jam="{{$jdwl->jam}}"
+                                        data-id_pelajaran="{{$jdwl->id_pelajaran}}">
                                         <i class="fa fa-edit"></i>&nbsp;
                                             Ubah
                                     </button>
                                     <button type="button" class="btn btn-danger btn-sm"
                                         data-target="#hapusJadwal"
                                         data-toggle="modal"
-                                        data-id_jadwal ="{{$jdwl->id_jadwal_exam}}">
+                                        data-id_jadwal ="{{$jdwl->id_jadwal_pelajaran}}">
                                         <i class="fa fa-trash"></i>&nbsp;
                                             Hapus
                                     </button>
@@ -318,23 +320,35 @@
         });
     </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+
+    <script>
+        $('#perlengkapan').select2({
+            theme: 'classic',
+        });
+    </script>
+
+    <script>
+        $('#perlengkapan2').select2({
+            theme: 'classic',
+        });
+    </script>
+
     <script type="text/javascript">
         $(document).ready(function(){
             $('#ubahJadwal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var id_jadwal = button.data('id_jadwal');
             var id_hari = button.data('id_hari');
-            var id_jam = button.data('id_jam');
-            var id_event = button.data('id_event');
-            var gelombang = button.data('gelombang');
-            var id_ringtone = button.data('id_ringtone');
+            var id_kelas = button.data('id_kelas');
+            var jam = button.data('jam');
+            var id_pelajaran = button.data('id_pelajaran');
             var modal = $(this);
-            modal.find('.modal-body #id_jadwal_exam').val(id_jadwal);
+            modal.find('.modal-body #id_jadwal_pelajaran').val(id_jadwal);
             modal.find('.modal-body #hari').val(id_hari);
-            modal.find('.modal-body #jam').val(id_jam);
-            modal.find('.modal-body #event').val(id_event);
-            modal.find('.modal-body #gelombang').val(gelombang);
-            modal.find('.modal-body #ringtone').val(id_ringtone);
+            modal.find('.modal-body #kelas').val(id_kelas);
+            modal.find('.modal-body #jam').val(jam);
+            modal.find('.modal-body #pelajaran').val(id_pelajaran);
             });
         });
     </script>
@@ -345,7 +359,7 @@
             var button = $(event.relatedTarget);
             var id_jadwal = button.data('id_jadwal');
             var modal = $(this);
-            modal.find('.modal-body #id_jadwal_exam').val(id_jadwal);
+            modal.find('.modal-body #id_jadwal_pelajaran').val(id_jadwal);
             });
         });
     </script>

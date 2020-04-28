@@ -187,34 +187,30 @@
 @endsection
 
 @section('script')
-  @include('admin/master/scriptTables')
-  @push('table_script')
+    @include('admin/master/scriptTables')
 
-  @endpush
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#ubahEvent').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var id_event= button.data('id_event');
+            var event = button.data('event');
+            var modal = $(this);
+            modal.find('.modal-body #id_event').val(id_event);
+            modal.find('.modal-body #event').val(event);
+            });
+        });
+    </script>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-          $('#ubahEvent').on('show.bs.modal', function (event) {
-          var button = $(event.relatedTarget);
-          var id_event= button.data('id_event');
-          var event = button.data('event');
-            console.log(event);
-          var modal = $(this);
-          modal.find('.modal-body #id_event').val(id_event);
-          modal.find('.modal-body #event').val(event);
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#hapusEvent').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var id_event= button.data('id_event');
+            var modal = $(this);
+            modal.find('.modal-body #id_event').val(id_event);
+            });
         });
-    });
-</script>
-<script type="text/javascript">
-    $(document).ready(function(){
-          $('#hapusEvent').on('show.bs.modal', function (event) {
-          var button = $(event.relatedTarget);
-          var id_event= button.data('id_event');
-            console.log(event);
-          var modal = $(this);
-          modal.find('.modal-body #id_event').val(id_event);
-        });
-    });
-</script>
+    </script>
 @endsection
 

@@ -15,7 +15,10 @@ class CreateDetailPelajaranTable extends Migration
     {
         Schema::create('detail_pelajaran', function (Blueprint $table) {
             $table->bigIncrements('id_detail_pelajaran');
-            $table->string('perlengkapan');
+            $table->unsignedBigInteger('id_jadwal_pelajaran');
+            $table->foreign('id_jadwal_pelajaran')->references('id_jadwal_pelajaran')->on('jadwal_pelajaran');
+            $table->unsignedBigInteger('id_perlengkapan');
+            $table->foreign('id_perlengkapan')->references('id_perlengkapan')->on('perlengkapan');
             $table->timestamps();
         });
     }

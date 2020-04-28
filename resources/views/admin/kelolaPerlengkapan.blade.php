@@ -51,7 +51,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/admin/jadwalPelajaran/detail/tambah" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/admin/jadwalPelajaran/perlengkapan/tambah" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group">
                                                 <label class="control-label col-md-3" for="perlengkapan">Perlengkapan<span class="required">*</span>
@@ -76,19 +76,19 @@
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h3 class="modal-title" id="mediumModalLabel"><strong>Ubah Event</strong></h3>
+                                        <h3 class="modal-title" id="mediumModalLabel"><strong>Ubah Perlengkapan</strong></h3>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/admin/jadwalPelajaran/detail/ubah" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/admin/jadwalPelajaran/perlengkapan/ubah" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group" hidden>
-                                                <label class="control-label col-md-3" for="id_detail_pelajaran">ID Detail Pelajaran<span class="required">*</span>
+                                                <label class="control-label col-md-3" for="id_perlengkapan">ID Perlengkapan<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="text" id="id_detail_pelajaran" name="id_detail_pelajaran" class="form-control" readonly required>
+                                                    <input type="text" id="id_perlengkapan" name="id_perlengkapan" class="form-control" readonly required>
                                                 </div>
                                             </div>
                                             <div class="row form-group">
@@ -114,20 +114,20 @@
                             <div class="modal-dialog modal-md" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h3 class="modal-title" id="mediumModalLabel"><strong>Hapus Detail</strong></h3>
+                                        <h3 class="modal-title" id="mediumModalLabel"><strong>Hapus Perlengkapan</strong></h3>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
                                         <h5>Apakah anda yakin?</h5>
-                                        <form action="/admin/jadwalPelajaran/detail/hapus" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="/admin/jadwalPelajaran/perlengkapan/hapus" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             {{ csrf_field()}}
                                             <div class="row form-group" hidden>
-                                                <label class="control-label col-md-3" for="id_detail_pelajaran">ID Detail Pelajaran<span class="required">*</span>
+                                                <label class="control-label col-md-3" for="id_perlengkapan">ID Perlengkapan<span class="required">*</span>
                                                 </label>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="text" id="id_detail_pelajaran" name="id_detail_pelajaran" class="form-control" readonly required>
+                                                    <input type="text" id="id_perlengkapan" name="id_perlengkapan" class="form-control" readonly required>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -151,7 +151,7 @@
                               </tr>
                             </thead>
                             <tbody>
-                            @foreach($detail as $key=>$det)
+                            @foreach($perlengkapan as $key=>$det)
                               <tr>
                                 <td>{{++$key}}</td>
                                 <td>{{$det->perlengkapan}}</td>
@@ -159,7 +159,7 @@
                                     <button type="button" class="btn btn-success btn-sm"
                                         data-target="#ubahDetail"
                                         data-toggle="modal"
-                                        data-id_detail="{{$det->id_detail_pelajaran}}"
+                                        data-id_perlengkapan="{{$det->id_perlengkapan}}"
                                         data-perlengkapan="{{$det->perlengkapan}}">
                                         <i class="fa fa-edit"></i>&nbsp;
                                             Ubah
@@ -167,7 +167,7 @@
                                     <button type="button" class="btn btn-danger btn-sm"
                                         data-target="#hapusDetail"
                                         data-toggle="modal"
-                                        data-id_detail="{{$det->id_detail_pelajaran}}">
+                                        data-id_perlengkapan="{{$det->id_perlengkapan}}">
                                         <i class="fa fa-trash"></i>&nbsp;
                                             Hapus
                                     </button>
@@ -185,19 +185,16 @@
 @endsection
 
 @section('script')
-  @include('admin/master/scriptTables')
-  @push('table_script')
-
-  @endpush
+@include('admin/master/scriptTables')
 
 <script type="text/javascript">
     $(document).ready(function(){
           $('#ubahDetail').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget);
-          var id_detail= button.data('id_detail');
+          var id_perlengkapan= button.data('id_perlengkapan');
           var perlengkapan = button.data('perlengkapan');
           var modal = $(this);
-          modal.find('.modal-body #id_detail_pelajaran').val(id_detail);
+          modal.find('.modal-body #id_perlengkapan').val(id_perlengkapan);
           modal.find('.modal-body #perlengkapan').val(perlengkapan);
         });
     });
@@ -206,11 +203,12 @@
     $(document).ready(function(){
           $('#hapusDetail').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget);
-          var id_detail= button.data('id_detail');
+          var id_perlengkapan= button.data('id_perlengkapan');
           var modal = $(this);
-          modal.find('.modal-body #id_detail_pelajaran').val(id_detail);
+          modal.find('.modal-body #id_pelengkapan').val(id_perlengkapan);
         });
     });
 </script>
+
 @endsection
 

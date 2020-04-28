@@ -10,9 +10,13 @@ class DetailPelajaran extends Model
 
     protected $primaryKey = 'id_detail_pelajaran';
 
-    protected $fillable = ['perlengkapan'];
+    protected $fillable = ['id_jadwal_pelajaran', 'id_perlengkapan'];
 
     public function jadwalPelajaran() {
-        return $this->hasMany('App\JadwalPelajaran', 'id_detail_pelajaran');
+        return $this->belongsTo('App\JadwalPelajaran','id_jadwal_pelajaran');
+    }
+
+    public function perlengkapan() {
+        return $this->belongsTo('App\Perlengkapan', 'id_perlengkapan');
     }
 }

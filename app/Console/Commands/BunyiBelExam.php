@@ -2,21 +2,20 @@
 
 namespace App\Console\Commands;
 
-use App\Jadwal;
+use App\JadwalExam;
 use App\Ringtone;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
-
-class BunyiBel extends Command
+class BunyiBelExam extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'bunyiBel:log';
+    protected $signature = 'bunyiBelExam:log';
 
     /**
      * The console command description.
@@ -42,13 +41,11 @@ class BunyiBel extends Command
      */
     public function handle()
     {
-        Log::info("Time : ".\Carbon\Carbon::now()->format('H:i:s'));
-
-        $jadwal = Jadwal::all();
+        $jadwal = JadwalExam::all();
         foreach($jadwal as $jdwl){
             $jam = Carbon::parse($jdwl->jam)->format('H:i');
             if(Carbon::now()->format('H:i') == $jam){
-                Log::info("Info : Bel Berbunyi");
+                Log::info("Info : Bel Ujian Berbunyi");
                 $ringtone = Ringtone::where('id_ringtone', $jdwl->id_ringtone)->value('ringtone');
                 $url_ringtone = "https://res.cloudinary.com/harsoft-development/video/upload/".$ringtone.".mp3";
                 event(new \App\Events\BunyikanBel($url_ringtone));

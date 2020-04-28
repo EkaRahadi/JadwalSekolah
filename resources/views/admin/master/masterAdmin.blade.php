@@ -63,6 +63,14 @@
 
             <div class="clearfix"></div>
 
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_info">
+              <h2>{{App\ProfileSekolah::orderBy('created_at', 'desc')->value('nama_sekolah')}}</h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
             <br />
 
             <!-- sidebar menu -->
@@ -77,9 +85,9 @@
                         <li><a href="/admin/dataSekolah/kelas">Kelas</a></li>
                         <li><a href="/admin/dataSekolah/siswa">Siswa</a></li>
                         <li><a href="/admin/dataSekolah/civitas">Civitas</a></li>
+                        <li><a href="/admin/dataSekolah/profilSekolah"></i> Profil Sekolah</a>
+                        </li>
                       </ul>
-                  </li>
-                  <li><a href="admin/yayasan"><i class="fa fa-folder"></i>Kelola Data Yayasan</a>
                   </li>
                   <li><a><i class="fa fa-folder"></i>Kelola Data Pihak Luar<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
@@ -95,17 +103,16 @@
                   </li>
                   <li><a><i class="fa fa-calendar"></i>Kelola Jadwal Pelajaran<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="/admin/jadwal/pelajaran">Jadwal Pelajaran</a></li>
-                        <li><a href="/admin/jadwalPelajaran/detail">Perlengkapan</a></li>
+                        <li><a href="/admin/jadwalPelajaran">Jadwal Pelajaran</a></li>
+                        <li><a href="/admin/jadwalPelajaran/pelajaran">Pelajaran</a></li>
+                        <li><a href="/admin/jadwalPelajaran/perlengkapan">Perlengkapan</a></li>
                       </ul>
-                  </li>
-                  <li><a href="#"><i class="fa fa-file"></i> Postingan</a>
                   </li>
                   <li><a href="/admin/ringtone"><i class="fa fa-music"></i> Ringtone</a>
                   </li>
-                  <li><a href="/admin/pemberitahuan"><i class="fa fa-bell"></i> Pemberitahuan</a>
+                  <li><a href="/admin/postingan"><i class="fa fa-file"></i> Postingan</a>
                   </li>
-                  <li><a href="#"><i class="fa fa-university"></i> Profil Sekolah</a>
+                  <li><a href="/admin/pemberitahuan"><i class="fa fa-bell"></i> Pemberitahuan</a>
                   </li>
                 </ul>
               </div>
@@ -144,7 +151,8 @@
                     {{App\Admin::where('username', Session::get('username'))->value('nama')}}
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item"  href="#">Ganti Password</a>
+                    <a class="dropdown-item"  href="/admin/gantiPassword">Ganti Password</a>
+                    <a class="dropdown-item"  href="/admin/opsi">Pengaturan</a>
                     <a class="dropdown-item"  href="/admin/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                   </div>
                 </li>
@@ -206,7 +214,6 @@
             @yield('content')
         </div>
 
-
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -250,8 +257,6 @@
                 })
 
             });
-
-
 
         </script>
 

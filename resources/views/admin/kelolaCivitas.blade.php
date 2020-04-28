@@ -261,46 +261,44 @@
 @endsection
 
 @section('script')
-  @include('admin/master/scriptTables')
-  @push('table_script')
+    @include('admin/master/scriptTables')
 
-  @endpush
-  <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+
     <script>
         $('.js-example-basic-single').select2({
             theme: "classic",
         });
     </script>
-  <script type="text/javascript">
-    $(document).ready(function(){
-        $('#ubahCivitas').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget);
-        var id_civitas = button.data('id_civitas');
-        var nama = button.data('nama');
-        var email = button.data('email');
-        var hp = button.data('hp');
-        var tipe_civitas = button.data('tipe_civitas');
 
-        var modal = $(this);
-        modal.find('.modal-body #id_civitas').val(id_civitas);
-        modal.find('.modal-body #nama').val(nama);
-        modal.find('.modal-body #email').val(email);
-        modal.find('.modal-body #hp').val(hp);
-        modal.find('.modal-body #tipe_civitas').val(tipe_civitas);
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#ubahCivitas').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var id_civitas = button.data('id_civitas');
+            var nama = button.data('nama');
+            var email = button.data('email');
+            var hp = button.data('hp');
+            var tipe_civitas = button.data('tipe_civitas');
+            var modal = $(this);
+            modal.find('.modal-body #id_civitas').val(id_civitas);
+            modal.find('.modal-body #nama').val(nama);
+            modal.find('.modal-body #email').val(email);
+            modal.find('.modal-body #hp').val(hp);
+            modal.find('.modal-body #tipe_civitas').val(tipe_civitas);
+            });
         });
-    });
-</script>
+    </script>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#hapusCivitas').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget);
-        var id_civitas = button.data('id_civitas');
-
-        var modal = $(this);
-        modal.find('.modal-body #id_civitas').val(id_civitas);
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#hapusCivitas').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var id_civitas = button.data('id_civitas');
+            var modal = $(this);
+            modal.find('.modal-body #id_civitas').val(id_civitas);
+            });
         });
-    });
-</script>
+    </script>
 @endsection
 

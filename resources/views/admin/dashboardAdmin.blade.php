@@ -27,7 +27,7 @@
     @endif
     @if(Session::has('alert success'))
         <div class="form-group alert alert-success">
-            <div>{{Session::get('alert-\ success')}}</div>
+            <div>{{Session::get('alert success')}}</div>
         </div>
     @endif
 
@@ -62,7 +62,4 @@
 
 @section('script')
     @include('admin/master/scriptDashboard')
-    @push('dashboard_script')
-
-    @endpush
 @endsection

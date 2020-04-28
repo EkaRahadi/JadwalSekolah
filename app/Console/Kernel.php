@@ -3,7 +3,9 @@
 namespace App\Console;
 
 use App\Jadwal;
+use App\JadwalExam;
 use App\Jam;
+use App\Option;
 use App\Ringtone;
 use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
@@ -28,12 +30,28 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $jadwal = Jadwal::all();
-        foreach($jadwal as $jdwl){
-            $jam = Carbon::parse($jdwl->jam)->format('H:i');
-            $hari = $jdwl->id_hari;
-            $schedule->command('bunyiBel:log')->weeklyOn($hari, $jam);
+
+        $jadwalReguler = Jadwal::get();
+        $jadwalExam = JadwalExam::get();
+        $opsiReguler = Option::where('nama_option', "Jadwal Reguler");
+        $opsiExam = Option::where('nama_option', "Jadwal Ujian");
+
+        if($opsiReguler->value('aktif') == 1){
+            foreach($jadwalReguler as $jdwl){
+                $jam = Carbon::parse($jdwl->jam)->format('H:i');
+                $hari = $jdwl->id_hari;
+                $schedule->command('bunyiBel:log')->weeklyOn($hari, $jam);
+            }
         }
+
+        if($opsiExam->value('aktif') == 1){
+            foreach($jadwalExam as $jdwl){
+                $jam = Carbon::parse($jdwl->jam)->format('H:i');
+                $hari = $jdwl->id_hari;
+                $schedule->command('bunyiBelExam:log')->weeklyOn($hari, $jam);
+            }
+        }
+
         // $schedule->command('bunyiBel:log')->everyMinute();
         // $jadwal = Jadwal::all();
         // for ($i=0; $i<$jadwal->count(); $i++) {

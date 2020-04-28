@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Civitas;
 use App\Jadwal;
 use App\Kelas;
+use App\ProfileSekolah;
+use Illuminate\Foundation\Console\Presets\React;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -137,6 +139,43 @@ class DataSekolahController extends Controller
             $civitas = Civitas::findOrFail($request->id_civitas);
             $civitas->delete($civitas);
             return redirect('admin/dataSekolah/civitas')->with('alert danger', 'Civitas berhasil dihapus!');
+        }
+    }
+
+    public function profil_sekolah(){
+        if(!Session::get('loginAdmin')){
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+        }else{
+            $profil = ProfileSekolah::orderBy('created_at', 'desc');
+            return view('admin/kelolaProfilSekolah', compact('profil'));
+        }
+    }
+
+    public function simpan_profil(Request $request){
+        if(!Session::get('loginAdmin')){
+            return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu!');
+        }else{
+            $profil = ProfileSekolah::where('id_profile_sekolah', $request->id_profile_sekolah)->get();
+
+            if($profil->count()<1){
+                $prof = new ProfileSekolah();
+                $prof->nama_sekolah = $request->nama_sekolah;
+                $prof->kontak = $request->kontak;
+                $prof->alamat = $request->alamat;
+                $prof->link_website = $request->link;
+                $prof->visi_misi = $request->visimisi;
+                $prof->save();
+                return redirect('admin/dataSekolah/profilSekolah')->with('alert success', 'Profil sekolah berhasil disimpan!');
+            }else{
+                $prof = ProfileSekolah::findOrFail($request->id_profile_sekolah);
+                $prof->nama_sekolah = $request->nama_sekolah;
+                $prof->kontak = $request->kontak;
+                $prof->alamat = $request->alamat;
+                $prof->link_website = $request->link;
+                $prof->visi_misi = $request->visimisi;
+                $prof->save();
+                return redirect('admin/dataSekolah/profilSekolah')->with('alert success', 'Profil sekolah berhasil disimpan!');
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ class Admin extends Model
 {
     protected $table = 'admin';
 
-    protected $primaryKey = 'id_admin';
+    protected $primaryKey = 'username';
 
     protected $fillable = ['username','password'];
 
