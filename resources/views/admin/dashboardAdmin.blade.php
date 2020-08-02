@@ -33,27 +33,27 @@
 
       <div class="col-md-2 col-sm-4  tile_stats_count">
         <span class="count_top"><i class="fa fa-user"></i> Jumlah Siswa</span>
-        <div class="count">2500</div>
+        <div class="count">{{$siswa_count}}</div>
       </div>
       <div class="col-md-2 col-sm-4  tile_stats_count">
         <span class="count_top"><i class="fa fa-clock-o"></i> Jadwal Terdaftar</span>
-        <div class="count">123.50</div>
+        <div class="count">{{$jadwal_count}}</div>
+      </div>
+      <div class="col-md-2 col-sm-4  tile_stats_count">
+        <span class="count_top"><i class="fa fa-clock-o"></i> Jadwal Ujian Terdaftar</span>
+        <div class="count">{{$ujian_count}}</div>
       </div>
       <div class="col-md-2 col-sm-4  tile_stats_count">
         <span class="count_top"><i class="fa fa-user"></i> Jumlah Kelas</span>
-        <div class="count green">2,500</div>
+        <div class="count green">{{$kelas_count}}</div>
       </div>
       <div class="col-md-2 col-sm-4  tile_stats_count">
         <span class="count_top"><i class="fa fa-user"></i> Jumlah Guru</span>
-        <div class="count">4,567</div>
+        <div class="count">{{$guru_count}}</div>
       </div>
       <div class="col-md-2 col-sm-4  tile_stats_count">
         <span class="count_top"><i class="fa fa-user"></i> Waktu Delay Jadwal</span>
         <div class="count">3 s</div>
-      </div>
-      <div class="col-md-2 col-sm-4  tile_stats_count">
-        <span class="count_top"><i class="fa fa-user"></i> Ketepatan Waktu Jadwal</span>
-        <div class="count">99,7%</div>
       </div>
     </div>
 </div>

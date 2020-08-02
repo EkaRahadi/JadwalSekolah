@@ -13,6 +13,7 @@
 
 //Route Admin
 
+use Illuminate\Support\Facades\Route;
 
 Route::get('/admin', function () {
     return redirect('/admin/login');
@@ -167,5 +168,7 @@ Route::post('/admin/pemberitahuan/kirim/email/{i}', 'PemberitahuanController@kir
 
 Route::post('/admin/pemberitahuan/kirim/sms', 'PemberitahuanController@kirim_sms');
 
+//API
 
+Route::post('/getJadwalPelajaran', 'APIController@getJadwalPelajaran');
 

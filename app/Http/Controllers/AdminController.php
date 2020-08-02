@@ -5,7 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Admin;
+use App\Civitas;
+use App\Jadwal;
+use App\JadwalExam;
+use App\Kelas;
 use App\Option;
+use App\Students;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -38,7 +43,12 @@ class AdminController extends Controller
         if(!Session::get('loginAdmin')){
             return redirect('admin/login')->with('alert danger', 'Anda harus login terlebih dahulu');
         }else{
-            return view('admin/dashboardAdmin');
+            $siswa_count = Students::get()->count();
+            $jadwal_count = Jadwal::get()->count();
+            $ujian_count = JadwalExam::get()->count();
+            $guru_count = Civitas::where('tipe_civitas', 'Guru')->get()->count();
+            $kelas_count = Kelas::get()->count();
+            return view('admin/dashboardAdmin', compact('siswa_count', 'jadwal_count', 'guru_count', 'kelas_count', 'ujian_count'));
         }
     }
 
