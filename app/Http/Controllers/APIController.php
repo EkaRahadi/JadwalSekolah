@@ -69,14 +69,14 @@ class APIController extends Controller
                 ], 200);
             }else{
                 return response()->json([
-                    'status' => 1,
+                    'status' => 0,
                     'message' => "Password salah!",
                     'siswa' => null
                 ], 200);
             }
         }else{
             return response()->json([
-                'status' => 1,
+                'status' => 0,
                 'message' => "Username salah!",
                 'siswa' => null
             ], 200);
