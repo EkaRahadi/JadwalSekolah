@@ -32,7 +32,7 @@ class OrangTuaController extends Controller
         }else{
             $validatedData = $request->validate([
                 'nama' => 'max:255',
-                'email' => 'unique:parents|max:255',
+                'email' => 'unique:parents|max:255|email',
                 'hp' => 'max:13'
             ]);
 

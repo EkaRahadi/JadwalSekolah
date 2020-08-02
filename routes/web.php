@@ -172,3 +172,4 @@ Route::post('/admin/pemberitahuan/kirim/sms', 'PemberitahuanController@kirim_sms
 
 Route::post('/getJadwalPelajaran', 'APIController@getJadwalPelajaran');
 
+Route::post('/loginOrtu', 'APIController@loginOrtu');
