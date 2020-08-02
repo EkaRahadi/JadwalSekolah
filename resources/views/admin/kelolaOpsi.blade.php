@@ -30,6 +30,11 @@
                         <div>{{Session::get('alert success')}}</div>
                     </div>
                 @endif
+
+                <div  id="alert_opsi">
+
+                </div>
+
                 <div class="card">
                     <div class="card-body">
                         <div class="form-group">
@@ -74,6 +79,12 @@
                   data: {'aktif': aktif, 'id_option': id_option},
                   success: function(data){
                     console.log(data.success)
+                    $('#alert_opsi').empty()
+                    $('#alert_opsi').html(`
+                        <div class="form-group alert alert-primary">
+                            ${data.success}
+                        </div>
+                    `)
                   }
               });
           })
@@ -92,6 +103,12 @@
                 data: {'aktif': aktif, 'id_option': id_option},
                 success: function(data){
                     console.log(data.success)
+                    $('#alert_opsi').empty()
+                    $('#alert_opsi').html(`
+                        <div class="form-group alert alert-primary">
+                            ${data.success}
+                        </div>
+                    `)
                 }
             });
         })

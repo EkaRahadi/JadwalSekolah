@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Admin;
 use App\Civitas;
+use App\Hari;
 use App\Jadwal;
 use App\JadwalExam;
 use App\Kelas;
@@ -17,6 +18,39 @@ class AdminController extends Controller
 {
     public function login_index(){
         if(!Session::get('loginAdmin')){
+
+            $admin = Admin::get();
+            $hari = Hari::get();
+
+            if($admin->count()<1){
+                $adm = new Admin();
+                $adm->username = "admin";
+                $adm->password = "admin123";
+                $adm->nama = "Default Admin";
+                $adm->save();
+            }
+
+            if($hari->count()<1){
+                for($i=1; $i<=5; $i++){
+                    $hr = new Hari();
+                    $hr->id_hari = $i;
+
+                    if($i == 1){
+                        $hr->nama_hari = "Senin";
+                    }elseif($i == 2){
+                        $hr->nama_hari = "Selasa";
+                    }elseif($i == 3){
+                        $hr->nama_hari = "Rabu";
+                    }elseif($i == 4){
+                        $hr->nama_hari = "Kamis";
+                    }elseif($i == 5){
+                        $hr->nama_hari = "Jumat";
+                    }
+
+                    $hr->save();
+                }
+            }
+
             return view('admin/loginAdmin');
         }else{
             return redirect('admin/dashboard');
