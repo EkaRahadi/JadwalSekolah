@@ -34,7 +34,7 @@ class SiswaController extends Controller
             if($validatedData){
                 Students::create([
                     'nama' => $request->nama,
-                    'id_parents' => $request->parent,
+                    'id_parents' => $request->id_parents,
                     'id_kelas' => $request->kelas
                 ]);
                 return redirect('admin/dataSekolah/siswa')->with('alert success', 'Siswa berhasil ditambahkan!');

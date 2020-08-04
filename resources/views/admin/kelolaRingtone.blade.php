@@ -212,7 +212,7 @@
                                         {{ method_field('post') }}
                                         <div class="form-group">
                                             <label for="file_sound" class="control-label">Upload Sound</label>
-                                            <input class="form-control" type="file" name="file_sound" id="file_sound" placeholder="Masukkan sound yang akan dikonversi" required></textarea>
+                                            <input class="form-control" type="file" name="file_sound" id="file_sound" placeholder="Masukkan sound yang akan dikonversi" accept="audio/*" required></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="ortu" class="control-label">Format</label>

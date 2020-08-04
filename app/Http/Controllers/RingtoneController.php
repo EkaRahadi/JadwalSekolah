@@ -7,7 +7,9 @@ use App\Ringtone;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use JD\Cloudder\Facades\Cloudder;
+use ProtoneMedia\LaravelFFMpeg\Support\FFMpeg;
 
 class RingtoneController extends Controller
 {
@@ -89,19 +91,20 @@ class RingtoneController extends Controller
     }
 
     public function konversi_sound(Request $request){
-        $sound = $request->file_sound;
+        $sound = $request->file('file_sound');
         $format = $request->format;
         $random = random_int(0,100);
-        exec('sox '.$sound.' outfile-'.$random.'.'.$format.'');
-        try{
-            $convert = exec('sox '.$sound.' outfile-'.$random.'.'.$format.'');
-            if($convert){
-                return redirect('admin/ringtone')->with('alert success', 'Sound berhasil diubah menjadi '.$format.'');
-            }else{
-                return redirect('admin/ringtone')->with('alert danger', 'Sound gagal dikonversi!');
-            }
-        }catch(Exception $e){
-            return redirect('admin/ringtone')->with('alert danger', 'Sound gagal dikonversi!, Error: '.$e.'');
-        }
+
+        $dir_converted = 'public/storage/converted_ringtones/'.$random.'.aac';
+
+        FFMpeg::open($sound)
+                    ->export()
+                    ->toDisk('public')
+                    ->inFormat(new \FFMpeg\Format\Audio\Aac)
+                    ->save($dir_converted);
+
+
+        return Storage::url($dir_converted);
+
     }
 }
