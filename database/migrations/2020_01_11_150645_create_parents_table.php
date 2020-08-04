@@ -20,6 +20,7 @@ class CreateParentsTable extends Migration
             $table->string('email',255)->unique();
             $table->string('password', 255);
             $table->longText('alamat');
+            $table->string('token')->nullable();
             $table->timestamps();
         });
     }
