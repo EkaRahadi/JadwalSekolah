@@ -168,7 +168,6 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         JD\Cloudder\CloudderServiceProvider::class,
         ProtoneMedia\LaravelFFMpeg\Support\ServiceProvider::class,
-
         /*
          * Application Service Providers...
          */
@@ -177,7 +176,6 @@ return [
         App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
     ],
 
     /*

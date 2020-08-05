@@ -38,7 +38,7 @@
                             <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Upload Ringtone</a>
-                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Konversi Ke MP3</a>
+                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" hidden>Konversi Ke MP3</a>
                                 </div>
                             </nav>
                             <div class="tab-content pl-3 pt-2" id="nav-tabContent">
@@ -206,7 +206,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" hidden>
                                     <form class="form-horizontal" role="form" method="post" action="/admin/ringtone/konversi" enctype="multipart/form-data">
                                         {{ csrf_field() }}
                                         {{ method_field('post') }}

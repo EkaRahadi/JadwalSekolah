@@ -37,7 +37,7 @@
                             <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Kirim Pemberitahuan Lewat Email</a>
-                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Kirim Pemberitahuan Lewat SMS</a>
+                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" hidden>Kirim Pemberitahuan Lewat SMS</a>
                                 </div>
                             </nav>
                             <div class="tab-content pl-3 pt-2" id="nav-tabContent">
@@ -128,7 +128,7 @@
                     <div class="card-header">
                         <strong class="card-title">Riwayat Pemberitahuan</strong>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body table-responsive">
 
                         <!-- Modal Info Pesan -->
 
