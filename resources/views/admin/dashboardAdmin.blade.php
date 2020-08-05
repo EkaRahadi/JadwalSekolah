@@ -57,6 +57,142 @@
       </div>
     </div>
 </div>
+
+@if($opsi_reguler == 1)
+<hr>
+<div class="row">
+    <div class="col-md-6">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>Jadwal bel yang akan datang</h2>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+        @if($jadwal_reguler->count()!=0)
+            @foreach($jadwal_reguler as $reg)
+            @if(\Carbon\Carbon::parse($reg->jam)->format('H:i') >= \Carbon\Carbon::now()->format('H:i'))
+            <article class="media event">
+                <a class="pull-left date">
+                <p class="month">{{$reg->hari->nama_hari}}</p>
+                </a>
+                <div class="media-body">
+                <p><b>{{\Carbon\Carbon::parse($reg->jam)->format('H:i')}}</b></p>
+                <p>{{$reg->event->event}} - Kelas {{$reg->kelas->nama_kelas}}</p>
+                </div>
+            </article>
+            @else
+            <center><p><h3>Tidak ada jadwal</h3></p></center>
+            @break
+            @endif
+            @endforeach
+        @else
+        <center><p><h3>Tidak ada jadwal</h3></p></center>
+        @endif
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>Jadwal bel yang sudah lewat</h2>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+        @if($jadwal_reguler->count()!=0)
+            @foreach($jadwal_reguler as $reg)
+            @if(\Carbon\Carbon::parse($reg->jam)->format('H:i') < \Carbon\Carbon::now()->format('H:i'))
+            <article class="media event">
+                <a class="pull-left date">
+                <p class="month">{{$reg->hari->nama_hari}}</p>
+                </a>
+                <div class="media-body">
+                <p><b>{{\Carbon\Carbon::parse($reg->jam)->format('H:i')}}</b></p>
+                <p>{{$reg->event->event}} - Kelas {{$reg->kelas->nama_kelas}}</p>
+                </div>
+            </article>
+            @else
+            <center><p><h3>Tidak ada jadwal</h3></p></center>
+            @break
+            @endif
+            @endforeach
+        @else
+        <center><p><h3>Tidak ada jadwal</h3></p></center>
+        @endif
+        </div>
+      </div>
+    </div>
+</div>
+@endif
+
+@if($opsi_ujian == 1)
+<hr>
+<div class="row">
+    <div class="col-md-6">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>Jadwal bel ujian yang akan datang</h2>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+        @if($jadwal_exam->count()!=0)
+            @foreach($jadwal_exam as $reg)
+            @if(\Carbon\Carbon::parse($reg->jam)->format('H:i') >= \Carbon\Carbon::now()->format('H:i'))
+            <article class="media event">
+                <a class="pull-left date">
+                <p class="month">{{$reg->hari->nama_hari}}</p>
+                <p class="day">{{$reg->gelombang}}</p>
+                </a>
+                <div class="media-body">
+                <p><b>{{\Carbon\Carbon::parse($reg->jam)->format('H:i')}}</b></p>
+                <p>{{$reg->event->event}}</p>
+                </div>
+            </article>
+            @else
+            <center><p><h3>Tidak ada jadwal</h3></p></center>
+            @break
+            @endif
+            @endforeach
+        @else
+        <center><p><h3>Tidak ada jadwal</h3></p></center>
+        @endif
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>Jadwal bel ujian yang sudah lewat</h2>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+        @if($jadwal_exam->count()!=0)
+            @foreach($jadwal_exam as $reg)
+            @if(\Carbon\Carbon::parse($reg->jam)->format('H:i') < \Carbon\Carbon::now()->format('H:i'))
+            <article class="media event">
+                <a class="pull-left date">
+                <p class="month">{{$reg->hari->nama_hari}}</p>
+                <p class="day">{{$reg->gelombang}}</p>
+                </a>
+                <div class="media-body">
+                <p><b>{{\Carbon\Carbon::parse($reg->jam)->format('H:i')}}</b></p>
+                <p>{{$reg->event->event}}</p>
+                </div>
+            </article>
+            @else
+            <center><p><h3>Tidak ada jadwal</h3></p></center>
+            @break
+            @endif
+            @endforeach
+        @else
+        <center><p><h3>Tidak ada jadwal</h3></p></center>
+        @endif
+        </div>
+      </div>
+    </div>
+</div>
+@endif
 <!-- /top tiles -->
 @endsection
 

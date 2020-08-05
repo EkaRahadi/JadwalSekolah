@@ -9,7 +9,7 @@
     <div class="animated fadeIn">
         <!-- Widgets  -->
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 col-sm-12">
                 @if ($errors->any())
                     <div class="alert alert-danger" role="alert">
                         <ul>
@@ -29,9 +29,9 @@
                         <div>{{Session::get('alert success')}}</div>
                     </div>
                 @endif
-                <div class="card">
+                <div class="x_panel">
 
-                    <div class="card-body">
+                    <div class="x_content table-responsive">
                         <button type="button" class="btn btn-info mb-1" data-toggle="modal" data-target="#tambahJadwal"><i class="fa fa-plus-square"></i>
                             Tambah Jadwal
                         </button>

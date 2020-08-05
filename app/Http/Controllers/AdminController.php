@@ -12,6 +12,7 @@ use App\JadwalExam;
 use App\Kelas;
 use App\Option;
 use App\Students;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -82,7 +83,39 @@ class AdminController extends Controller
             $ujian_count = JadwalExam::get()->count();
             $guru_count = Civitas::where('tipe_civitas', 'Guru')->get()->count();
             $kelas_count = Kelas::get()->count();
-            return view('admin/dashboardAdmin', compact('siswa_count', 'jadwal_count', 'guru_count', 'kelas_count', 'ujian_count'));
+
+            $jadwal_reguler = null;
+            $jadwal_exam = null;
+
+            $hari_now = Carbon::now()->format('l');
+            $jam_now = Carbon::now()->format('H:i');
+
+            // var_dump($hari_now);
+
+            if($hari_now == "Monday"){
+                $jadwal_reguler = Jadwal::where('id_hari', 1)->get();
+                $jadwal_exam = JadwalExam::where('id_hari', 1)->get();
+            }elseif($hari_now == "Tuesday"){
+                $jadwal_reguler = Jadwal::where('id_hari', 2)->get();
+                $jadwal_exam = JadwalExam::where('id_hari', 2)->get();
+            }elseif($hari_now == "Wednesday"){
+                $jadwal_reguler = Jadwal::where('id_hari', 3)->get();
+                $jadwal_exam = JadwalExam::where('id_hari', 3)->get();
+            }elseif($hari_now == "Thursday"){
+                $jadwal_reguler = Jadwal::where('id_hari', 4)->get();
+                $jadwal_exam = JadwalExam::where('id_hari', 4)->get();
+            }elseif($hari_now == "Friday"){
+                $jadwal_reguler = Jadwal::where('id_hari', 5)->get();
+                $jadwal_exam = JadwalExam::where('id_hari', 5)->get();
+            }else{
+                $jadwal_reguler = [];
+                $jadwal_exam = [];
+            }
+
+            $opsi_reguler = Option::where('nama_option', "Jadwal Reguler")->value('aktif');
+            $opsi_ujian = Option::where('nama_option', "Jadwal Ujian")->value('aktif');
+
+            return view('admin/dashboardAdmin', compact('siswa_count', 'jadwal_count', 'guru_count', 'kelas_count', 'ujian_count', 'jadwal_reguler', 'jadwal_exam', 'hari_now', 'jam_now', 'opsi_reguler', 'opsi_ujian'));
         }
     }
 
@@ -129,7 +162,7 @@ class AdminController extends Controller
             $opsi->aktif = $request->aktif;
             $opsi->save();
 
-            return response()->json(['success'=>'Option change successfully.']);
+            return response()->json(['success'=>'Opsi jadwal bel reguler berhasih diubah!']);
         }
     }
 
@@ -141,7 +174,7 @@ class AdminController extends Controller
             $opsi->aktif = $request->aktif;
             $opsi->save();
 
-            return response()->json(['success'=>'Option change successfully.']);
+            return response()->json(['success'=>'Opsi jadwal bel ujian berhasih diubah!']);
         }
     }
 

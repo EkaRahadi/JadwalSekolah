@@ -61,7 +61,8 @@
 
 @section('script')
     @include('admin/master/scriptTables')
-
+    <!-- Switchery -->
+    <script src="../vendors/switchery/dist/switchery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/cn0rsfqf5862dtcrgnngsfyi4vmj1ketcg7q1gtaw5w115xh/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>tinymce.init({selector:'#visi_misi', height: 300});</script>

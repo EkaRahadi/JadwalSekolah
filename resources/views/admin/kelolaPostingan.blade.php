@@ -80,7 +80,7 @@
                     <div class="card-header">
                         <strong class="card-title">Daftar Postingan</strong>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body table-responsive">
 
                         <!-- Modal Ubah Postingan -->
 

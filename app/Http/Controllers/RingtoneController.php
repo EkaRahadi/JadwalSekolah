@@ -103,8 +103,6 @@ class RingtoneController extends Controller
                     ->inFormat(new \FFMpeg\Format\Audio\Aac)
                     ->save($dir_converted);
 
-
         return Storage::url($dir_converted);
-
     }
 }

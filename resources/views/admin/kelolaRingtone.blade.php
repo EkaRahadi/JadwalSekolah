@@ -33,7 +33,7 @@
                 @endif
                 <div class="card">
 
-                    <div class="card-body">
+                    <div class="card-body table-responsive">
                     <div class="default-tab">
                             <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">

@@ -32,7 +32,7 @@
                 @endif
                 <div class="card">
 
-                    <div class="card-body">
+                    <div class="card-body table-responsive">
                         <button type="button" class="btn btn-info mb-1" data-toggle="modal" data-target="#tambahCivitas"><i class="fa fa-plus-square"></i>
                             Tambah Civitas
                         </button>
